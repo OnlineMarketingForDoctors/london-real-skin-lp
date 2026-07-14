@@ -369,6 +369,46 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
   .ro{opacity:1 !important; transform:none !important; transition:none}
   .btn:hover{transform:none}
 }
+
+/* ---------- Revisions ---------- */
+.logo-img{height:46px; width:auto; display:block}
+@media(max-width:1080px){.logo-img{height:40px}}
+
+.seen{background:var(--porcelain); border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft)}
+.seen .lbl{color:var(--muted)}
+.seen .mk{color:var(--ink)}
+.seen .mklogo{height:30px; width:auto; max-width:150px; object-fit:contain; opacity:.82; mix-blend-mode:multiply}
+
+/* Before/after reveal sliders, two patients per slide */
+.ba-slide{grid-template-columns:1fr 1fr; align-items:start}
+.ba-fig{margin:0; background:rgba(251,248,243,.06); border:1px solid rgba(251,248,243,.14); border-radius:var(--r); padding:14px}
+.ba-reveal{aspect-ratio:4/3; border-radius:10px; width:100%}
+.ba-fig figcaption{padding:16px 4px 2px; font-size:.9rem; color:rgba(251,248,243,.78); line-height:1.55}
+.ba-fig figcaption b{display:block; margin-bottom:4px; font-family:var(--disp); font-weight:500; font-size:1.12rem; color:var(--porcelain)}
+@media(max-width:720px){.ba-slide{grid-template-columns:1fr; gap:22px}}
+
+/* What to expect, background image band */
+.steps{background:var(--pine-deep); position:relative; isolation:isolate; color:var(--porcelain)}
+.steps-bg{position:absolute; inset:0; z-index:-2; width:100%; height:100%; object-fit:cover}
+.steps::before{content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgba(21,42,36,.9),rgba(21,42,36,.84))}
+.steps .eyebrow{color:var(--sand)}
+.steps .eyebrow::before{background:var(--sand-deep)}
+.steps h2{color:var(--porcelain)}
+.steps .step{border-top-color:var(--sand)}
+.steps .step .n{color:var(--sand); background:transparent}
+.steps .step b{color:var(--porcelain)}
+.steps .step p{color:rgba(251,248,243,.76)}
+
+/* Candidate, split with image */
+.cand-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(28px,5vw,64px); align-items:center}
+.candidate .cand-list{grid-template-columns:1fr; margin-top:32px}
+.cand-img{position:relative; border-radius:var(--r); overflow:hidden; aspect-ratio:4/5; box-shadow:0 40px 70px -45px rgba(21,42,36,.6)}
+.cand-img img{width:100%; height:100%; object-fit:cover}
+@media(max-width:860px){.cand-grid{grid-template-columns:1fr} .cand-img{aspect-ratio:16/11}}
+
+/* Location, image only */
+.loc-visual{display:block}
+.loc-visual img{width:100%; height:100%; min-height:380px; object-fit:cover}
 </style>
 </head>
 <body>
@@ -386,8 +426,7 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 <header>
   <div class="wrap nav">
     <a class="logo" href="#top" aria-label="London Real Skin home">
-      <b>LONDON REAL SKIN</b>
-      <small>Skin &amp; Aesthetic Clinic</small>
+      <img class="logo-img" src="https://drive.google.com/thumbnail?id=1BkVzsD-QWTDKbSUP3AjUXQzU-4KI0GUx&sz=w600" alt="London Real Skin">
     </a>
     <nav class="navlinks" aria-label="Primary">
       <a href="#treatment">Treatment</a>
@@ -452,8 +491,8 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
       </div>
       <div class="reveal hero-reveal" id="heroReveal" style="--p:52%">
         <span class="cap">Drag to compare</span>
-        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Ary2g06ZSWzxFoVWIP644Wm9ZG/hf_20260714_204851_1584c2bd-f003-4bd5-bb4c-c95bd1d5b307.png" alt="Clear skin after treatment">
-        <div class="reveal__top"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Ary2g06ZSWzxFoVWIP644Wm9ZG/hf_20260714_204847_c3e0ddfc-3eed-4f51-9507-7513c971ecb6.png" alt="Skin with a small skin tag before treatment"></div>
+        <img src="https://drive.google.com/thumbnail?id=1UHOzE8SnYn6lnYfxu_zY8SDSbsgMC94Z&sz=w1000" alt="Skin after skin tag removal at London Real Skin">
+        <div class="reveal__top"><img src="https://drive.google.com/thumbnail?id=1A8UKTxWhLYDhOINt8NZqmj_yfL5cmql3&sz=w1000" alt="Skin before skin tag removal"></div>
         <span class="reveal__lab b">Before</span>
         <span class="reveal__lab a">After</span>
         <button class="reveal__handle" aria-label="Drag to compare before and after"><i></i><b>⇄</b></button>
@@ -466,9 +505,9 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 <section class="seen">
   <div class="wrap">
     <span class="lbl">As featured in</span>
-    <span class="mk">The Independent</span>
-    <span class="mk sans">Closer</span>
-    <span class="mk">Daily Express</span>
+    <img class="mklogo" loading="lazy" src="https://drive.google.com/thumbnail?id=1NO5esbsFfFSUwCn5LLcszIG6pPfKjJ5C&sz=w500" alt="The Independent">
+    <img class="mklogo" loading="lazy" src="https://drive.google.com/thumbnail?id=1697JvzKL9_HLZpZmhAjkKKvdROqOOwEv&sz=w500" alt="Closer">
+    <img class="mklogo" loading="lazy" src="https://drive.google.com/thumbnail?id=15G51C3SY-5l9XfW_MczpgyB6wqWpX_OC&sz=w500" alt="Daily Express">
     <span class="mk sans">Google 4.9 ★</span>
     <span class="mk">CQC Regulated</span>
   </div>
@@ -502,12 +541,13 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
     </div>
     <div class="carousel" data-carousel>
       <div class="track" data-track>
-        <article class="rev-card"><span class="rs">★★★★★</span><p>My second visit and once again it was faultless. I was greeted, checked in and taken through everything in real depth. The team made me feel completely comfortable. I will definitely be back.</p><div class="who"><span class="av">N</span><div><b>Nilesh</b><span>Google review</span></div></div></article>
-        <article class="rev-card"><span class="rs">★★★★★</span><p>Incredibly professional and knowledgeable. Everything was explained clearly, the options, the results and the aftercare. I never felt rushed and every question was answered. Highly recommend.</p><div class="who"><span class="av">S</span><div><b>Sarah H.</b><span>Google review</span></div></div></article>
-        <article class="rev-card"><span class="rs">★★★★★</span><p>Had a couple of skin tags removed from my neck. Quick, precise and barely any downtime at all. Honestly, I only wish I had booked in sooner.</p><div class="who"><span class="av">D</span><div><b>Daniel R.</b><span>Google review</span></div></div></article>
-        <article class="rev-card"><span class="rs">★★★★★</span><p>They checked the lesion first, reassured me it was benign, and removed it in minutes. A genuinely caring, dermatology-led team. Peace of mind and a great result.</p><div class="who"><span class="av">P</span><div><b>Priya M.</b><span>Google review</span></div></div></article>
-        <article class="rev-card"><span class="rs">★★★★★</span><p>Excellent from start to finish. Calm, clean clinic in Holborn and a team that clearly knows skin. Colin was looked after brilliantly and so was I.</p><div class="who"><span class="av">C</span><div><b>Colin C.</b><span>Google review</span></div></div></article>
-        <article class="rev-card"><span class="rs">★★★★★</span><p>I was nervous about milia near my eyes, but the practitioner was gentle and thorough. Results are lovely and the aftercare advice was spot on.</p><div class="who"><span class="av">E</span><div><b>Emma L.</b><span>Google review</span></div></div></article>
+        <article class="rev-card"><span class="rs">★★★★★</span><p>I recently had a facial skin tag removal with Dr Inna and couldn't be more satisfied. She's professional, knowledgeable and approachable, explained everything and put me at ease. The removal was quick and painless, with clear aftercare. Highly recommend.</p><div class="who"><span class="av">J</span><div><b>Josh Zahid</b><span>Google review</span></div></div></article>
+        <article class="rev-card"><span class="rs">★★★★★</span><p>Went for skin tag removal and Dr Inna was brilliant. She talked me through everything as we were going along, and the aftercare too. Excellent from start to finish, highly recommend!</p><div class="who"><span class="av">S</span><div><b>Sabine Romanova</b><span>Google review</span></div></div></article>
+        <article class="rev-card"><span class="rs">★★★★★</span><p>Skin tag removal consultation and procedure: had the best experience with Dr Inna. She was very accommodating and explained everything well. The procedure was fast and with minimal discomfort. Will definitely be coming back!</p><div class="who"><span class="av">V</span><div><b>Vic Kim</b><span>Google review</span></div></div></article>
+        <article class="rev-card"><span class="rs">★★★★★</span><p>Yasmina and the ACP system for skin tag and lesion removal is amazing. Having darker skin I was nervous, but there is no damage at all and my skin looks as good as new. Reassuring at every step.</p><div class="who"><span class="av">D</span><div><b>David Kappo</b><span>Google review</span></div></div></article>
+        <article class="rev-card"><span class="rs">★★★★★</span><p>Visited to have a skin tag removed from my eyelid, a seriously awkward spot, and the clinic handled it with ease. Satwant was delightful and made me feel comfortable throughout.</p><div class="who"><span class="av">K</span><div><b>Kris Taylor</b><span>Google review</span></div></div></article>
+        <article class="rev-card"><span class="rs">★★★★★</span><p>Very professional from start to finish. I had a very large skin tag removed and I'm extremely happy with the result. I wouldn't hesitate to recommend this clinic.</p><div class="who"><span class="av">M</span><div><b>Michelle S.</b><span>Google review</span></div></div></article>
+        <article class="rev-card"><span class="rs">★★★★★</span><p>I had a couple of papules and a skin tag under my eyes. Yasmina explained what they were and removed them in the same appointment. She made sure I was comfortable throughout. Highly recommended.</p><div class="who"><span class="av">A</span><div><b>MD Abdul Razzak</b><span>Google review</span></div></div></article>
       </div>
       <div class="carousel-nav" style="margin-top:26px">
         <button class="cbtn" data-prev aria-label="Previous reviews"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -533,20 +573,44 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
     <div class="carousel" data-carousel data-snap="center">
       <div class="ba-track" data-track>
         <div class="ba-slide">
-          <div class="ba-cell"><figure><span class="ba-badge before">Before</span><img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1A8UKTxWhLYDhOINt8NZqmj_yfL5cmql3&sz=w1200" alt="Benign skin lesion before ACP electrolysis treatment"></figure><figcaption>A benign skin lesion, assessed and confirmed suitable for treatment at consultation.</figcaption></div>
-          <div class="ba-cell"><figure><span class="ba-badge after">After</span><img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1UHOzE8SnYn6lnYfxu_zY8SDSbsgMC94Z&sz=w1200" alt="Clear skin after ACP electrolysis treatment"></figure><figcaption>Removed cleanly with Sterex ACP electrolysis, with minimal downtime and no dressing needed.</figcaption></div>
+          <figure class="ba-fig">
+            <div class="reveal ba-reveal" style="--p:50%">
+              <img loading="lazy" src="https://drive.google.com/thumbnail?id=1UHOzE8SnYn6lnYfxu_zY8SDSbsgMC94Z&sz=w1200" alt="Skin after treatment">
+              <div class="reveal__top"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1A8UKTxWhLYDhOINt8NZqmj_yfL5cmql3&sz=w1200" alt="Skin lesion before treatment"></div>
+              <span class="reveal__lab b">Before</span><span class="reveal__lab a">After</span>
+              <button class="reveal__handle" aria-label="Drag to compare before and after"><i></i><b>⇄</b></button>
+            </div>
+            <figcaption><b>Benign skin lesion</b>Removed cleanly with Sterex ACP electrolysis, with minimal downtime and no dressing needed.</figcaption>
+          </figure>
+          <figure class="ba-fig">
+            <div class="reveal ba-reveal" style="--p:50%">
+              <img loading="lazy" src="https://drive.google.com/thumbnail?id=1YfvBNLjKyMWRVqB7gASyljkD-FcH6_Vx&sz=w1200" alt="Skin after cherry angioma removal">
+              <div class="reveal__top"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1Yvt-IRmx-05AP82ocVgi1SBbBsxy5lE0&sz=w1200" alt="Cherry angioma before treatment"></div>
+              <span class="reveal__lab b">Before</span><span class="reveal__lab a">After</span>
+              <button class="reveal__handle" aria-label="Drag to compare before and after"><i></i><b>⇄</b></button>
+            </div>
+            <figcaption><b>Cherry angioma</b>A benign red blood spot, settled with pinpoint ACP diathermy in a single session.</figcaption>
+          </figure>
         </div>
         <div class="ba-slide">
-          <div class="ba-cell"><figure><span class="ba-badge before">Before</span><img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1Yvt-IRmx-05AP82ocVgi1SBbBsxy5lE0&sz=w1200" alt="Cherry angioma before treatment"></figure><figcaption>A cherry angioma, a common and completely benign red blood spot on the skin.</figcaption></div>
-          <div class="ba-cell"><figure><span class="ba-badge after">After</span><img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1YfvBNLjKyMWRVqB7gASyljkD-FcH6_Vx&sz=w1200" alt="Skin after cherry angioma removal"></figure><figcaption>Settled with pinpoint ACP diathermy in a single session, leaving smooth, even skin.</figcaption></div>
-        </div>
-        <div class="ba-slide">
-          <div class="ba-cell"><figure><span class="ba-badge before">Before</span><img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=17F4lsfZaUSIRii7VX_0wcwBrGKKQkLXR&sz=w1200" alt="Dermatosis papulosa nigra before treatment"></figure><figcaption>Dermatosis papulosa nigra, a cluster of small benign papules often seen on the face.</figcaption></div>
-          <div class="ba-cell"><figure><span class="ba-badge after">After</span><img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1i1aSTLTwHVwAybGqOYJRRQFIfeIcFR2K&sz=w1200" alt="Skin after dermatosis papulosa nigra removal"></figure><figcaption>Individually treated with ACP electrolysis for clearer, more even-looking skin.</figcaption></div>
-        </div>
-        <div class="ba-slide">
-          <div class="ba-cell"><figure><span class="ba-badge before">Before</span><img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1WjmZN-I1Ar5126GbAF7yysM4-7d-tEeH&sz=w1200" alt="Seborrhoeic keratosis before treatment"></figure><figcaption>A seborrhoeic keratosis, a raised benign growth that many patients ask to have removed.</figcaption></div>
-          <div class="ba-cell"><figure><span class="ba-badge after">After</span><img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1XqY-oWJ_6lWBLjZc0mKfBW-0gtiDs5d5&sz=w1200" alt="Skin after seborrhoeic keratosis removal"></figure><figcaption>Treated with Sterex ACP, settling to smooth skin over the following days.</figcaption></div>
+          <figure class="ba-fig">
+            <div class="reveal ba-reveal" style="--p:50%">
+              <img loading="lazy" src="https://drive.google.com/thumbnail?id=1i1aSTLTwHVwAybGqOYJRRQFIfeIcFR2K&sz=w1200" alt="Skin after dermatosis papulosa nigra removal">
+              <div class="reveal__top"><img loading="lazy" src="https://drive.google.com/thumbnail?id=17F4lsfZaUSIRii7VX_0wcwBrGKKQkLXR&sz=w1200" alt="Dermatosis papulosa nigra before treatment"></div>
+              <span class="reveal__lab b">Before</span><span class="reveal__lab a">After</span>
+              <button class="reveal__handle" aria-label="Drag to compare before and after"><i></i><b>⇄</b></button>
+            </div>
+            <figcaption><b>Dermatosis papulosa nigra</b>A cluster of small benign papules, individually treated with ACP for clearer skin.</figcaption>
+          </figure>
+          <figure class="ba-fig">
+            <div class="reveal ba-reveal" style="--p:50%">
+              <img loading="lazy" src="https://drive.google.com/thumbnail?id=1XqY-oWJ_6lWBLjZc0mKfBW-0gtiDs5d5&sz=w1200" alt="Skin after seborrhoeic keratosis removal">
+              <div class="reveal__top"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1WjmZN-I1Ar5126GbAF7yysM4-7d-tEeH&sz=w1200" alt="Seborrhoeic keratosis before treatment"></div>
+              <span class="reveal__lab b">Before</span><span class="reveal__lab a">After</span>
+              <button class="reveal__handle" aria-label="Drag to compare before and after"><i></i><b>⇄</b></button>
+            </div>
+            <figcaption><b>Seborrhoeic keratosis</b>A raised benign growth treated with Sterex ACP, settling to smooth skin over the following days.</figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -631,6 +695,7 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 
 <!-- 11. What to expect -->
 <section class="steps section">
+  <img class="steps-bg" loading="lazy" src="https://d8j0ntlcm91z4.cloudfront.net/user_3Ary2g06ZSWzxFoVWIP644Wm9ZG/hf_20260714_204859_29e91486-04e5-47fc-ad0e-c86aed889b49.png" alt="">
   <div class="wrap">
     <span class="eyebrow">What to expect</span>
     <h2 style="margin-top:16px; max-width:18ch">Your journey, from first hello to healed</h2>
@@ -668,7 +733,8 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 
 <!-- 13. Right candidate -->
 <section class="candidate section">
-  <div class="wrap">
+  <div class="wrap cand-grid">
+    <div>
     <span class="eyebrow">Is it right for you</span>
     <h2 style="margin-top:16px; max-width:20ch">Signs you are a great candidate for ACP</h2>
     <ul class="cand-list">
@@ -683,6 +749,8 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--pine)" stroke-width="2" style="flex:0 0 auto"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
       <span>Some lesions need a dermatologist to give the all-clear before treatment. Working alongside Dr Wade and the consultant dermatologists at The London Skin and Hair Clinic means any referral is simple, and it is all discussed at your complimentary skin analysis.</span>
     </div>
+    </div>
+    <div class="cand-img ro"><img loading="lazy" decoding="async" src="https://d8j0ntlcm91z4.cloudfront.net/user_3Ary2g06ZSWzxFoVWIP644Wm9ZG/hf_20260714_204502_ed1069e7-4bc3-4a91-9a8b-651fdbc62332.png" alt="A patient with clear, healthy, natural skin"></div>
   </div>
 </section>
 
@@ -717,8 +785,7 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
         <a href="#enquire" class="btn btn--pine" style="margin-top:24px">Book a free consultation</a>
       </div>
       <div class="loc-visual">
-        <img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1TzPU0h-5Uk0jt27sbKdfOWIE8vIiJz4r&sz=w1200" alt="The clinic entrance and location on High Holborn in central London">
-        <iframe class="loc-map" title="Map to London Real Skin, 233 High Holborn" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=233+High+Holborn+London+WC1V+7DN&output=embed"></iframe>
+        <img loading="lazy" decoding="async" src="https://drive.google.com/thumbnail?id=1TzPU0h-5Uk0jt27sbKdfOWIE8vIiJz4r&sz=w1400" alt="The clinic entrance and location on High Holborn in central London">
       </div>
     </div>
   </div>
