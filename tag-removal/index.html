@@ -87,7 +87,7 @@ p{text-wrap:pretty}
 
 header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,.1)}
 .nav{display:flex; align-items:center; justify-content:space-between; gap:24px; padding-block:14px}
-.logo{display:flex; flex-direction:column; line-height:1; gap:3px}
+.logo{display:flex; flex-direction:column; line-height:1; gap:3px; flex-shrink:0}
 .logo b{font-family:var(--body); font-weight:800; letter-spacing:.02em; font-size:1.18rem; color:var(--pine)}
 .logo small{font-family:var(--body); font-weight:700; text-transform:uppercase; letter-spacing:.34em; font-size:.56rem; color:var(--clay-deep)}
 .navlinks{display:flex; gap:26px; align-items:center}
@@ -110,6 +110,9 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 }
 @media(max-width:560px){
   .phone{display:none}
+  .navactions{gap:10px}
+  .navactions .btn--clay{padding:.62em .85em; font-size:.6rem; letter-spacing:.04em; line-height:1.2}
+  .logo-img{height:34px}
 }
 .mobile-nav{display:none; border-top:1px solid var(--line-soft); background:var(--porcelain)}
 .mobile-nav.open{display:block}
@@ -388,6 +391,7 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 /* ---------- Revisions ---------- */
 .logo-img{height:46px; width:auto; display:block}
 @media(max-width:1080px){.logo-img{height:40px}}
+@media(max-width:560px){.logo-img{height:34px}}
 
 .seen{background:var(--porcelain); border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft)}
 .seen .lbl{color:var(--muted)}
