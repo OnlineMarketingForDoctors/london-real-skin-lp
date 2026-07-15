@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>Skin Tag Removal in London | London Real Skin, Holborn</title>
 <meta name="description" content="Dermatology-led skin tag, milia and lesion removal in Holborn, London. Precise ACP electrolysis, most lesions removed in minutes. Free consultation. From £200.">
+<link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=1CYVkM0LWevDsflPSwMq7hf3e3cplX17I&sz=w64">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -287,8 +289,8 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .pay-list{list-style:none; display:grid; gap:16px; margin-top:20px}
 .pay-list li{display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:start}
 .pay-list .ic{width:42px;height:42px;border-radius:11px;background:var(--sand);display:grid;place-items:center;color:var(--pine)}
-.pay-list b{font-weight:700; font-family:var(--body); font-size:1rem}
-.pay-list span{font-size:.92rem; color:var(--muted)}
+.pay-list b{display:block; font-weight:700; font-family:var(--body); font-size:1rem; margin-bottom:2px}
+.pay-list span{display:block; font-size:.92rem; color:var(--muted)}
 .finance-tag{display:inline-flex; align-items:center; gap:8px; margin-top:24px; background:var(--sand); color:var(--pine); font-weight:700; font-size:.8rem; padding:10px 16px; border-radius:100px; text-transform:uppercase; letter-spacing:.08em}
 
 /* ---------- Candidate ---------- */
@@ -395,8 +397,9 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 .steps .eyebrow{color:var(--sand)}
 .steps .eyebrow::before{background:var(--sand-deep)}
 .steps h2{color:var(--porcelain)}
-.steps .step{border-top-color:var(--sand)}
-.steps .step .n{color:var(--sand); background:transparent}
+.steps .step{border-top:none; padding-top:26px; position:relative}
+.steps .step::before{content:""; position:absolute; top:0; left:0; width:44px; height:2px; background:var(--clay)}
+.steps .step .n{position:static; background:transparent; padding:0; color:var(--sand); display:block; line-height:1; margin-bottom:8px}
 .steps .step b{color:var(--porcelain)}
 .steps .step p{color:rgba(251,248,243,.76)}
 
@@ -410,6 +413,15 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 /* Location, image only */
 .loc-visual{display:block}
 .loc-visual img{width:100%; height:100%; min-height:380px; object-fit:cover}
+
+/* before/after footer CTA */
+.results-foot{display:flex; align-items:center; justify-content:space-between; gap:clamp(24px,4vw,56px); margin-top:28px; flex-wrap:wrap}
+.results-foot .disclaimer{margin-top:0; flex:1 1 420px}
+.results-cta{flex:0 0 auto}
+/* team photos */
+.team-portrait .team-photo{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center}
+/* CQC footer logo */
+.cqc-logo{margin-top:24px; height:70px; width:auto; background:#fff; padding:8px 12px; border-radius:8px}
 </style>
 </head>
 <body>
@@ -608,7 +620,10 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
         </div>
       </div>
     </div>
-    <p class="disclaimer">All photos are unedited and actual patients of London Real Skin. The images are displayed with the consent of the patients. The outcomes shown are only relevant for these patients and do not necessarily reflect the results other patients may experience. Our team will discuss any factors that could influence the results that you may get.</p>
+    <div class="results-foot">
+      <p class="disclaimer">All photos are unedited and actual patients of London Real Skin. The images are displayed with the consent of the patients. The outcomes shown are only relevant for these patients and do not necessarily reflect the results other patients may experience. Our team will discuss any factors that could influence the results that you may get.</p>
+      <a href="#enquire" class="btn btn--clay results-cta">Book a free consultation</a>
+    </div>
   </div>
 </section>
 
@@ -675,13 +690,12 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
     </div>
     <div class="carousel" data-carousel>
       <div class="track" data-track>
-        <article class="team-card"><div class="team-portrait"><div class="ring"></div><span class="mono">MW</span></div><div class="team-body"><b>Dr Martin Wade</b><div class="role">Medical Director · Consultant Dermatologist</div><p>GMC-registered and on the specialist register for Dermatology, with over 20 years of experience. Australian-trained across major melanoma and skin cancer units, Dr Wade leads the clinic with an evidence-based, integrated approach to skin health.</p></div></article>
-        <article class="team-card"><div class="team-portrait"><div class="ring"></div><span class="mono">MM</span></div><div class="team-body"><b>Dr Meriem Martins</b><div class="role">Dermatologist</div><p>Works alongside Dr Wade to provide dermatology-led assessment, so every lesion is properly examined and confirmed benign before any treatment is carried out.</p></div></article>
-        <article class="team-card"><div class="team-portrait"><div class="ring"></div><span class="mono">FK</span></div><div class="team-body"><b>Dr Flor Kent</b><div class="role">Dermatologist</div><p>Supports the clinic's dermatology-led model, giving patients specialist reassurance and clear, honest guidance about their skin and their options.</p></div></article>
-        <article class="team-card"><div class="team-portrait"><div class="ring"></div><span class="mono">L</span></div><div class="team-body"><b>Leigh</b><div class="role">Aesthetic Practitioner</div><p>An experienced ACP practitioner focused on precise, comfortable lesion removal and attentive aftercare from the first appointment to the final review.</p></div></article>
-        <article class="team-card"><div class="team-portrait"><div class="ring"></div><span class="mono">E</span></div><div class="team-body"><b>Ellen</b><div class="role">Aesthetic Practitioner</div><p>Known for a calm, thorough consultation and a gentle, careful treatment style that puts even nervous patients quickly at ease.</p></div></article>
-        <article class="team-card"><div class="team-portrait"><div class="ring"></div><span class="mono">M</span></div><div class="team-body"><b>Mina</b><div class="role">Aesthetic Practitioner</div><p>Combines technical precision with genuine warmth, keeping patients informed and comfortable at every step of the treatment.</p></div></article>
-        <article class="team-card"><div class="team-portrait"><div class="ring"></div><span class="mono">K</span></div><div class="team-body"><b>Kylie</b><div class="role">Aesthetic Practitioner</div><p>Passionate about skin health and helping patients feel looked after, from their very first visit through to their results.</p></div></article>
+        <article class="team-card"><div class="team-portrait"><img class="team-photo" loading="lazy" src="assets/img/team-martin.jpg" onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=1lrTgUksjFqatHT-ugnn38w9DkGbCDxyX&sz=w600'" alt="Dr Martin Wade"></div><div class="team-body"><b>Dr Martin Wade</b><div class="role">Medical Director · Consultant Dermatologist</div><p>GMC-registered and on the specialist register for Dermatology, with over 20 years of experience. Australian-trained across major melanoma and skin cancer units, Dr Wade leads the clinic with an evidence-based, integrated approach to skin health.</p></div></article>
+        <article class="team-card"><div class="team-portrait"><img class="team-photo" loading="lazy" src="assets/img/team-inna.jpg" onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=15ReinYiAhzeuX_BJOGZRO3Z1Jhb96Ujb&sz=w600'" alt="Dr Inna"></div><div class="team-body"><b>Dr Inna</b><div class="role">Aesthetic Doctor</div><p>A favourite among our patients, Dr Inna carries out ACP electrolysis and skin treatments with a calm, meticulous touch. She takes the time to explain every step and is known for putting even nervous patients at ease.</p></div></article>
+        <article class="team-card"><div class="team-portrait"><img class="team-photo" loading="lazy" src="assets/img/team-flor.jpg" onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=1_-74V2jato5fKDRrwwSCLFzl-WCuaqOU&sz=w600'" alt="Dr Flor Kent"></div><div class="team-body"><b>Dr Flor Kent</b><div class="role">Dermatologist</div><p>Works within the clinic's dermatology-led model, giving patients specialist reassurance and clear, honest guidance about their skin and their options.</p></div></article>
+        <article class="team-card"><div class="team-portrait"><img class="team-photo" loading="lazy" src="assets/img/team-leigh.jpg" onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=1UPVbXm0uOw7tHzDDdoALmTESc82iZEZr&sz=w600'" alt="Leigh"></div><div class="team-body"><b>Leigh</b><div class="role">Aesthetic Practitioner</div><p>An experienced aesthetic practitioner focused on precise, comfortable lesion removal and attentive aftercare from the first appointment to the final review.</p></div></article>
+        <article class="team-card"><div class="team-portrait"><img class="team-photo" loading="lazy" src="assets/img/team-ellen.jpg" onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=1ENZobcchIbtAyuE2OhWivNMYTGt5a-Fc&sz=w600'" alt="Ellen"></div><div class="team-body"><b>Ellen</b><div class="role">Aesthetician</div><p>Known for a calm, thorough consultation and a gentle, careful treatment style that puts even nervous patients quickly at ease.</p></div></article>
+        <article class="team-card"><div class="team-portrait"><img class="team-photo" loading="lazy" src="assets/img/team-kylie.jpg" onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=1zsYFcnmJx64d8gePnuMpIgpFnEX-p6Kl&sz=w600'" alt="Kylie"></div><div class="team-body"><b>Kylie</b><div class="role">Aesthetician</div><p>Passionate about skin health and helping patients feel looked after, from their very first visit through to their results.</p></div></article>
       </div>
     </div>
   </div>
@@ -830,6 +844,7 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
         <a href="https://www.facebook.com/londonrealskin/" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h-3a4 4 0 00-4 4v3H5v4h3v7h4v-7h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
         <a href="https://www.tiktok.com/@londonrealskin" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 4c.5 2.5 2 4 4.5 4.3V12c-1.8 0-3.4-.6-4.5-1.5V16a5.5 5.5 0 11-5.5-5.5c.3 0 .7 0 1 .1v3.2a2.3 2.3 0 101.6 2.2V4z"/></svg></a>
       </div>
+      <img class="cqc-logo" loading="lazy" src="assets/img/cqc.png" onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=1FI70RMzKbTRuOV-9HHCRR68qsAZNZvcn&sz=w240'" alt="Regulated by the Care Quality Commission">
     </div>
     <div class="foot-col">
       <h4>Clinic</h4>
