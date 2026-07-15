@@ -841,7 +841,6 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
       <h2 style="margin-top:14px; font-size:clamp(1.8rem,3vw,2.6rem)">Let's take a proper look at your skin</h2>
       <p class="lede" style="margin-top:10px; margin-bottom:22px; font-size:1rem">Tell us a little about what is bothering you and our reception team will be in touch, usually within one working day.</p>
       <iframe
-        src="https://api.leadconnectorhq.com/widget/form/c2I7654RYo8d7WRsmRFc"
         style="width:100%;min-height:640px;border:none;border-radius:12px"
         id="inline-c2I7654RYo8d7WRsmRFc"
         data-layout="{'id':'INLINE'}"
@@ -857,6 +856,17 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
         data-form-id="c2I7654RYo8d7WRsmRFc"
         title="LP Form">
       </iframe>
+      <script>
+        // Prefill the hidden "page URL" field (ID mI29yJDu8PCYngtlADcY) with the
+        // live URL of the page the form is embedded on, via LeadConnector's
+        // query-parameter prefill. Must be set before form_embed.js loads the form.
+        (function(){
+          var f=document.getElementById('inline-c2I7654RYo8d7WRsmRFc');
+          if(!f) return;
+          var base='https://api.leadconnectorhq.com/widget/form/c2I7654RYo8d7WRsmRFc';
+          f.src=base+'?mI29yJDu8PCYngtlADcY='+encodeURIComponent(window.location.href);
+        })();
+      </script>
       <script src="https://link.msgsndr.com/js/form_embed.js"></script>
     </div>
   </div>
