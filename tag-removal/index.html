@@ -836,31 +836,29 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 <section class="enquire section" id="enquire">
   <img loading="lazy" decoding="async" class="enquire-bg" src="/assets/img/enquiry-bg.png" alt="">
   <div class="wrap">
-    <form class="form-card" id="enquiryForm" action="/thank-you" method="get">
+    <div class="form-card form-embed">
       <span class="eyebrow">Book a free consultation</span>
       <h2 style="margin-top:14px; font-size:clamp(1.8rem,3vw,2.6rem)">Let's take a proper look at your skin</h2>
-      <p class="lede" style="margin-top:10px; font-size:1rem">Tell us a little about what is bothering you and our reception team will be in touch, usually within one working day.</p>
-      <div class="form-grid">
-        <div class="field"><label for="fn">First name</label><input id="fn" name="fn" type="text" autocomplete="given-name" required></div>
-        <div class="field"><label for="ln">Last name</label><input id="ln" name="ln" type="text" autocomplete="family-name" required></div>
-        <div class="field"><label for="em">Email</label><input id="em" name="em" type="email" autocomplete="email" required></div>
-        <div class="field"><label for="ph">Phone</label><input id="ph" name="ph" type="tel" autocomplete="tel" required></div>
-        <div class="field full"><label for="src">How did you hear about us?</label>
-          <select id="src" name="src">
-            <option value="">Please choose</option>
-            <option>Google search</option>
-            <option>Google Ads</option>
-            <option>Social media</option>
-            <option>Referral from friend or family</option>
-            <option>Referred by a doctor</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="field full"><label for="msg">Message</label><textarea id="msg" name="msg" placeholder="Which lesion would you like treated, and where?"></textarea></div>
-      </div>
-      <button type="submit" class="btn btn--clay">Request my free consultation</button>
-      <p class="fine">By submitting, you agree to be contacted about your enquiry. We will never share your details.</p>
-    </form>
+      <p class="lede" style="margin-top:10px; margin-bottom:22px; font-size:1rem">Tell us a little about what is bothering you and our reception team will be in touch, usually within one working day.</p>
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/form/c2I7654RYo8d7WRsmRFc"
+        style="width:100%;min-height:640px;border:none;border-radius:12px"
+        id="inline-c2I7654RYo8d7WRsmRFc"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="LP Form"
+        data-height="605"
+        data-layout-iframe-id="inline-c2I7654RYo8d7WRsmRFc"
+        data-form-id="c2I7654RYo8d7WRsmRFc"
+        title="LP Form">
+      </iframe>
+      <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+    </div>
   </div>
 </section>
 
@@ -966,15 +964,6 @@ toTop.addEventListener('click', ()=>{
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   window.scrollTo({top:0, behavior:reduce?'auto':'smooth'});
 });
-
-// Enquiry form: redirect to the thank-you page on submit (native validation runs first)
-const enquiryForm=document.getElementById('enquiryForm');
-if(enquiryForm){
-  enquiryForm.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    window.location.href='/thank-you';
-  });
-}
 </script>
 </body>
 </html>
