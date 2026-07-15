@@ -133,6 +133,7 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .stars small{font-size:.82rem; color:var(--muted); font-weight:600}
 .stars b{color:var(--ink)}
 .hero-media{position:relative}
+.hero-media-m{display:none}
 .hero-photo{position:relative; border-radius:220px 220px var(--r) var(--r); overflow:hidden; aspect-ratio:3/4; box-shadow:0 40px 80px -50px rgba(30,58,87,.7)}
 .hero-photo img{width:100%; height:100%; object-fit:cover}
 .hero-tag{position:absolute; top:18px; left:50%; transform:translateX(-50%); z-index:3; background:var(--pine); color:var(--porcelain); font-size:.66rem; font-weight:700; text-transform:uppercase; letter-spacing:.16em; padding:9px 16px; border-radius:100px; white-space:nowrap; box-shadow:0 10px 24px -12px rgba(30,58,87,.7)}
@@ -162,6 +163,8 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr}
+  .hero-grid > .hero-media{display:none}
+  .hero-media-m{display:block; margin-top:26px}
   .hero-media{max-width:440px; margin-inline:auto; width:100%}
   .hero-reveal{width:170px; right:-8px}
 }
@@ -478,6 +481,17 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
     <div class="hero-copy">
       <span class="eyebrow">Skin tag, milia &amp; lesion removal</span>
       <h1>Skin tags, gone in <em>minutes.</em></h1>
+      <div class="hero-media hero-media-m">
+        <div class="hero-photo"><img src="/assets/img/hero.jpg" alt="" width="900" height="1200"></div>
+        <div class="reveal hero-reveal" style="--p:52%">
+          <span class="cap">Drag to compare</span>
+          <img src="/assets/img/patient1-after.jpg" alt="">
+          <div class="reveal__top"><img src="/assets/img/patient1-before.jpg" alt=""></div>
+          <span class="reveal__lab b">Before</span>
+          <span class="reveal__lab a">After</span>
+          <button class="reveal__handle" aria-label="Drag to compare before and after"><i></i><b>⇄</b></button>
+        </div>
+      </div>
       <p class="lede">Dermatology-led ACP electrolysis at our Holborn clinic. Precise, safe and reassuringly quick, so those small blemishes stop taking up space in your day.</p>
       <ul class="selling">
         <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Most lesions removed in a single visit</li>
