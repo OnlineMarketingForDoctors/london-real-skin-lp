@@ -58,9 +58,9 @@ p{text-wrap:pretty}
 
 /* ---------- Buttons ---------- */
 .btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:.6em;
+  display:inline-flex; align-items:center; justify-content:center; gap:.6em; text-align:center;
   font-family:var(--body); font-weight:700; text-transform:uppercase;
-  letter-spacing:.12em; font-size:.78rem; line-height:1;
+  letter-spacing:.12em; font-size:.78rem; line-height:1.15;
   padding:1.15em 1.7em; border-radius:100px; border:1px solid transparent;
   transition:transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease;
 }
@@ -438,6 +438,11 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 .team-portrait .team-photo{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center}
 /* CQC footer logo */
 .cqc-logo{height:74px; width:auto; background:#fff; padding:8px 12px; border-radius:8px}
+
+/* Back to top */
+.to-top{position:fixed; right:clamp(16px,3vw,28px); bottom:clamp(16px,3vw,28px); z-index:70; width:50px; height:50px; border-radius:50%; border:none; background:var(--pine); color:var(--porcelain); display:grid; place-items:center; cursor:pointer; box-shadow:0 12px 30px -10px rgba(30,58,87,.7); opacity:0; visibility:hidden; transform:translateY(12px); transition:opacity .3s ease, transform .3s ease, background .25s ease, visibility .3s}
+.to-top.show{opacity:1; visibility:visible; transform:none}
+.to-top:hover{background:var(--clay)}
 @media(max-width:900px){.foot-cqc{justify-content:flex-start}}
 </style>
 </head>
@@ -862,6 +867,10 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 </main>
 
 <!-- 17. Footer -->
+<button class="to-top" id="toTop" aria-label="Back to top" title="Back to top">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
 <footer>
   <div class="wrap foot-grid">
     <div>
@@ -948,6 +957,15 @@ const io=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
 },{threshold:0.12, rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.ro').forEach(el=>io.observe(el));
+
+// Back to top
+const toTop=document.getElementById('toTop');
+const onScroll=()=>{ toTop.classList.toggle('show', window.scrollY>600); };
+window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+toTop.addEventListener('click', ()=>{
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({top:0, behavior:reduce?'auto':'smooth'});
+});
 </script>
 </body>
 </html>
