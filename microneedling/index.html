@@ -28,11 +28,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --r:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
 body{
   font-family:var(--body); color:var(--ink); background:var(--porcelain);
   font-size:clamp(16px,1.05vw,17px); line-height:1.6; font-weight:400;
-  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased; overflow-x:clip;
 }
 img{max-width:100%; display:block}
 a{color:inherit; text-decoration:none}
@@ -304,8 +304,10 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .vfaq h2{color:var(--porcelain)}
 .vfaq .lede{color:rgba(251,248,243,.8); max-width:56ch}
 .vfaq-grid{display:grid; grid-template-columns:1.6fr 1fr; gap:clamp(20px,3vw,32px); margin-top:44px; align-items:start}
-.vplayer{position:relative; border-radius:var(--r); overflow:hidden; height:0; padding-bottom:calc(56.25% + 46px); background:#000; box-shadow:0 40px 80px -46px rgba(0,0,0,.85)}
-.vplayer iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.vplayer{position:relative; border-radius:var(--r); overflow:hidden; aspect-ratio:16/9; background:#000; box-shadow:0 40px 80px -46px rgba(0,0,0,.85)}
+/* Crop Google Drive's player chrome (top toolbar + bottom control bar) so the
+   16:9 video fills the frame edge to edge instead of being letterboxed. */
+.vplayer iframe{position:absolute; left:0; top:-50%; width:100%; height:200%; border:0}
 .vnow{margin-top:14px; font-size:.82rem; color:rgba(251,248,243,.7)}
 .vnow b{color:var(--porcelain); font-weight:700}
 .vplaylist{display:flex; flex-direction:column; gap:8px; max-height:452px; overflow-y:auto; padding-right:6px}
