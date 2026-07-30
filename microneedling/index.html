@@ -283,7 +283,14 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .glance-cell .ic{color:var(--sand); margin-bottom:16px}
 .glance-cell b{display:block; font-family:var(--disp); font-size:1.5rem; font-weight:500; margin-bottom:4px}
 .glance-cell span{font-size:.86rem; color:rgba(251,248,243,.72); text-transform:uppercase; letter-spacing:.1em; font-weight:600}
+.glance-cell b{overflow-wrap:anywhere}
+.glance-cell span{overflow-wrap:anywhere}
 @media(max-width:760px){.glance-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){
+  .glance-cell{padding:22px 15px}
+  .glance-cell b{font-size:1.3rem}
+  .glance-cell span{letter-spacing:.05em}
+}
 
 /* ---------- CTA band ---------- */
 .ctaband{background:var(--clay); color:#fff; text-align:center}
@@ -297,7 +304,7 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .vfaq h2{color:var(--porcelain)}
 .vfaq .lede{color:rgba(251,248,243,.8); max-width:56ch}
 .vfaq-grid{display:grid; grid-template-columns:1.6fr 1fr; gap:clamp(20px,3vw,32px); margin-top:44px; align-items:start}
-.vplayer{position:relative; border-radius:var(--r); overflow:hidden; aspect-ratio:16/9; background:#000; box-shadow:0 40px 80px -46px rgba(0,0,0,.85)}
+.vplayer{position:relative; border-radius:var(--r); overflow:hidden; height:0; padding-bottom:calc(56.25% + 46px); background:#000; box-shadow:0 40px 80px -46px rgba(0,0,0,.85)}
 .vplayer iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
 .vnow{margin-top:14px; font-size:.82rem; color:rgba(251,248,243,.7)}
 .vnow b{color:var(--porcelain); font-weight:700}
@@ -1054,8 +1061,12 @@ document.querySelectorAll('section').forEach(sec=>{
   const amount=()=>{
     const first=track.children[0];
     if(!first) return track.clientWidth*0.8;
+    const style=getComputedStyle(track);
+    const gap=parseFloat(style.columnGap||style.gap)||22;
     const w=first.getBoundingClientRect().width;
-    return w>=track.clientWidth*0.8 ? track.clientWidth : (w+22)*2;
+    const per=w+gap;
+    const visible=Math.max(1, Math.floor((track.clientWidth+gap)/per));
+    return per*visible;
   };
   prev&&prev.addEventListener('click',()=>track.scrollBy({left:-amount(),behavior:'smooth'}));
   next&&next.addEventListener('click',()=>track.scrollBy({left:amount(),behavior:'smooth'}));
