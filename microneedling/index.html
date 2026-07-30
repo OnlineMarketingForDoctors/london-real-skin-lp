@@ -188,9 +188,13 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .track{display:flex; gap:22px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding-bottom:14px; -ms-overflow-style:none; scrollbar-width:none}
 .track::-webkit-scrollbar{display:none}
 .carousel{position:relative}
-.reviews .track{align-items:flex-start}
+.reviews .track{align-items:stretch}
 .rev-card{scroll-snap-align:start; flex:0 0 clamp(280px,33%,400px); background:var(--paper); border:1px solid var(--line-soft); border-radius:var(--r); padding:28px; display:flex; flex-direction:column; gap:14px; box-shadow:0 20px 40px -34px rgba(30,58,87,.5)}
 .rev-card .av-img{width:40px; height:40px; border-radius:50%; object-fit:cover; flex:0 0 auto; background:var(--sand)}
+.rev-card p{display:-webkit-box; -webkit-line-clamp:7; -webkit-box-orient:vertical; overflow:hidden}
+.rev-card.expanded p{-webkit-line-clamp:unset; display:block}
+.rev-more{align-self:flex-start; background:none; border:none; padding:0; margin-top:-4px; color:var(--clay-deep); font-family:var(--body); font-weight:700; font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; cursor:pointer}
+.rev-more:hover{text-decoration:underline}
 .rev-card .rs{color:#E8A93B; letter-spacing:2px}
 .rev-card p{font-size:1rem; color:var(--ink)}
 .rev-card .who{display:flex; align-items:center; gap:12px; margin-top:auto}
@@ -576,7 +580,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- 4. One-liner -->
+<!-- 4. Before & After -->
+<section class="results section" id="results">
+  <div class="wrap">
+    <div class="reviews-head">
+      <div>
+        <span class="eyebrow">Before &amp; after</span>
+        <h2 style="margin-top:14px">Real skin,<br>real results</h2>
+      </div>
+      <div class="carousel-nav">
+        <button class="cbtn" data-prev aria-label="Previous result"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="cbtn" data-next aria-label="Next result"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <div class="carousel" data-carousel data-snap="center">
+      <div class="ba-track" data-track>
+        <figure class="ba-fig">
+          <div class="shot"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1B4sP9ALSfhItYn85poaZw0nOqZNtVIpy&sz=w1200" alt="SkinXcell RF microneedling before and after"></div>
+          <figcaption><b>SkinXcell RF microneedling</b>Firmer, smoother skin with improved tone and texture after a course of treatments.</figcaption>
+        </figure>
+        <figure class="ba-fig">
+          <div class="shot"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1uV1UX8nNHYKRjfwVIiGppn5n9P0lGbfE&sz=w1200" alt="SkinXcell RF microneedling before and after"></div>
+          <figcaption><b>SkinXcell RF microneedling</b>Visible lifting and tightening, with a refreshed, more even complexion.</figcaption>
+        </figure>
+        <figure class="ba-fig">
+          <div class="shot"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1pARWUghhyqnQJIyL5mc4sO_G9dTh7n-d&sz=w1200" alt="Microneedling for acne scarring before and after"></div>
+          <figcaption><b>Microneedling for acne scarring</b>Smoother, more even texture as remodelled collagen softens the appearance of scars.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="results-foot">
+      <p class="disclaimer">All photos are of actual patients of London Real Skin and are displayed with their consent. The outcomes shown are relevant only for these patients and do not necessarily reflect the results other patients may experience. Your practitioner will discuss any factors that could influence your own results.</p>
+      <a href="#enquire" class="btn btn--clay results-cta">Book a free consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. One-liner -->
 <section class="oneliner section">
   <div class="wrap grid-split">
     <div class="oneliner-img ro">
@@ -678,42 +718,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="cbtn" data-prev aria-label="Previous serums"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
         <button class="cbtn" data-next aria-label="More serums"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- 8. Before & After -->
-<section class="results section" id="results">
-  <div class="wrap">
-    <div class="reviews-head">
-      <div>
-        <span class="eyebrow">Before &amp; after</span>
-        <h2 style="margin-top:14px">Real skin,<br>real results</h2>
-      </div>
-      <div class="carousel-nav">
-        <button class="cbtn" data-prev aria-label="Previous result"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button class="cbtn" data-next aria-label="Next result"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
-      </div>
-    </div>
-    <div class="carousel" data-carousel data-snap="center">
-      <div class="ba-track" data-track>
-        <figure class="ba-fig">
-          <div class="shot"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1B4sP9ALSfhItYn85poaZw0nOqZNtVIpy&sz=w1200" alt="SkinXcell RF microneedling before and after"></div>
-          <figcaption><b>SkinXcell RF microneedling</b>Firmer, smoother skin with improved tone and texture after a course of treatments.</figcaption>
-        </figure>
-        <figure class="ba-fig">
-          <div class="shot"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1uV1UX8nNHYKRjfwVIiGppn5n9P0lGbfE&sz=w1200" alt="SkinXcell RF microneedling before and after"></div>
-          <figcaption><b>SkinXcell RF microneedling</b>Visible lifting and tightening, with a refreshed, more even complexion.</figcaption>
-        </figure>
-        <figure class="ba-fig">
-          <div class="shot"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1pARWUghhyqnQJIyL5mc4sO_G9dTh7n-d&sz=w1200" alt="Microneedling for acne scarring before and after"></div>
-          <figcaption><b>Microneedling for acne scarring</b>Smoother, more even texture as remodelled collagen softens the appearance of scars.</figcaption>
-        </figure>
-      </div>
-    </div>
-    <div class="results-foot">
-      <p class="disclaimer">All photos are of actual patients of London Real Skin and are displayed with their consent. The outcomes shown are relevant only for these patients and do not necessarily reflect the results other patients may experience. Your practitioner will discuss any factors that could influence your own results.</p>
-      <a href="#enquire" class="btn btn--clay results-cta">Book a free consultation</a>
     </div>
   </div>
 </section>
@@ -1073,6 +1077,21 @@ document.querySelectorAll('section').forEach(sec=>{
     });
   });
 })();
+
+// Review cards: add a Read more toggle only when the text is truncated
+document.querySelectorAll('.rev-card').forEach(card=>{
+  const p=card.querySelector('p');
+  if(!p) return;
+  if(p.scrollHeight - p.clientHeight > 4){
+    const btn=document.createElement('button');
+    btn.type='button'; btn.className='rev-more'; btn.textContent='Read more';
+    btn.addEventListener('click',()=>{
+      const ex=card.classList.toggle('expanded');
+      btn.textContent=ex?'Read less':'Read more';
+    });
+    p.insertAdjacentElement('afterend', btn);
+  }
+});
 
 // FAQ accordion
 document.querySelectorAll('.faq-item').forEach(item=>{
