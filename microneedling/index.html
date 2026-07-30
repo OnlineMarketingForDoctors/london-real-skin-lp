@@ -305,9 +305,7 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .vfaq .lede{color:rgba(251,248,243,.8); max-width:56ch}
 .vfaq-grid{display:grid; grid-template-columns:1.6fr 1fr; gap:clamp(20px,3vw,32px); margin-top:44px; align-items:start}
 .vplayer{position:relative; border-radius:var(--r); overflow:hidden; aspect-ratio:16/9; background:#000; box-shadow:0 40px 80px -46px rgba(0,0,0,.85)}
-/* Crop Google Drive's player chrome (top toolbar + bottom control bar) so the
-   16:9 video fills the frame edge to edge instead of being letterboxed. */
-.vplayer iframe{position:absolute; left:0; top:-50%; width:100%; height:200%; border:0}
+.vplayer video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#000; display:block}
 .vnow{margin-top:14px; font-size:.82rem; color:rgba(251,248,243,.7)}
 .vnow b{color:var(--porcelain); font-weight:700}
 .vplaylist{display:flex; flex-direction:column; gap:8px; max-height:452px; overflow-y:auto; padding-right:6px}
@@ -767,20 +765,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="vfaq-grid">
       <div>
         <div class="vplayer">
-          <iframe id="vplayer" src="https://drive.google.com/file/d/1fLMkNjy8kcOvomYdBd7VT8DRbucwSDZl/preview" allow="autoplay; encrypted-media" allowfullscreen title="Microneedling video FAQ"></iframe>
+          <video id="vplayer" controls playsinline preload="metadata" poster="https://drive.google.com/thumbnail?id=1LgfZReNQNIp4cwLBaB96EXRdvjzawA9l&sz=w1200" src="/assets/videos/benefits.mp4"></video>
         </div>
         <p class="vnow">Now playing: <b id="vnow">Benefits &amp; starting point</b></p>
       </div>
       <div class="vplaylist" id="vplaylist">
-        <button class="vitem active" data-vid="1fLMkNjy8kcOvomYdBd7VT8DRbucwSDZl" data-title="Benefits &amp; starting point"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">01</span><span class="vt">Benefits &amp; starting point</span></span></button>
-        <button class="vitem" data-vid="1CaHd2IDG94aWdk3Xaa4hhoSP5oQ0h_Rm" data-title="Is microneedling safe?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">02</span><span class="vt">Is microneedling safe?</span></span></button>
-        <button class="vitem" data-vid="1ErD0O1UTKydq9NXuw_-nZCJG__iUN6Oe" data-title="Can microneedling tighten skin?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">03</span><span class="vt">Can microneedling tighten skin?</span></span></button>
-        <button class="vitem" data-vid="1MMY06e6QLjx3ZxUC8po4jhZd9kEop3K_" data-title="Microneedling for acne scarring"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">04</span><span class="vt">Microneedling for acne scarring</span></span></button>
-        <button class="vitem" data-vid="1-mI3uLj1k2laLFFkQ0MzGPtPU1Ukb3n_" data-title="Can microneedling cause scars?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">05</span><span class="vt">Can microneedling cause scars?</span></span></button>
-        <button class="vitem" data-vid="1KQgcpCU3Z0uxZ0SIMLTLqcK4g5BsrVc1" data-title="Microneedling &amp; Botox"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">06</span><span class="vt">Microneedling &amp; Botox</span></span></button>
-        <button class="vitem" data-vid="1fXJuwFGYiMRf_2qZtLeajLLWm-qk6h29" data-title="Microneedling &amp; rosacea"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">07</span><span class="vt">Microneedling &amp; rosacea</span></span></button>
-        <button class="vitem" data-vid="1bvTsGK1nvfDfG7b-VLYrNWUzTngsldjv" data-title="Microneedling &amp; marionette lines"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">08</span><span class="vt">Microneedling &amp; marionette lines</span></span></button>
-        <button class="vitem" data-vid="1xFaux2FvbgirDcMSKKp-dG_ZLBwT2RLS" data-title="At-home kits vs the clinic"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">09</span><span class="vt">At-home kits vs the clinic</span></span></button>
+        <button class="vitem active" data-src="/assets/videos/benefits.mp4" data-title="Benefits &amp; starting point"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">01</span><span class="vt">Benefits &amp; starting point</span></span></button>
+        <button class="vitem" data-src="/assets/videos/safe.mp4" data-title="Is microneedling safe?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">02</span><span class="vt">Is microneedling safe?</span></span></button>
+        <button class="vitem" data-src="/assets/videos/tighten.mp4" data-title="Can microneedling tighten skin?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">03</span><span class="vt">Can microneedling tighten skin?</span></span></button>
+        <button class="vitem" data-src="/assets/videos/acne-scarring.mp4" data-title="Microneedling for acne scarring"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">04</span><span class="vt">Microneedling for acne scarring</span></span></button>
+        <button class="vitem" data-src="/assets/videos/cause-scars.mp4" data-title="Can microneedling cause scars?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">05</span><span class="vt">Can microneedling cause scars?</span></span></button>
+        <button class="vitem" data-src="/assets/videos/botox.mp4" data-title="Microneedling &amp; Botox"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">06</span><span class="vt">Microneedling &amp; Botox</span></span></button>
+        <button class="vitem" data-src="/assets/videos/rosacea.mp4" data-title="Microneedling &amp; rosacea"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">07</span><span class="vt">Microneedling &amp; rosacea</span></span></button>
+        <button class="vitem" data-src="/assets/videos/marionette-lines.mp4" data-title="Microneedling &amp; marionette lines"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">08</span><span class="vt">Microneedling &amp; marionette lines</span></span></button>
+        <button class="vitem" data-src="/assets/videos/at-home-vs-clinic.mp4" data-title="At-home kits vs the clinic"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">09</span><span class="vt">At-home kits vs the clinic</span></span></button>
       </div>
     </div>
   </div>
@@ -1082,8 +1080,10 @@ document.querySelectorAll('section').forEach(sec=>{
   if(!player||!list) return;
   list.querySelectorAll('.vitem').forEach(btn=>{
     btn.addEventListener('click',()=>{
-      const id=btn.getAttribute('data-vid');
-      player.src='https://drive.google.com/file/d/'+id+'/preview';
+      const src=btn.getAttribute('data-src');
+      player.src=src;
+      player.load();
+      player.play().catch(()=>{});
       if(nowLabel) nowLabel.innerHTML=btn.getAttribute('data-title');
       list.querySelectorAll('.vitem').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
