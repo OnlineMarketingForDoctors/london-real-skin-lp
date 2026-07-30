@@ -262,8 +262,12 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .ba-track::-webkit-scrollbar{display:none}
 .ba-fig{scroll-snap-align:start; flex:0 0 clamp(280px,46%,520px); margin:0; background:rgba(251,248,243,.06); border:1px solid rgba(251,248,243,.14); border-radius:var(--r); padding:16px}
 @media(max-width:720px){.ba-fig{flex:0 0 86%}}
-.ba-fig .shot{border-radius:10px; overflow:hidden; background:#000}
+.ba-fig .shot{position:relative; border-radius:10px; overflow:hidden; background:#000}
 .ba-fig .shot img{width:100%; height:auto; display:block}
+.ba-lab{position:absolute; bottom:12px; z-index:2; font-size:.64rem; font-weight:800; text-transform:uppercase; letter-spacing:.1em; color:#fff; padding:6px 13px; border-radius:8px; box-shadow:0 8px 18px -8px rgba(0,0,0,.6)}
+.ba-lab.b{left:12px; background:var(--pine)}
+.ba-lab.a{left:calc(50% + 12px); background:var(--clay)}
+@media(max-width:420px){.ba-lab{font-size:.56rem; padding:5px 10px} .ba-lab.b{left:8px} .ba-lab.a{left:calc(50% + 8px)}}
 .ba-fig figcaption{padding:16px 6px 4px; font-size:.9rem; color:rgba(251,248,243,.8); line-height:1.55}
 .ba-fig figcaption b{display:block; margin-bottom:4px; font-family:var(--disp); font-weight:500; font-size:1.12rem; color:var(--porcelain)}
 .results-foot{display:flex; align-items:center; justify-content:space-between; gap:clamp(24px,4vw,56px); margin-top:28px; flex-wrap:wrap}
@@ -603,15 +607,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="carousel" data-carousel data-snap="center">
       <div class="ba-track" data-track>
         <figure class="ba-fig">
-          <div class="shot"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1B4sP9ALSfhItYn85poaZw0nOqZNtVIpy&sz=w1200" alt="SkinXcell RF microneedling before and after"></div>
+          <div class="shot"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1B4sP9ALSfhItYn85poaZw0nOqZNtVIpy&sz=w1200" alt="SkinXcell RF microneedling before and after"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
           <figcaption><b>SkinXcell RF microneedling</b>Firmer, smoother skin with improved tone and texture after a course of treatments.</figcaption>
         </figure>
         <figure class="ba-fig">
-          <div class="shot"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1uV1UX8nNHYKRjfwVIiGppn5n9P0lGbfE&sz=w1200" alt="SkinXcell RF microneedling before and after"></div>
+          <div class="shot"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1uV1UX8nNHYKRjfwVIiGppn5n9P0lGbfE&sz=w1200" alt="SkinXcell RF microneedling before and after"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
           <figcaption><b>SkinXcell RF microneedling</b>Visible lifting and tightening, with a refreshed, more even complexion.</figcaption>
         </figure>
         <figure class="ba-fig">
-          <div class="shot"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1pARWUghhyqnQJIyL5mc4sO_G9dTh7n-d&sz=w1200" alt="Microneedling for acne scarring before and after"></div>
+          <div class="shot"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1pARWUghhyqnQJIyL5mc4sO_G9dTh7n-d&sz=w1200" alt="Microneedling for acne scarring before and after"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
           <figcaption><b>Microneedling for acne scarring</b>Smoother, more even texture as remodelled collagen softens the appearance of scars.</figcaption>
         </figure>
       </div>
