@@ -144,20 +144,30 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .hero-badge-txt{line-height:1.2}
 .hero-badge b{display:block; font-size:.82rem; font-weight:800; color:var(--pine)}
 .hero-badge span{display:block; font-size:.68rem; color:var(--muted)}
-.hero-float{position:absolute; right:-22px; bottom:34px; width:min(240px,44%); border:6px solid var(--porcelain); border-radius:calc(var(--r) + 6px); overflow:hidden; background:var(--sand); box-shadow:0 30px 60px -30px rgba(30,58,87,.8)}
-.hero-float img{width:100%; display:block; aspect-ratio:1/1; object-fit:cover}
-.hero-float .cap{position:absolute; top:8px; left:8px; z-index:2; font-size:.56rem; text-transform:uppercase; letter-spacing:.14em; font-weight:700; color:#fff; background:rgba(30,58,87,.72); padding:5px 10px; border-radius:100px}
+/* before/after reveal (signature) */
+.reveal{position:relative; overflow:hidden; border-radius:var(--r); user-select:none; touch-action:pan-y; cursor:ew-resize; aspect-ratio:1/1; background:var(--sand)}
+.reveal img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none}
+.reveal__top{position:absolute; inset:0; width:var(--p,50%); overflow:hidden; border-right:2px solid var(--porcelain)}
+.reveal__top img{width:100%; height:100%}
+.reveal__handle{position:absolute; top:0; bottom:0; left:var(--p,50%); width:44px; transform:translateX(-50%); background:none; border:none; display:grid; place-items:center; z-index:3}
+.reveal__handle i{width:2px; height:100%; background:var(--porcelain); position:absolute; box-shadow:0 0 0 1px rgba(30,58,87,.2)}
+.reveal__handle b{position:relative; width:44px; height:44px; border-radius:50%; background:var(--porcelain); display:grid; place-items:center; color:var(--pine); box-shadow:0 6px 18px -6px rgba(30,58,87,.6); font-size:.9rem}
+.reveal__lab{position:absolute; bottom:12px; z-index:2; font-size:.62rem; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:#fff; background:rgba(30,58,87,.55); padding:5px 10px; border-radius:100px; backdrop-filter:blur(3px)}
+.reveal__lab.b{left:12px}
+.reveal__lab.a{right:12px}
+.hero-reveal{position:absolute; right:-22px; bottom:34px; width:min(240px,44%); box-shadow:0 30px 60px -30px rgba(30,58,87,.8); border:6px solid var(--porcelain); border-radius:calc(var(--r) + 6px)}
+.hero-reveal .cap{position:absolute; top:-30px; left:6px; font-size:.6rem; text-transform:uppercase; letter-spacing:.16em; font-weight:700; color:var(--pine)}
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr}
   .hero-grid > .hero-media{display:none}
   .hero-media-m{display:block; margin-top:26px}
   .hero-media{max-width:440px; margin-inline:auto; width:100%}
-  .hero-float{width:170px; right:-8px}
+  .hero-reveal{width:170px; right:-8px}
 }
 @media(max-width:640px){
   .hero-badge{display:none}
-  .hero-media{margin-bottom:110px}
-  .hero-float{left:50%; right:auto; transform:translateX(-50%); bottom:-92px; width:200px; border-width:5px}
+  .hero-media{margin-bottom:118px}
+  .hero-reveal{left:50%; right:auto; transform:translateX(-50%); bottom:-100px; width:200px; border-width:5px}
 }
 
 /* ---------- As seen in ---------- */
@@ -178,7 +188,9 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .track{display:flex; gap:22px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding-bottom:14px; -ms-overflow-style:none; scrollbar-width:none}
 .track::-webkit-scrollbar{display:none}
 .carousel{position:relative}
-.rev-card{scroll-snap-align:start; flex:0 0 clamp(280px,46%,460px); background:var(--paper); border:1px solid var(--line-soft); border-radius:var(--r); padding:28px; display:flex; flex-direction:column; gap:14px; box-shadow:0 20px 40px -34px rgba(30,58,87,.5)}
+.reviews .track{align-items:flex-start}
+.rev-card{scroll-snap-align:start; flex:0 0 clamp(280px,33%,400px); background:var(--paper); border:1px solid var(--line-soft); border-radius:var(--r); padding:28px; display:flex; flex-direction:column; gap:14px; box-shadow:0 20px 40px -34px rgba(30,58,87,.5)}
+.rev-card .av-img{width:40px; height:40px; border-radius:50%; object-fit:cover; flex:0 0 auto; background:var(--sand)}
 .rev-card .rs{color:#E8A93B; letter-spacing:2px}
 .rev-card p{font-size:1rem; color:var(--ink)}
 .rev-card .who{display:flex; align-items:center; gap:12px; margin-top:auto}
@@ -244,7 +256,8 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .results h2{color:var(--porcelain)}
 .ba-track{display:flex; gap:26px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding-bottom:12px; scrollbar-width:none}
 .ba-track::-webkit-scrollbar{display:none}
-.ba-fig{scroll-snap-align:center; flex:0 0 min(720px,86%); margin:0; background:rgba(251,248,243,.06); border:1px solid rgba(251,248,243,.14); border-radius:var(--r); padding:16px}
+.ba-fig{scroll-snap-align:start; flex:0 0 clamp(280px,46%,520px); margin:0; background:rgba(251,248,243,.06); border:1px solid rgba(251,248,243,.14); border-radius:var(--r); padding:16px}
+@media(max-width:720px){.ba-fig{flex:0 0 86%}}
 .ba-fig .shot{border-radius:10px; overflow:hidden; background:#000}
 .ba-fig .shot img{width:100%; height:auto; display:block}
 .ba-fig figcaption{padding:16px 6px 4px; font-size:.9rem; color:rgba(251,248,243,.8); line-height:1.55}
@@ -475,10 +488,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="eyebrow">Microneedling &amp; RF microneedling</span>
       <h1>Rebuild your skin, <em>from within</em></h1>
       <div class="hero-media hero-media-m">
-        <div class="hero-photo"><img src="https://drive.google.com/thumbnail?id=1VCG6NuG7mQi59EuGid1hujMxM2CjelXO&sz=w1200" alt="Microneedling treatment at London Real Skin"></div>
-        <div class="hero-float">
-          <span class="cap">Real patient result</span>
-          <img src="https://drive.google.com/thumbnail?id=1B4sP9ALSfhItYn85poaZw0nOqZNtVIpy&sz=w800" alt="SkinXcell before and after result">
+        <div class="hero-photo"><img src="https://drive.google.com/thumbnail?id=1qiP9UOmhjPCUhOfGWJgzJfk4cUUtyZ_r&sz=w1200" alt="Microneedling treatment at London Real Skin"></div>
+        <div class="reveal hero-reveal" style="--p:52%">
+          <span class="cap">Drag to compare</span>
+          <img src="https://drive.google.com/thumbnail?id=1h-PduZa52ZNRsp1suB2XgB9zY3MOxHIi&sz=w800" alt="Skin after microneedling at London Real Skin">
+          <div class="reveal__top"><img src="https://drive.google.com/thumbnail?id=1hYHxbziUgIMFsGb5Op5-nrkalcNr2_UT&sz=w800" alt="Skin before microneedling"></div>
+          <span class="reveal__lab b">Before</span>
+          <span class="reveal__lab a">After</span>
+          <button class="reveal__handle" aria-label="Drag to compare before and after"><i></i><b>⇄</b></button>
         </div>
       </div>
       <p class="lede">Dermatology-led microneedling and radiofrequency microneedling at our Holborn clinic, using the xCellaris Pro Twist and SkinXcell to rebuild collagen, refine texture and firm the skin, all tailored to you.</p>
@@ -500,15 +517,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="hero-media">
       <div class="hero-photo">
-        <img src="https://drive.google.com/thumbnail?id=1VCG6NuG7mQi59EuGid1hujMxM2CjelXO&sz=w1200" alt="Microneedling and RF microneedling at London Real Skin, Holborn">
+        <img src="https://drive.google.com/thumbnail?id=1qiP9UOmhjPCUhOfGWJgzJfk4cUUtyZ_r&sz=w1200" alt="Microneedling and RF microneedling at London Real Skin, Holborn">
       </div>
       <div class="hero-badge">
         <span class="cqc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3z"/></svg></span>
         <div class="hero-badge-txt"><b>Dermatology-led</b><span>Dr Martin Wade, Medical Director</span></div>
       </div>
-      <div class="hero-float">
-        <span class="cap">Real patient result</span>
-        <img src="https://drive.google.com/thumbnail?id=1B4sP9ALSfhItYn85poaZw0nOqZNtVIpy&sz=w800" alt="SkinXcell RF microneedling before and after result">
+      <div class="reveal hero-reveal" id="heroReveal" style="--p:52%">
+        <span class="cap">Drag to compare</span>
+        <img src="https://drive.google.com/thumbnail?id=1h-PduZa52ZNRsp1suB2XgB9zY3MOxHIi&sz=w800" alt="Skin after microneedling at London Real Skin">
+        <div class="reveal__top"><img src="https://drive.google.com/thumbnail?id=1hYHxbziUgIMFsGb5Op5-nrkalcNr2_UT&sz=w800" alt="Skin before microneedling"></div>
+        <span class="reveal__lab b">Before</span>
+        <span class="reveal__lab a">After</span>
+        <button class="reveal__handle" aria-label="Drag to compare before and after"><i></i><b>⇄</b></button>
       </div>
     </div>
   </div>
@@ -541,8 +562,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="carousel" data-carousel>
       <div class="track" data-track>
-        <article class="rev-card"><span class="rs">★★★★★</span><p>I’ve been seeing medical aesthetician Kylie for the last 4 months for laser and microneedling, and she has been an absolute dream! Always so warm, personable and accommodating, provides great care and makes me confident that my skin is in great hands. Could not recommend her enough! I’m so happy to have found London Real Skin Clinic - will definitely be returning for more treatments!</p><div class="who"><span class="av">P</span><div><b>Paula Gorski</b><span>Google review</span></div></div></article>
-        <article class="rev-card"><span class="rs">★★★★★</span><p>The team at LRS are absolutely phenomenal. Great customer service, lovely smiles and impeccable fashion. The treatment and lounge areas are always well kept and clean even after loosened COVID-19 regulations. Definitely recommend checking out their services!</p><div class="who"><span class="av">J</span><div><b>Jahmarl</b><span>Google review</span></div></div></article>
+        <article class="rev-card"><span class="rs">★★★★★</span><p>I've been seeing medical aesthetician Kylie for the last 4 months for laser and microneedling, and she has been an absolute dream! Always so warm, personable and accommodating, provides great care and makes me confident that my skin is in great hands. Could not recommend her enough! I'm so happy to have found London Real Skin Clinic - will definitely be returning for more treatments!</p><div class="who"><span class="av">P</span><div><b>Paula Gorski</b><span>Google review</span></div></div></article>
+        <article class="rev-card"><span class="rs">★★★★★</span><p>Vanessa recommended a series of microneedling sessions combined with tretinoin to treat my acne scars. She clearly explained the whys and hows behind her recommendation, as well as why alternative options wouldn't be optimal for me. There was no hard sell at all, and I felt comfortable from the start that it was entirely my decision. Already after the first session did I notice great improvements in my skin quality and appearance. I keep staring at my skin because it's never glowed and bounced so much! Even though she's quite literally poking holes in my face with lots of needles, it doesn't feel like that at all, but rather like going for a relaxing spa treatment.</p><div class="who"><img class="av-img" loading="lazy" src="https://drive.google.com/thumbnail?id=1-JQi_GsQZDUhRxWGk8p33TEg1DLvL-D3&sz=w120" alt="Susan Zhuang"><div><b>Susan Zhuang</b><span>Google review</span></div></div></article>
+        <article class="rev-card"><span class="rs">★★★★★</span><p>I first visited the clinic to get my dad help with a skin condition. The staff were very professional, helpful and kind. I then went back to have some treatments carried out for my own skin, which included advice about skin care, sun protection and prevention. Vanessa is lovely and explains procedures with care and calm, so I always feel reassured. I was new to micro needling and didn't want a treatment that took long to recover from, and was very pleased with the results.</p><div class="who"><img class="av-img" loading="lazy" src="https://drive.google.com/thumbnail?id=1B9f5ucjg93QXr66Ym72FEnRH-IxBiqBX&sz=w120" alt="Abi Dillon"><div><b>Abi Dillon</b><span>Google review</span></div></div></article>
+        <article class="rev-card"><span class="rs">★★★★★</span><p>LRS will immediately strike you as a professional business. The staff are courteous and knowledgeable. I went for laser treatment and also decided to have micro-needling. I feel very happy with my decision to have turned to LRS to assist me with my skin care. And they have a great location in central London, next door to Holborn station.</p><div class="who"><span class="av">P</span><div><b>Paresh Parmar</b><span>Google review</span></div></div></article>
+        <article class="rev-card"><span class="rs">★★★★★</span><p>I came across this clinic through an online search based on previous reviews. I have been pleasantly surprised by the experience here. I have had several aesthetic treatments including chemical peels and microneedling by Yasmina and Vanessa. They are warm, friendly and knowledgable. They are passionate about their work and have many repeat customers. I would recommend them without hesitation and expect to be a long term client.</p><div class="who"><span class="av">R</span><div><b>RS V</b><span>Google review</span></div></div></article>
+      </div>
+      <div class="carousel-nav" style="margin-top:26px">
+        <button class="cbtn" data-prev aria-label="Previous reviews"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="cbtn" data-next aria-label="More reviews"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
     </div>
   </div>
@@ -572,7 +600,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="duo-grid">
       <div class="device ro">
-        <div class="device-img"><img loading="lazy" src="https://d8j0ntlcm91z4.cloudfront.net/user_3Ary2g06ZSWzxFoVWIP644Wm9ZG/hf_20260730_165307_ce182348-bb60-4ce6-b6cf-fd70e4615976.png" alt="Medical microneedling with the xCellaris Pro Twist"></div>
+        <div class="device-img"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1LgfZReNQNIp4cwLBaB96EXRdvjzawA9l&sz=w900" alt="Medical microneedling with the xCellaris Pro Twist"></div>
         <div class="device-body">
           <span class="tag">Medical microneedling</span>
           <h3>xCellaris Pro Twist™</h3>
@@ -586,7 +614,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="device ro">
-        <div class="device-img"><img loading="lazy" src="https://d8j0ntlcm91z4.cloudfront.net/user_3Ary2g06ZSWzxFoVWIP644Wm9ZG/hf_20260730_165318_4eee83f0-69ae-49c3-98d1-9c208d477774.png" alt="SkinXcell RF microneedling treatment"></div>
+        <div class="device-img"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1aO6WIof1er-ZFPY4ouUH_RuEOmO0IZ9d&sz=w900" alt="SkinXcell RF microneedling treatment"></div>
         <div class="device-body">
           <span class="tag">RF microneedling + fractional RF</span>
           <h3>SkinXcell</h3>
@@ -916,7 +944,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- 18. Enquiry -->
 <section class="enquire section" id="enquire">
-  <img loading="lazy" decoding="async" class="enquire-bg" src="/assets/img/enquiry-bg.png" alt="">
+  <img loading="lazy" decoding="async" class="enquire-bg" src="https://drive.google.com/thumbnail?id=1NMjuI5N-uNcaw-9q92tQkCc_3xYKHHX3&sz=w1600" alt="">
   <div class="wrap">
     <div class="form-card">
       <span class="eyebrow">Book a free consultation</span>
@@ -997,6 +1025,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 const menuBtn=document.getElementById('menuBtn'), mobileNav=document.getElementById('mobileNav');
 menuBtn.addEventListener('click',()=>{const o=mobileNav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o)});
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobileNav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}));
+
+// Before/After reveal (draggable)
+document.querySelectorAll('.reveal').forEach(r=>{
+  let drag=false;
+  const set=e=>{
+    const rect=r.getBoundingClientRect();
+    const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+    let p=Math.max(4,Math.min(96,(x/rect.width)*100));
+    r.style.setProperty('--p',p+'%');
+  };
+  const start=e=>{drag=true;set(e);};
+  const move=e=>{if(drag){set(e); if(e.cancelable)e.preventDefault();}};
+  const end=()=>drag=false;
+  r.addEventListener('mousedown',start); window.addEventListener('mousemove',move); window.addEventListener('mouseup',end);
+  r.addEventListener('touchstart',start,{passive:true}); r.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',end);
+});
 
 // Carousels
 document.querySelectorAll('section').forEach(sec=>{
