@@ -214,9 +214,10 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .oneliner-quote em{font-style:italic; color:var(--clay-deep)}
 .oneliner .k{color:var(--pine)}
 
-/* ---------- Two devices ---------- */
-.duo-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,38px); margin-top:44px}
-.device{background:var(--paper); border:1px solid var(--line-soft); border-radius:var(--r); overflow:hidden; display:flex; flex-direction:column; box-shadow:0 34px 66px -48px rgba(30,58,87,.6)}
+/* ---------- Devices carousel ---------- */
+.devices-carousel{margin-top:44px}
+.devices-carousel .track{align-items:stretch}
+.device{scroll-snap-align:start; flex:0 0 clamp(300px,44%,470px); background:var(--paper); border:1px solid var(--line-soft); border-radius:var(--r); overflow:hidden; display:flex; flex-direction:column; box-shadow:0 34px 66px -48px rgba(30,58,87,.6)}
 .device-img{aspect-ratio:16/11; overflow:hidden}
 .device-img img{width:100%; height:100%; object-fit:cover}
 .device-body{padding:clamp(24px,3vw,36px); display:flex; flex-direction:column; flex:1}
@@ -226,7 +227,7 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .device-mini{list-style:none; margin-top:18px; display:grid; gap:10px}
 .device-mini li{display:flex; gap:10px; font-size:.94rem; font-weight:500; align-items:flex-start}
 .device-mini svg{flex:0 0 auto; color:var(--pine); margin-top:3px}
-@media(max-width:820px){.duo-grid{grid-template-columns:1fr}}
+@media(max-width:820px){.device{flex:0 0 86%}}
 
 /* ---------- What it treats split ---------- */
 .benefits-img{position:relative; border-radius:var(--r); overflow:hidden; aspect-ratio:4/5; box-shadow:0 40px 70px -45px rgba(30,58,87,.6)}
@@ -645,38 +646,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- 5. Two devices -->
 <section class="section" id="devices">
   <div class="wrap">
-    <div style="max-width:640px">
-      <span class="eyebrow">Two devices, one plan</span>
-      <h2 style="margin:16px 0 18px">The right technology for your skin</h2>
-      <p class="lede">We choose between two premium platforms, or combine them, depending on whether your skin needs collagen induction, deeper radiofrequency remodelling, or a needle-free option.</p>
-    </div>
-    <div class="duo-grid">
-      <div class="device ro">
-        <div class="device-img"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1LgfZReNQNIp4cwLBaB96EXRdvjzawA9l&sz=w900" alt="Medical microneedling with the xCellaris Pro Twist"></div>
-        <div class="device-body">
-          <span class="tag">Medical microneedling</span>
-          <h3>xCellaris Pro Twist™</h3>
-          <p>A premium medical microneedling device that creates precise, controlled micro-channels in the skin. This triggers a natural wound-healing response, stimulating collagen and elastin while driving regenerative serums deeper for better results.</p>
-          <ul class="device-mini">
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Precise, adjustable needle depth</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Collagen and elastin induction</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Enhanced serum delivery</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Consistent, comfortable treatment</li>
-          </ul>
-        </div>
+    <div class="reviews-head">
+      <div style="max-width:660px">
+        <span class="eyebrow">Three devices, one plan</span>
+        <h2 style="margin:16px 0 18px">The right technology for your skin</h2>
+        <p class="lede">We choose between three premium platforms, or combine them, depending on whether your skin needs collagen induction, deeper radiofrequency remodelling, targeted ultrasound or a needle-free option.</p>
       </div>
-      <div class="device ro">
-        <div class="device-img"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1aO6WIof1er-ZFPY4ouUH_RuEOmO0IZ9d&sz=w900" alt="SkinXcell RF microneedling treatment"></div>
-        <div class="device-body">
-          <span class="tag">RF microneedling + fractional RF</span>
-          <h3>SkinXcell</h3>
-          <p>Two treatments in one. Advanced microneedling combined with Gold-Standard 2MHz radiofrequency and post-treatment cryocooling, plus a needle-free Fractional RF option for sensitive or needle-phobic patients. It lifts and tightens skin on the face and body.</p>
-          <ul class="device-mini">
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Gold-Standard 2MHz radiofrequency</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Cryocooling for comfort</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Needle-free Fractional RF option</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Lifts and tightens face and body</li>
-          </ul>
+      <div class="carousel-nav">
+        <button class="cbtn" data-prev aria-label="Previous device"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="cbtn" data-next aria-label="Next device"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <div class="carousel devices-carousel" data-carousel>
+      <div class="track" data-track>
+        <div class="device">
+          <div class="device-img"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1LgfZReNQNIp4cwLBaB96EXRdvjzawA9l&sz=w900" alt="Medical microneedling with the xCellaris Pro Twist"></div>
+          <div class="device-body">
+            <span class="tag">Medical microneedling</span>
+            <h3>xCellaris Pro Twist™</h3>
+            <p>A premium medical microneedling device that creates precise, controlled micro-channels in the skin. This triggers a natural wound-healing response, stimulating collagen and elastin while driving regenerative serums deeper for better results.</p>
+            <ul class="device-mini">
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Precise, adjustable needle depth</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Collagen and elastin induction</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Enhanced serum delivery</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Consistent, comfortable treatment</li>
+            </ul>
+          </div>
+        </div>
+        <div class="device">
+          <div class="device-img"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1aO6WIof1er-ZFPY4ouUH_RuEOmO0IZ9d&sz=w900" alt="SkinXcell RF microneedling treatment"></div>
+          <div class="device-body">
+            <span class="tag">RF microneedling + fractional RF</span>
+            <h3>SkinXcell</h3>
+            <p>Two treatments in one. Advanced microneedling combined with Gold-Standard 2MHz radiofrequency and post-treatment cryocooling, plus a needle-free Fractional RF option for sensitive or needle-phobic patients. It lifts and tightens skin on the face and body.</p>
+            <ul class="device-mini">
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Gold-Standard 2MHz radiofrequency</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Cryocooling for comfort</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Needle-free Fractional RF option</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Lifts and tightens face and body</li>
+            </ul>
+          </div>
+        </div>
+        <div class="device">
+          <div class="device-img"><img loading="lazy" src="https://drive.google.com/thumbnail?id=1fVNEYJaETN-9t1jGTUVcEHbgxjjN_ae0&sz=w900" alt="BTL Exion RF microneedling and ultrasound"></div>
+          <div class="device-body">
+            <span class="tag">RF microneedling + ultrasound</span>
+            <h3>BTL Exion</h3>
+            <p>The latest generation of radiofrequency microneedling, pairing AI-controlled fractional RF with targeted ultrasound. It boosts the skin's own hyaluronic acid, stimulates collagen and remodels the deeper layers for firmer, smoother, more hydrated skin on the face and body.</p>
+            <ul class="device-mini">
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> AI-controlled RF microneedling</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Targeted ultrasound energy</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Boosts natural hyaluronic acid</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Face and body treatments</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -770,20 +793,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="vfaq-grid">
       <div>
         <div class="vplayer">
-          <iframe id="vplayer" src="https://drive.google.com/file/d/1fLMkNjy8kcOvomYdBd7VT8DRbucwSDZl/preview" allow="autoplay; encrypted-media" allowfullscreen title="Microneedling video FAQ"></iframe>
+          <iframe id="vplayer" src="https://drive.google.com/file/d/1syegs2f0w5TLq1wAjOCR37bFr7CIrOpF/preview" allow="autoplay; encrypted-media" allowfullscreen title="Microneedling video FAQ"></iframe>
         </div>
-        <p class="vnow">Now playing: <b id="vnow">Benefits &amp; starting point</b></p>
+        <p class="vnow">Now playing: <b id="vnow">The benefits of microneedling</b></p>
       </div>
       <div class="vplaylist" id="vplaylist">
-        <button class="vitem active" data-vid="1fLMkNjy8kcOvomYdBd7VT8DRbucwSDZl" data-title="Benefits &amp; starting point"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">01</span><span class="vt">Benefits &amp; starting point</span></span></button>
-        <button class="vitem" data-vid="1CaHd2IDG94aWdk3Xaa4hhoSP5oQ0h_Rm" data-title="Is microneedling safe?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">02</span><span class="vt">Is microneedling safe?</span></span></button>
-        <button class="vitem" data-vid="1ErD0O1UTKydq9NXuw_-nZCJG__iUN6Oe" data-title="Can microneedling tighten skin?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">03</span><span class="vt">Can microneedling tighten skin?</span></span></button>
-        <button class="vitem" data-vid="1MMY06e6QLjx3ZxUC8po4jhZd9kEop3K_" data-title="Microneedling for acne scarring"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">04</span><span class="vt">Microneedling for acne scarring</span></span></button>
-        <button class="vitem" data-vid="1-mI3uLj1k2laLFFkQ0MzGPtPU1Ukb3n_" data-title="Can microneedling cause scars?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">05</span><span class="vt">Can microneedling cause scars?</span></span></button>
-        <button class="vitem" data-vid="1KQgcpCU3Z0uxZ0SIMLTLqcK4g5BsrVc1" data-title="Microneedling &amp; Botox"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">06</span><span class="vt">Microneedling &amp; Botox</span></span></button>
-        <button class="vitem" data-vid="1fXJuwFGYiMRf_2qZtLeajLLWm-qk6h29" data-title="Microneedling &amp; rosacea"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">07</span><span class="vt">Microneedling &amp; rosacea</span></span></button>
-        <button class="vitem" data-vid="1bvTsGK1nvfDfG7b-VLYrNWUzTngsldjv" data-title="Microneedling &amp; marionette lines"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">08</span><span class="vt">Microneedling &amp; marionette lines</span></span></button>
-        <button class="vitem" data-vid="1xFaux2FvbgirDcMSKKp-dG_ZLBwT2RLS" data-title="At-home kits vs the clinic"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">09</span><span class="vt">At-home kits vs the clinic</span></span></button>
+        <button class="vitem active" data-vid="1syegs2f0w5TLq1wAjOCR37bFr7CIrOpF" data-title="The benefits of microneedling"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">01</span><span class="vt">The benefits of microneedling</span></span></button>
+        <button class="vitem" data-vid="1ZGKNTco8CS29neXPy9O6CMyKqs1EHiQA" data-title="Is medical microneedling safe?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">02</span><span class="vt">Is medical microneedling safe?</span></span></button>
+        <button class="vitem" data-vid="1Shn7Z8z6YFoc4jF17CZeiB7hgJhdy1Bu" data-title="Can microneedling tighten skin?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">03</span><span class="vt">Can microneedling tighten skin?</span></span></button>
+        <button class="vitem" data-vid="10UwvwVDhSoN1IdcQzIeYCfK8FW7x3INW" data-title="Can microneedling cause scars?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">04</span><span class="vt">Can microneedling cause scars?</span></span></button>
+        <button class="vitem" data-vid="1YRqiBF6i3MrXl_051VAnvu8y0xolM6lv" data-title="Are the results permanent?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">05</span><span class="vt">Are the results permanent?</span></span></button>
+        <button class="vitem" data-vid="1UqtJNWRfyOg81A81apwRLk8d6WAXpB72" data-title="What does recovery look like?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">06</span><span class="vt">What does recovery look like?</span></span></button>
+        <button class="vitem" data-vid="1lRcluhImi7R77f6LYklERES93Z-x3YE4" data-title="Microneedling &amp; Botox"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">07</span><span class="vt">Microneedling &amp; Botox</span></span></button>
+        <button class="vitem" data-vid="16K-R9q5TcNd5jfPf2dqh8irCSqHTqH14" data-title="Microneedling &amp; marionette lines"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">08</span><span class="vt">Microneedling &amp; marionette lines</span></span></button>
+        <button class="vitem" data-vid="1y4meIkNdRhtQ30t2kPr-oexriMqKozxd" data-title="At-home kits &amp; derma rollers"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">09</span><span class="vt">At-home kits &amp; derma rollers</span></span></button>
       </div>
     </div>
   </div>
@@ -845,7 +868,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="amt">£340</div>
           </div>
           <div>
-            <span class="from">SkinXcell RF from</span>
+            <span class="from">RF microneedling from</span>
             <div class="amt">£250</div>
           </div>
         </div>
@@ -869,28 +892,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="ptables">
       <div class="ptable-wrap ro">
         <table class="ptable">
-          <caption>SkinXcell RF microneedling</caption>
-          <thead><tr><th>Area</th><th class="p">x1</th><th class="p">x3</th><th class="p">x6</th></tr></thead>
+          <caption>RF microneedling</caption>
+          <thead><tr><th>Area</th><th class="p">Price</th></tr></thead>
           <tbody>
-            <tr><td>Eyes</td><td class="p">£250</td><td class="p">£700</td><td class="p">£1,350</td></tr>
-            <tr><td>Face</td><td class="p">£395</td><td class="p">£1,120</td><td class="p">£2,100</td></tr>
-            <tr><td>Face + neck</td><td class="p">£450</td><td class="p">£1,280</td><td class="p">£2,400</td></tr>
-            <tr><td>Face + neck + décolletage</td><td class="p">£495</td><td class="p">£1,400</td><td class="p">£2,600</td></tr>
-            <tr><td>Body – small</td><td class="p">£300</td><td class="p">£810</td><td class="p">£1,530</td></tr>
-            <tr><td>Body – medium</td><td class="p">£450</td><td class="p">£1,215</td><td class="p">£2,295</td></tr>
-            <tr><td>Body – large</td><td class="p">£550</td><td class="p">£1,485</td><td class="p">£2,805</td></tr>
+            <tr><td>Eyes</td><td class="p">£250</td></tr>
+            <tr><td>Face</td><td class="p">£395</td></tr>
+            <tr><td>Face + neck</td><td class="p">£450</td></tr>
+            <tr><td>Face + neck + décolletage</td><td class="p">£495</td></tr>
+            <tr><td>Body – small</td><td class="p">£300</td></tr>
+            <tr><td>Body – medium</td><td class="p">£450</td></tr>
+            <tr><td>Body – large</td><td class="p">£550</td></tr>
           </tbody>
         </table>
       </div>
       <div class="ptable-wrap ro">
         <table class="ptable">
           <caption>Fractional RF <span>Needle-free option</span></caption>
-          <thead><tr><th>Area</th><th class="p">x1</th><th class="p">x3</th><th class="p">x6</th></tr></thead>
+          <thead><tr><th>Area</th><th class="p">Price</th></tr></thead>
           <tbody>
-            <tr><td>Eyes</td><td class="p">£200</td><td class="p">£540</td><td class="p">£1,020</td></tr>
-            <tr><td>Face</td><td class="p">£250</td><td class="p">£675</td><td class="p">£1,275</td></tr>
-            <tr><td>Face + neck</td><td class="p">£300</td><td class="p">£810</td><td class="p">£1,530</td></tr>
-            <tr><td>Face + neck + décolletage</td><td class="p">£350</td><td class="p">£945</td><td class="p">£1,785</td></tr>
+            <tr><td>Eyes</td><td class="p">£200</td></tr>
+            <tr><td>Face</td><td class="p">£250</td></tr>
+            <tr><td>Face + neck</td><td class="p">£300</td></tr>
+            <tr><td>Face + neck + décolletage</td><td class="p">£350</td></tr>
           </tbody>
         </table>
       </div>
