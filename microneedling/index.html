@@ -310,6 +310,7 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .vfaq .lede{color:rgba(251,248,243,.8); max-width:56ch}
 .vfaq-grid{display:grid; grid-template-columns:1.6fr 1fr; gap:clamp(20px,3vw,32px); margin-top:44px; align-items:start}
 .vplayer{position:relative; border-radius:var(--r); overflow:hidden; aspect-ratio:16/9; background:#000; box-shadow:0 40px 80px -46px rgba(0,0,0,.85)}
+.vplayer video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#000; display:block}
 .vplayer iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
 .vnow{margin-top:14px; font-size:.82rem; color:rgba(251,248,243,.7)}
 .vnow b{color:var(--porcelain); font-weight:700}
@@ -678,12 +679,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="device-body">
             <span class="tag">RF microneedling + fractional RF</span>
             <h3>SkinXcell</h3>
-            <p>Two treatments in one. Advanced microneedling combined with Gold-Standard 2MHz radiofrequency and post-treatment cryocooling, plus a needle-free Fractional RF option for sensitive or needle-phobic patients. It lifts and tightens skin on the face and body.</p>
+            <p>Two treatments in one. Advanced microneedling combined with Gold-Standard 2MHz radiofrequency and post-treatment cryocooling, plus a needle-free Fractional RF option for sensitive or needle-phobic patients. We use it most for general skin rejuvenation and for lifting and tightening larger body areas.</p>
             <ul class="device-mini">
               <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Gold-Standard 2MHz radiofrequency</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Cryocooling for comfort</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Ideal for general rejuvenation</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Great for larger body treatments</li>
               <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Needle-free Fractional RF option</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Lifts and tightens face and body</li>
             </ul>
           </div>
         </div>
@@ -692,12 +693,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="device-body">
             <span class="tag">RF microneedling + ultrasound</span>
             <h3>BTL Exion</h3>
-            <p>The latest generation of radiofrequency microneedling, pairing AI-controlled fractional RF with targeted ultrasound. It boosts the skin's own hyaluronic acid, stimulates collagen and remodels the deeper layers for firmer, smoother, more hydrated skin on the face and body.</p>
+            <p>The latest generation of radiofrequency microneedling, pairing AI-controlled fractional RF with targeted ultrasound. That added ultrasound reaches deeper to remodel the skin, which makes Exion our first choice for acne scarring, while also boosting the skin's own hyaluronic acid and collagen.</p>
             <ul class="device-mini">
               <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> AI-controlled RF microneedling</li>
               <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Targeted ultrasound energy</li>
+              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Our first choice for acne scarring</li>
               <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Boosts natural hyaluronic acid</li>
-              <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Face and body treatments</li>
             </ul>
           </div>
         </div>
@@ -792,21 +793,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="lede" style="margin-top:14px">Short answers to the questions patients ask us most about microneedling, straight from our clinic. Tap a question to play it.</p>
     <div class="vfaq-grid">
       <div>
-        <div class="vplayer">
-          <iframe id="vplayer" src="https://drive.google.com/file/d/1syegs2f0w5TLq1wAjOCR37bFr7CIrOpF/preview" allow="autoplay; encrypted-media" allowfullscreen title="Microneedling video FAQ"></iframe>
+        <div class="vplayer" id="vplayerWrap">
+          <video id="vplayer" controls playsinline preload="metadata" poster="https://drive.google.com/thumbnail?id=1LgfZReNQNIp4cwLBaB96EXRdvjzawA9l&sz=w1200" src="/assets/videos/benefits.mp4" data-fallback="1syegs2f0w5TLq1wAjOCR37bFr7CIrOpF"></video>
         </div>
         <p class="vnow">Now playing: <b id="vnow">The benefits of microneedling</b></p>
       </div>
       <div class="vplaylist" id="vplaylist">
-        <button class="vitem active" data-vid="1syegs2f0w5TLq1wAjOCR37bFr7CIrOpF" data-title="The benefits of microneedling"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">01</span><span class="vt">The benefits of microneedling</span></span></button>
-        <button class="vitem" data-vid="1ZGKNTco8CS29neXPy9O6CMyKqs1EHiQA" data-title="Is medical microneedling safe?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">02</span><span class="vt">Is medical microneedling safe?</span></span></button>
-        <button class="vitem" data-vid="1Shn7Z8z6YFoc4jF17CZeiB7hgJhdy1Bu" data-title="Can microneedling tighten skin?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">03</span><span class="vt">Can microneedling tighten skin?</span></span></button>
-        <button class="vitem" data-vid="10UwvwVDhSoN1IdcQzIeYCfK8FW7x3INW" data-title="Can microneedling cause scars?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">04</span><span class="vt">Can microneedling cause scars?</span></span></button>
-        <button class="vitem" data-vid="1YRqiBF6i3MrXl_051VAnvu8y0xolM6lv" data-title="Are the results permanent?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">05</span><span class="vt">Are the results permanent?</span></span></button>
-        <button class="vitem" data-vid="1UqtJNWRfyOg81A81apwRLk8d6WAXpB72" data-title="What does recovery look like?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">06</span><span class="vt">What does recovery look like?</span></span></button>
-        <button class="vitem" data-vid="1lRcluhImi7R77f6LYklERES93Z-x3YE4" data-title="Microneedling &amp; Botox"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">07</span><span class="vt">Microneedling &amp; Botox</span></span></button>
-        <button class="vitem" data-vid="16K-R9q5TcNd5jfPf2dqh8irCSqHTqH14" data-title="Microneedling &amp; marionette lines"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">08</span><span class="vt">Microneedling &amp; marionette lines</span></span></button>
-        <button class="vitem" data-vid="1y4meIkNdRhtQ30t2kPr-oexriMqKozxd" data-title="At-home kits &amp; derma rollers"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">09</span><span class="vt">At-home kits &amp; derma rollers</span></span></button>
+        <button class="vitem active" data-src="/assets/videos/benefits.mp4" data-vid="1syegs2f0w5TLq1wAjOCR37bFr7CIrOpF" data-title="The benefits of microneedling"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">01</span><span class="vt">The benefits of microneedling</span></span></button>
+        <button class="vitem" data-src="/assets/videos/safe.mp4" data-vid="1ZGKNTco8CS29neXPy9O6CMyKqs1EHiQA" data-title="Is medical microneedling safe?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">02</span><span class="vt">Is medical microneedling safe?</span></span></button>
+        <button class="vitem" data-src="/assets/videos/tighten.mp4" data-vid="1Shn7Z8z6YFoc4jF17CZeiB7hgJhdy1Bu" data-title="Can microneedling tighten skin?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">03</span><span class="vt">Can microneedling tighten skin?</span></span></button>
+        <button class="vitem" data-src="/assets/videos/cause-scars.mp4" data-vid="10UwvwVDhSoN1IdcQzIeYCfK8FW7x3INW" data-title="Can microneedling cause scars?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">04</span><span class="vt">Can microneedling cause scars?</span></span></button>
+        <button class="vitem" data-src="/assets/videos/permanent.mp4" data-vid="1YRqiBF6i3MrXl_051VAnvu8y0xolM6lv" data-title="Are the results permanent?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">05</span><span class="vt">Are the results permanent?</span></span></button>
+        <button class="vitem" data-src="/assets/videos/recovery.mp4" data-vid="1UqtJNWRfyOg81A81apwRLk8d6WAXpB72" data-title="What does recovery look like?"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">06</span><span class="vt">What does recovery look like?</span></span></button>
+        <button class="vitem" data-src="/assets/videos/botox.mp4" data-vid="1lRcluhImi7R77f6LYklERES93Z-x3YE4" data-title="Microneedling &amp; Botox"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">07</span><span class="vt">Microneedling &amp; Botox</span></span></button>
+        <button class="vitem" data-src="/assets/videos/marionette-lines.mp4" data-vid="16K-R9q5TcNd5jfPf2dqh8irCSqHTqH14" data-title="Microneedling &amp; marionette lines"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">08</span><span class="vt">Microneedling &amp; marionette lines</span></span></button>
+        <button class="vitem" data-src="/assets/videos/at-home-kits.mp4" data-vid="1y4meIkNdRhtQ30t2kPr-oexriMqKozxd" data-title="At-home kits &amp; derma rollers"><span class="pic"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span><span class="vn">09</span><span class="vt">At-home kits &amp; derma rollers</span></span></button>
       </div>
     </div>
   </div>
@@ -1101,16 +1102,31 @@ document.querySelectorAll('section').forEach(sec=>{
   next&&next.addEventListener('click',()=>track.scrollBy({left:amount(),behavior:'smooth'}));
 });
 
-// Video FAQ playlist
+// Video FAQ playlist: self-hosted <video>, with a Google Drive fallback if a
+// local file is missing (so it works before the MP4s are uploaded, then
+// auto-upgrades to the clean native player once they are in /assets/videos).
 (function(){
-  const player=document.getElementById('vplayer');
+  const wrap=document.getElementById('vplayerWrap');
   const nowLabel=document.getElementById('vnow');
   const list=document.getElementById('vplaylist');
-  if(!player||!list) return;
+  if(!wrap||!list) return;
+  const POSTER='https://drive.google.com/thumbnail?id=1LgfZReNQNIp4cwLBaB96EXRdvjzawA9l&sz=w1200';
+  const driveFallback=(id)=>{
+    wrap.innerHTML='<iframe src="https://drive.google.com/file/d/'+id+'/preview" allow="autoplay; encrypted-media" allowfullscreen title="Microneedling video FAQ"></iframe>';
+  };
+  const load=(src,id,autoplay)=>{
+    wrap.innerHTML='<video id="vplayer" controls playsinline preload="metadata" poster="'+POSTER+'" src="'+src+'"></video>';
+    const v=document.getElementById('vplayer');
+    v.addEventListener('error',()=>driveFallback(id),{once:true});
+    if(autoplay) v.play().catch(()=>{});
+  };
+  // (re)initialise the default video through load() so the fallback listener is
+  // attached before the browser starts fetching (avoids an error-before-listener race)
+  const first=list.querySelector('.vitem.active') || list.querySelector('.vitem');
+  if(first) load(first.getAttribute('data-src'), first.getAttribute('data-vid'), false);
   list.querySelectorAll('.vitem').forEach(btn=>{
     btn.addEventListener('click',()=>{
-      const id=btn.getAttribute('data-vid');
-      player.src='https://drive.google.com/file/d/'+id+'/preview';
+      load(btn.getAttribute('data-src'), btn.getAttribute('data-vid'), true);
       if(nowLabel) nowLabel.innerHTML=btn.getAttribute('data-title');
       list.querySelectorAll('.vitem').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
