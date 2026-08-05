@@ -279,7 +279,10 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .ba-lab{position:absolute; bottom:12px; z-index:2; font-size:.64rem; font-weight:800; text-transform:uppercase; letter-spacing:.1em; color:#fff; padding:6px 13px; border-radius:8px; box-shadow:0 8px 18px -8px rgba(0,0,0,.6)}
 .ba-lab.b{left:12px; background:var(--pine)}
 .ba-lab.a{left:calc(50% + 12px); background:var(--clay)}
-@media(max-width:420px){.ba-lab{font-size:.56rem; padding:5px 10px} .ba-lab.b{left:8px} .ba-lab.a{left:calc(50% + 8px)}}
+/* vertical composites: before on top, after on bottom */
+.shot.v .ba-lab.b{top:12px; bottom:auto; left:12px}
+.shot.v .ba-lab.a{top:auto; bottom:12px; left:12px}
+@media(max-width:420px){.ba-lab{font-size:.56rem; padding:5px 10px} .ba-lab.b{left:8px} .ba-lab.a{left:calc(50% + 8px)} .shot.v .ba-lab.a{left:8px} .shot.v .ba-lab.b{left:8px}}
 .ba-fig figcaption{padding:16px 6px 4px; font-size:.9rem; color:rgba(251,248,243,.8); line-height:1.55}
 .ba-fig figcaption b{display:block; margin-bottom:4px; font-family:var(--disp); font-weight:500; font-size:1.12rem; color:var(--porcelain)}
 .results-foot{display:flex; align-items:center; justify-content:space-between; gap:clamp(24px,4vw,56px); margin-top:28px; flex-wrap:wrap}
@@ -631,6 +634,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <figure class="ba-fig">
           <div class="shot"><img loading="lazy" src="/assets/img/ba/acne-scarring.png" onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=1pARWUghhyqnQJIyL5mc4sO_G9dTh7n-d&sz=w1200'" alt="Microneedling for acne scarring before and after"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
           <figcaption><b>Microneedling for acne scarring</b>Smoother, more even texture as remodelled collagen softens the appearance of scars.</figcaption>
+        </figure>
+        <figure class="ba-fig">
+          <div class="shot v"><img loading="lazy" src="/assets/img/ba/exion-1.png" alt="BTL Exion fractional RF before and after, acne scarring and texture"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
+          <figcaption><b>Acne scarring &amp; texture</b>BTL Exion fractional RF, 3 months post-treatment.</figcaption>
+        </figure>
+        <figure class="ba-fig">
+          <div class="shot v"><img loading="lazy" src="/assets/img/ba/exion-2.png" alt="BTL Exion fractional RF before and after, fine lines and crepey skin"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
+          <figcaption><b>Fine lines &amp; crepey skin</b>BTL Exion fractional RF, 3 months post-treatment.</figcaption>
+        </figure>
+        <figure class="ba-fig">
+          <div class="shot v"><img loading="lazy" src="/assets/img/ba/exion-3.png" alt="BTL Exion fractional RF before and after, acne scarring and firmness"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
+          <figcaption><b>Acne scarring &amp; firmness</b>BTL Exion fractional RF, 1 month post-treatment.</figcaption>
+        </figure>
+        <figure class="ba-fig">
+          <div class="shot v"><img loading="lazy" src="/assets/img/ba/exion-4.png" alt="BTL Exion fractional RF before and after, uneven tone and texture"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
+          <figcaption><b>Uneven tone &amp; texture</b>BTL Exion fractional RF, 1 month post-treatment.</figcaption>
+        </figure>
+        <figure class="ba-fig">
+          <div class="shot v"><img loading="lazy" src="/assets/img/ba/exion-5.png" alt="BTL Exion fractional RF before and after, congested uneven skin"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
+          <figcaption><b>Congested, uneven skin</b>BTL Exion fractional RF, 1 month post-treatment.</figcaption>
+        </figure>
+        <figure class="ba-fig">
+          <div class="shot v"><img loading="lazy" src="/assets/img/ba/exion-6.png" alt="BTL Exion fractional RF before and after, acne scarring on deeper skin"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
+          <figcaption><b>Acne scarring on deeper skin</b>BTL Exion fractional RF, 6 months post-treatment.</figcaption>
+        </figure>
+        <figure class="ba-fig">
+          <div class="shot"><img loading="lazy" src="/assets/img/ba/exion-7.png" alt="BTL Exion fractional RF before and after, pitted acne scarring"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
+          <figcaption><b>Pitted acne scarring</b>BTL Exion fractional RF, 2 weeks post-treatment.</figcaption>
         </figure>
       </div>
     </div>
