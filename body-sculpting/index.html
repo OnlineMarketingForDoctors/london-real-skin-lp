@@ -891,6 +891,17 @@ h1,h2,h3{text-wrap:balance}
 /* ---------- Location: overlap card on photo ---------- */
 .loc-visual{position:relative}
 
+/* ---------- Section backgrounds: neighbours always alternate ---------- */
+#reviews{background:var(--sand)}
+#benefits{background:var(--sand)}
+#team{background:var(--porcelain)}
+#cost{background:var(--paper)}
+#cost .pay-card{border-color:var(--line); box-shadow:0 24px 44px -36px rgba(30,58,87,.55)}
+#cost .pay-card.feat{box-shadow:0 40px 70px -40px rgba(30,58,87,.8)}
+#faq{background:var(--porcelain)}
+#faq .faq-side .im .sat{border-color:var(--porcelain)}
+#location{background:var(--sand)}
+
 /* ---------- Motion preferences ---------- */
 @media(prefers-reduced-motion:reduce){
   .sat-proc,.pulse-dot::before,.pulse-dot::after,.hs::before,.yt-play::before,.layer .heat,.layer .fib,.layer .rg{animation:none !important}
