@@ -706,7 +706,7 @@ a.stars:hover small{text-decoration:underline; text-underline-offset:3px}
 .cn-card.swap .fade{opacity:0}
 @media(max-width:860px){
   .cn-grid{grid-template-columns:1fr}
-  .cn-stage{justify-self:center; max-width:460px; aspect-ratio:auto}
+  .cn-stage{justify-self:center; max-width:460px; aspect-ratio:auto; scroll-margin-top:96px}
   .cn-stage .ph{position:relative; aspect-ratio:4/5; border-radius:200px 200px var(--r) var(--r)}
   .cn-card{position:relative; left:auto; bottom:auto; width:auto; margin:-70px 14px 0}
 }
@@ -1841,7 +1841,12 @@ document.addEventListener('click',e=>{
     setTimeout(()=>{tags.innerHTML=C[n].tags.map(t=>TAG[t]).join(''); title.textContent=C[n].t; text.textContent=C[n].p; card.classList.remove('swap');},250);
   };
   const stop=()=>{clearInterval(timer); timer=null; list.classList.remove('auto');};
-  btns.forEach((b,j)=>b.addEventListener('click',()=>{stop(); go(j);}));
+  const stage=document.querySelector('.cn-stage');
+  btns.forEach((b,j)=>b.addEventListener('click',()=>{
+    stop(); go(j);
+    // stacked layout: the image and description sit below the list, so bring them into view
+    if(window.matchMedia('(max-width:860px)').matches) stage.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});
+  }));
   if(!reduceMotion){
     const io=new IntersectionObserver(es=>es.forEach(e=>{
       if(e.isIntersecting&&!timer&&list.classList.contains('auto')){timer=setInterval(()=>go((i+1)%C.length),5500);}
