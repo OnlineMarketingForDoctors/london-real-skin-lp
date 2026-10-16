@@ -1046,7 +1046,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Before &amp; after</span>
         <h2 style="margin-top:14px">Real bodies,<br>visible definition</h2>
       </div>
-      <p style="color:rgba(251,248,243,.75); max-width:40ch">Drag the slider to compare. Filter by technology or treatment area, then tap a result to bring it centre stage.</p>
+      <p style="color:rgba(251,248,243,.75); max-width:40ch">Drag the slider to compare. Filter by treatment area, then tap a result to bring it centre stage.</p>
     </div>
     <div class="ba-stage">
       <div class="ba-main">
@@ -1060,13 +1060,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="ba-cap"><b id="baTitle">EMSCULPT NEO · Abdomen</b><span id="baNote">Courtesy of BTL Aesthetics</span></div>
       </div>
       <div class="ba-side">
-        <span class="lbl">Technology</span>
-        <div class="chips" data-group="dev">
-          <button class="chip on" data-v="all">All</button>
-          <button class="chip" data-v="neo">EMSCULPT NEO</button>
-          <button class="chip" data-v="emb">EMBODY</button>
-        </div>
-        <span class="lbl">Area</span>
+        <span class="lbl">Filter by area</span>
         <div class="chips" data-group="area">
           <button class="chip on" data-v="all">All areas</button>
           <button class="chip" data-v="abdomen">Abdomen</button>
@@ -1749,7 +1743,7 @@ document.addEventListener('click',e=>{
   const wrap=document.getElementById('baThumbs'), rev=document.getElementById('baReveal');
   const before=document.getElementById('baBefore'), after=document.getElementById('baAfter');
   const title=document.getElementById('baTitle'), note=document.getElementById('baNote');
-  const f={dev:'all',area:'all'}; let cur=BA[0];
+  const f={area:'all'}; let cur=BA[0];
   const show=item=>{
     cur=item;
     rev.classList.add('swap');
@@ -1766,7 +1760,7 @@ document.addEventListener('click',e=>{
     wrap.querySelectorAll('.ba-thumb').forEach(b=>b.classList.toggle('on',b.dataset.k===item.k));
   };
   const render=()=>{
-    const list=BA.filter(i=>(f.dev==='all'||i.d===f.dev)&&(f.area==='all'||i.a===f.area));
+    const list=BA.filter(i=>f.area==='all'||i.a===f.area);
     wrap.innerHTML=list.length?list.map(i=>'<button class="ba-thumb'+(i===cur?' on':'')+'" type="button" data-k="'+i.k+'" aria-label="Show '+DEV[i.d]+' '+i.t+'"><img loading="lazy" src="'+P+i.k+'-after.webp" alt=""><i>'+TAG[i.d]+'</i></button>').join(''):'<p style="grid-column:1/-1;color:rgba(251,248,243,.7);font-size:.9rem">No results for this combination yet. Try another filter.</p>';
     if(list.length&&!list.includes(cur)) show(list[0]);
   };
