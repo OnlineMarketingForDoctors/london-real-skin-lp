@@ -488,7 +488,7 @@ h1,h2,h3{text-wrap:balance}
 .hv.playing .hv-poster{opacity:0}
 .hv iframe{position:absolute; inset:0; width:100%; height:100%; border:0; pointer-events:none; z-index:1; transform:scale(1.3); transform-origin:50% 55%}
 .hv::after{content:""; position:absolute; inset:0; z-index:2; pointer-events:none; background:linear-gradient(180deg,rgba(30,58,87,0) 62%,rgba(30,58,87,.5))}
-.hv-sound{position:absolute; left:18px; bottom:16px; z-index:3; display:inline-flex; align-items:center; gap:9px; border:1px solid rgba(255,255,255,.4); background:rgba(30,58,87,.55); backdrop-filter:blur(6px); color:#fff; border-radius:100px; padding:9px 15px 9px 11px; font-weight:700; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; transition:background .25s}
+.hv-sound{position:absolute; right:16px; top:16px; z-index:3; display:inline-flex; align-items:center; gap:9px; border:1px solid rgba(255,255,255,.4); background:rgba(30,58,87,.55); backdrop-filter:blur(6px); color:#fff; border-radius:100px; padding:9px 15px 9px 11px; font-weight:700; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; transition:background .25s}
 .hv-sound:hover{background:var(--clay)}
 /* Video lightbox */
 .lb{position:fixed; inset:0; z-index:200; display:grid; place-items:center; padding:clamp(12px,4vw,48px)}
@@ -502,7 +502,6 @@ h1,h2,h3{text-wrap:balance}
 @keyframes lbFade{from{opacity:0}} @keyframes lbIn{from{opacity:0; transform:translateY(16px) scale(.98)}}
 body.lb-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.lb-backdrop,.lb-box{animation:none}}
-.hv-tag{position:absolute; right:16px; top:16px; z-index:3; color:#fff; font-size:.58rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; background:rgba(30,58,87,.5); backdrop-filter:blur(4px); padding:6px 12px; border-radius:100px; white-space:nowrap}
 .sat-proc{position:absolute; left:0; top:0; z-index:4; width:clamp(110px,11vw,150px); aspect-ratio:1; border-radius:50%; overflow:hidden; border:6px solid var(--porcelain); box-shadow:0 26px 50px -24px rgba(30,58,87,.75); animation:floaty 7s ease-in-out infinite}
 .sat-proc img{width:100%; height:100%; object-fit:cover}
 .hero-stage .hero-reveal{left:auto; right:0; bottom:0; transform:none; width:min(270px,46%); aspect-ratio:4/3; z-index:4}
@@ -520,9 +519,9 @@ body.lb-open{overflow:hidden}
   .hero-head{text-align:center; justify-self:center}
   .hero-head .eyebrow::before{display:none}
   .hero-stage{justify-self:center; max-width:560px; padding:28px 0 130px; margin-block:6px 0}
-  .sat-proc,.pulse-chip,.hv-tag{display:none}
+  .sat-proc,.pulse-chip{display:none}
   .hero-stage .hero-reveal{left:50%; right:auto; transform:translateX(-50%)}
-  .hv-sound{left:auto; right:12px; top:12px; bottom:auto}
+  .hv-sound{right:12px; top:12px}
 }
 @media(max-width:560px){
   .hero-stage{padding:22px 0 120px}
@@ -1026,7 +1025,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hero-stage">
       <div class="hv" id="heroVideo">
         <img class="hv-poster" src="/assets/img/body/neo-abdomen.webp" alt="EMSCULPT NEO applicator on the abdomen during a body sculpting session" fetchpriority="high">
-        <span class="hv-tag">How EMSCULPT NEO works</span>
         <button class="hv-sound" type="button" id="heroSound" aria-haspopup="dialog" aria-controls="videoLb">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"/></svg>
           <span>Tap for sound</span>
@@ -1779,7 +1777,7 @@ document.addEventListener('click',e=>{
     if(dur&&typeof info.currentTime==='number'&&info.currentTime>dur-0.8) cmd('seekTo',[0,true]);
     if(st===0){cmd('seekTo',[0,true]);cmd('playVideo');}
   });
-  if(!reduceMotion) box.insertBefore(f,box.querySelector('.hv-tag'));
+  if(!reduceMotion) box.insertBefore(f,box.querySelector('.hv-sound'));
   const cmd=(func,args)=>f.contentWindow&&f.contentWindow.postMessage(JSON.stringify({event:'command',func:func,args:args||[]}),'*');
   // "Tap for sound" opens the full video, with sound and controls, in a lightbox.
   // The muted background loop pauses while it is open.
