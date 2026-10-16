@@ -1729,6 +1729,13 @@ document.querySelectorAll('section').forEach(sec=>{
 });
 
 // YouTube helpers
+// When a video has no high-res thumbnail, YouTube answers maxresdefault.jpg with a
+// 120px grey placeholder that Safari displays instead of firing onerror. Detect
+// it and fall back to hqdefault, which exists for every video.
+document.addEventListener('load',e=>{
+  const img=e.target;
+  if(img.tagName==='IMG'&&/\/maxresdefault\.jpg$/.test(img.src)&&img.naturalWidth<=120) img.src=img.src.replace('maxresdefault','hqdefault');
+},true);
 const ytSrc=(id,extra)=>'https://www.youtube-nocookie.com/embed/'+id+'?rel=0&modestbranding=1&playsinline=1'+(extra||'');
 const ytIframe=(id,title)=>'<iframe src="'+ytSrc(id,'&autoplay=1')+'" title="'+title+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
 document.addEventListener('click',e=>{
