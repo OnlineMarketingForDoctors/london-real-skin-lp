@@ -522,6 +522,21 @@ h1,h2,h3{text-wrap:balance}
    photos stay fixed and only the dividing line moves */
 .reveal__top{width:100%; border-right:none; clip-path:inset(0 calc(100% - var(--p,50%)) 0 0)}
 
+/* ---------- Reviews strip (auto-scrolling marquee) ---------- */
+.rv-strip{padding-block:clamp(28px,4vw,48px); overflow:hidden}
+.rv-marquee{overflow:hidden; -webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.rv-track{display:flex; gap:22px; width:max-content; align-items:flex-start; padding-block:6px 18px; animation:rvScroll var(--rv-dur,60s) linear infinite}
+.rv-marquee:hover .rv-track,.rv-marquee:focus-within .rv-track{animation-play-state:paused}
+@keyframes rvScroll{to{transform:translateX(calc(-50% - 11px))}}
+.rv-strip .rev-card{position:relative; flex:0 0 clamp(270px,26vw,360px); padding:24px 24px 22px}
+.rv-strip .rev-card p{-webkit-line-clamp:5}
+.rv-strip .rev-card.expanded p{-webkit-line-clamp:unset}
+.rev-g{position:absolute; top:22px; right:22px}
+@media(prefers-reduced-motion:reduce){
+  .rv-track{animation:none}
+  .rv-marquee{overflow-x:auto; -webkit-mask:none; mask:none; padding-inline:var(--gutter)}
+}
+
 /* ---------- Statement (full bleed one-liner) ---------- */
 .statement{position:relative; isolation:isolate; overflow:hidden; color:var(--porcelain); min-height:clamp(540px,58vw,760px); display:flex; align-items:center; padding-block:clamp(80px,10vw,140px)}
 .statement-bg{position:absolute; left:0; top:-10%; width:100%; height:120%; object-fit:cover; object-position:72% center; z-index:-2; will-change:transform}
@@ -989,32 +1004,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- 2. Reviews -->
-<section class="reviews section" id="reviews">
-  <div class="wrap">
-    <div class="reviews-head">
-      <div>
-        <span class="eyebrow">In their words</span>
-        <h2 style="margin-top:14px">Trusted by thousands<br>of London patients</h2>
-      </div>
-      <div class="gscore">
-        <svg class="gwordmark" viewBox="0 0 272 92" width="74" height="25" aria-label="Google"><path fill="#4285F4" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/><path fill="#EA4335" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/><path fill="#FBBC05" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"/><path fill="#4285F4" d="M225 3v65h-9.5V3h9.5z"/><path fill="#EA4335" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.06zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/><path fill="#4285F4" d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z"/></svg>
-        <span class="s">★★★★★</span>
-        <span class="gnum"><b>4.9</b><span class="sep">|</span>338+ reviews</span>
-      </div>
-    </div>
-    <div class="carousel" data-carousel>
-      <div class="track" data-track>
-        <article class="rev-card"><span class="rs">★★★★★</span><p>Had such a fantastic experience with the team at London Real Skin right from the moment of booking! Loretta was amazing, super attentive and made sure I got the right appointment for my needs. She was also incredibly welcoming when I arrived and made me feel so comfortable straight away. Kelly was absolutely brilliant so skilled at what she does and really took the time to explain everything clearly. She made sure I was comfortable throughout and checked in often to ensure I wasn’t in any pain. Her calm, friendly energy made the whole experience feel effortless. I left feeling well looked after and confident about my treatment. Highly recommend the whole team — professional, kind, and genuinely lovely people who clearly care about their clients!</p><div class="who"><span class="av">J</span><div><b>Jasmeet Klair</b><span>Google review</span></div></div></article>
-        <article class="rev-card"><span class="rs">★★★★★</span><p>I have been receiving a course of BBL laser for rosacea at this clinic, as well as a hydrafacial and laser hair removal. Every visit I receive such a warm welcome from Loretta and the team. My treatments have all been by Ellen, who is truly out there doing the lord’s work beautifying the skin of the people of London— but everyone here is so friendly and goes out of their way to provide good service. I’d fully recommend London Real Skin to anyone seeking aesthetic treatments (oh, and the rosacea has improved massively thanks to the BBL!)!</p><div class="who"><span class="av">C</span><div><b>Charlotte Camp</b><span>Google review</span></div></div></article>
-        <article class="rev-card"><span class="rs">★★★★★</span><p>Both Kate and Kylie have been very helpful, knowledgeable and understanding. I would certainly recommend. 10/10!!</p><div class="who"><span class="av">C</span><div><b>Christopher Finney</b><span>Google review</span></div></div></article>
-        <article class="rev-card"><span class="rs">★★★★★</span><p>Loretta and Dr. Inna were extremely kind and helpful today - great consultation beyond what I initially made the appointment for. Thank you!</p><div class="who"><span class="av">I</span><div><b>Isabell Sattler</b><span>Google review</span></div></div></article>
-        <article class="rev-card"><span class="rs">★★★★★</span><p>Dr Inna was excellent and Loretta was very helpful</p><div class="who"><span class="av">C</span><div><b>Colin C</b><span>Google review</span></div></div></article>
-      </div>
-      <div class="carousel-nav" style="margin-top:26px">
-        <button class="cbtn" data-prev aria-label="Previous reviews"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button class="cbtn" data-next aria-label="More reviews"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
-      </div>
+<!-- 2. Reviews: auto-scrolling strip -->
+<section class="reviews rv-strip" id="reviews" aria-label="Google reviews">
+  <div class="rv-marquee">
+    <div class="rv-track" id="rvTrack">
+      <article class="rev-card"><svg class="rev-g" viewBox="0 0 48 48" width="22" height="22" aria-label="Google review" role="img"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg><span class="rs">★★★★★</span><p>Had such a fantastic experience with the team at London Real Skin right from the moment of booking! Loretta was amazing, super attentive and made sure I got the right appointment for my needs. She was also incredibly welcoming when I arrived and made me feel so comfortable straight away. Kelly was absolutely brilliant so skilled at what she does and really took the time to explain everything clearly. She made sure I was comfortable throughout and checked in often to ensure I wasn’t in any pain. Her calm, friendly energy made the whole experience feel effortless. I left feeling well looked after and confident about my treatment. Highly recommend the whole team — professional, kind, and genuinely lovely people who clearly care about their clients!</p><div class="who"><span class="av">J</span><div><b>Jasmeet Klair</b><span>Google review</span></div></div></article>
+      <article class="rev-card"><svg class="rev-g" viewBox="0 0 48 48" width="22" height="22" aria-label="Google review" role="img"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg><span class="rs">★★★★★</span><p>I have been receiving a course of BBL laser for rosacea at this clinic, as well as a hydrafacial and laser hair removal. Every visit I receive such a warm welcome from Loretta and the team. My treatments have all been by Ellen, who is truly out there doing the lord’s work beautifying the skin of the people of London— but everyone here is so friendly and goes out of their way to provide good service. I’d fully recommend London Real Skin to anyone seeking aesthetic treatments (oh, and the rosacea has improved massively thanks to the BBL!)!</p><div class="who"><span class="av">C</span><div><b>Charlotte Camp</b><span>Google review</span></div></div></article>
+      <article class="rev-card"><svg class="rev-g" viewBox="0 0 48 48" width="22" height="22" aria-label="Google review" role="img"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg><span class="rs">★★★★★</span><p>Both Kate and Kylie have been very helpful, knowledgeable and understanding. I would certainly recommend. 10/10!!</p><div class="who"><span class="av">C</span><div><b>Christopher Finney</b><span>Google review</span></div></div></article>
+      <article class="rev-card"><svg class="rev-g" viewBox="0 0 48 48" width="22" height="22" aria-label="Google review" role="img"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg><span class="rs">★★★★★</span><p>Loretta and Dr. Inna were extremely kind and helpful today - great consultation beyond what I initially made the appointment for. Thank you!</p><div class="who"><span class="av">I</span><div><b>Isabell Sattler</b><span>Google review</span></div></div></article>
+      <article class="rev-card"><svg class="rev-g" viewBox="0 0 48 48" width="22" height="22" aria-label="Google review" role="img"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg><span class="rs">★★★★★</span><p>Dr Inna was excellent and Loretta was very helpful</p><div class="who"><span class="av">C</span><div><b>Colin C</b><span>Google review</span></div></div></article>
     </div>
   </div>
 </section>
@@ -1903,6 +1901,14 @@ document.addEventListener('click',e=>{
   };
   window.addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});
   upd();
+})();
+
+// Reviews strip: duplicate the cards once so the marquee loops seamlessly
+(function(){
+  const t=document.getElementById('rvTrack'); if(!t||reduceMotion) return;
+  const cards=[...t.children];
+  cards.forEach(c=>{const k=c.cloneNode(true); k.setAttribute('aria-hidden','true'); k.setAttribute('inert',''); t.appendChild(k);});
+  t.style.setProperty('--rv-dur',(cards.length*9)+'s');
 })();
 
 // Review cards: add a Read more toggle only when the text is truncated
