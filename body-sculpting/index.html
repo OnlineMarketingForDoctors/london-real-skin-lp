@@ -15,7 +15,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="description" content="Non-surgical body sculpting in Holborn, London with EMSCULPT NEO and EMBODY. Build muscle and reduce fat on the abdomen, arms, thighs and buttocks in 30-minute sessions with no downtime. Free consultation.">
 <link rel="icon" type="image/png" href="/assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com"><link rel="preconnect" href="https://www.google.com"><link rel="preconnect" href="https://i.ytimg.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/assets/img/body/neo-abdomen.webp">
 <style>
 :root{
@@ -1772,8 +1772,8 @@ document.addEventListener('click',e=>{
     const st=d.event==='onStateChange'?info:info.playerState;
     if(typeof info.duration==='number'&&info.duration>0) dur=info.duration;
     // YouTube shows its title bar and play/pause overlay for a few seconds after
-    // playback starts, so keep the poster on top until that has faded.
-    if(st===1&&!revealT) revealT=setTimeout(()=>box.classList.add('playing'),3200);
+    // playback starts; keep the poster on top briefly to cover the worst of it.
+    if(st===1&&!revealT) revealT=setTimeout(()=>box.classList.add('playing'),1000);
     // Loop by seeking back just before the end, instead of YouTube's own loop,
     // which reloads the player and brings the overlay and end screen back.
     if(dur&&typeof info.currentTime==='number'&&info.currentTime>dur-0.8) cmd('seekTo',[0,true]);
