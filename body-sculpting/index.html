@@ -594,6 +594,12 @@ a.stars:hover small{text-decoration:underline; text-underline-offset:3px}
   .ba-thumbs{grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:42%; max-height:none; overflow-x:auto; overflow-y:hidden; padding-bottom:6px}
 }
 
+.ba-viewer{position:relative}
+.ba-nav{position:absolute; top:50%; z-index:4; width:44px; height:44px; margin-top:-22px; border-radius:50%; border:1px solid rgba(255,255,255,.35); background:rgba(30,58,87,.6); backdrop-filter:blur(6px); color:#fff; display:grid; place-items:center; transition:background .2s, transform .2s}
+.ba-nav:hover{background:var(--clay); border-color:var(--clay)}
+.ba-nav:active{transform:scale(.94)}
+.ba-nav--prev{left:12px} .ba-nav--next{right:12px}
+@media(max-width:560px){.ba-nav{width:38px; height:38px; margin-top:-19px} .ba-nav--prev{left:8px} .ba-nav--next{right:8px}}
 /* Before & after on mobile: accordion by area replaces the filter tabs */
 .ba-stage > *{min-width:0}
 .ba-acc{display:none}
@@ -1104,12 +1110,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="ba-stage">
       <div class="ba-main">
+        <div class="ba-viewer">
         <div class="reveal" id="baReveal" style="--p:50%">
           <img id="baAfter" src="/assets/img/body/ba/emsculpt-body-after.webp" alt="">
           <div class="reveal__top"><img id="baBefore" src="/assets/img/body/ba/emsculpt-body-before.webp" alt=""></div>
           <span class="reveal__lab b">Before</span>
           <span class="reveal__lab a">After</span>
           <button class="reveal__handle" aria-label="Drag to compare before and after. Use the arrow keys to move."><i></i><b>⇄</b></button>
+        </div>
+        <button class="ba-nav ba-nav--prev" type="button" data-step="-1" aria-label="Previous result"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="ba-nav ba-nav--next" type="button" data-step="1" aria-label="Next result"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg></button>
         </div>
         <div class="ba-cap"><b id="baTitle">EMSCULPT NEO · Abdomen</b><span id="baNote">Courtesy of BTL Aesthetics</span></div>
       </div>
@@ -1860,6 +1870,16 @@ document.addEventListener('click',e=>{
     f[g.dataset.group]=c.dataset.v; render();
   }));
   render(); show(cur);
+
+  // Prev/next arrows: step through the results currently in view
+  // (the active area filter on desktop, the current item's area on mobile)
+  const mobile=window.matchMedia('(max-width:900px)');
+  document.querySelectorAll('.ba-nav').forEach(b=>b.addEventListener('click',()=>{
+    const list=mobile.matches?BA.filter(i=>i.a===cur.a):BA.filter(i=>f.area==='all'||i.a===f.area);
+    if(!list.length) return;
+    const n=(list.indexOf(cur)+(+b.dataset.step)+list.length)%list.length;
+    show(list[n]);
+  }));
 
   // Mobile: results grouped by area in an accordion instead of filter tabs
   const acc=document.getElementById('baAcc');
