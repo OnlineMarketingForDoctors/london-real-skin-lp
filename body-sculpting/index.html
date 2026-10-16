@@ -615,9 +615,17 @@ a.stars:hover small{text-decoration:underline; text-underline-offset:3px}
   .acc-h em::after{transform:translate(-50%,-50%) rotate(90deg); transition:transform .3s}
   .acc-item.open .acc-h em{background:var(--clay); border-color:var(--clay)}
   .acc-item.open .acc-h em::after{transform:translate(-50%,-50%) rotate(0deg)}
-  .acc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:2px 0 18px}
+  .ba-main{display:none}
+  .acc-p{padding:2px 0 22px}
+  .acc-p .reveal{aspect-ratio:3/2; border-radius:var(--r); background:#000; box-shadow:0 30px 60px -40px rgba(0,0,0,.9)}
+  .acc-p .reveal img{transition:opacity .35s ease}
+  .acc-p .reveal.swap img{opacity:0}
+  .acc-meta{display:flex; justify-content:space-between; align-items:flex-start; gap:14px}
+  .acc-meta .ba-cap{display:block; margin-top:14px}
+  .acc-meta .ba-cap b{display:block; font-size:1.12rem; margin-bottom:4px}
+  .acc-meta .ba-cap span{font-size:.76rem}
+  .acc-count{flex:0 0 auto; margin-top:16px; font-size:.7rem; font-weight:800; letter-spacing:.14em; color:var(--sage); font-variant-numeric:tabular-nums}
 }
-@media(max-width:420px){.acc-grid{grid-template-columns:repeat(2,1fr)}}
 
 /* ---------- Patient stories (video) ---------- */
 .stories{position:relative; background:linear-gradient(180deg,var(--pine) 0,var(--pine) 62%,var(--porcelain) 62%)}
@@ -1106,7 +1114,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Before &amp; after</span>
         <h2 style="margin-top:14px">Real bodies,<br>visible definition</h2>
       </div>
-      <p style="color:rgba(251,248,243,.75); max-width:40ch">Drag the slider to compare, then choose a treatment area and tap a result to bring it centre stage.</p>
+      <p style="color:rgba(251,248,243,.75); max-width:40ch">Drag the slider to compare, and use the arrows to browse more results for each treatment area.</p>
     </div>
     <div class="ba-stage">
       <div class="ba-main">
@@ -1681,7 +1689,7 @@ menuBtn.addEventListener('click',()=>{const o=mobileNav.classList.toggle('open')
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobileNav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}));
 
 // Before/After reveal (drag, touch and keyboard)
-document.querySelectorAll('.reveal').forEach(r=>{
+function bindReveal(r){
   let drag=false;
   const setP=p=>r.style.setProperty('--p',Math.max(4,Math.min(96,p))+'%');
   const set=e=>{
@@ -1700,7 +1708,8 @@ document.querySelectorAll('.reveal').forEach(r=>{
     if(e.key==='ArrowLeft'){setP(cur-5);e.preventDefault();}
     if(e.key==='ArrowRight'){setP(cur+5);e.preventDefault();}
   });
-});
+}
+document.querySelectorAll('.reveal').forEach(bindReveal);
 
 // Carousels
 document.querySelectorAll('section').forEach(sec=>{
@@ -1881,18 +1890,48 @@ document.addEventListener('click',e=>{
     show(list[n]);
   }));
 
-  // Mobile: results grouped by area in an accordion instead of filter tabs
+  // Mobile: one accordion per area, each with its own before/after slider
+  // showing one patient at a time, with prev/next arrows and a counter.
   const acc=document.getElementById('baAcc');
   const AREAS=[['abdomen','Abdomen'],['flanks','Flanks'],['buttocks','Buttocks'],['arms','Arms'],['thighs','Thighs'],['calves','Calves']];
-  const thumb=i=>'<button class="ba-thumb'+(i===cur?' on':'')+'" type="button" data-k="'+i.k+'" aria-label="Show '+DEV[i.d]+' '+i.t+'"><img loading="lazy" src="'+P+i.k+'-after.webp" alt=""><i>'+TAG[i.d]+'</i></button>';
+  const navBtn=(d,l,path)=>'<button class="ba-nav ba-nav--'+d+'" type="button" data-step="'+(d==='next'?1:-1)+'" aria-label="'+l+'"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="'+path+'"/></svg></button>';
   acc.innerHTML=AREAS.map(([a,l],n)=>{const list=BA.filter(i=>i.a===a); if(!list.length) return '';
-    return '<div class="acc-item'+(n===0?' open':'')+'"><button class="acc-h" type="button" aria-expanded="'+(n===0)+'" aria-controls="baAcc-'+a+'"><span>'+l+'</span><small>'+list.length+(list.length===1?' result':' results')+'</small><em aria-hidden="true"></em></button><div class="acc-p" id="baAcc-'+a+'"'+(n===0?'':' hidden')+'><div class="acc-grid">'+list.map(thumb).join('')+'</div></div></div>';}).join('');
+    const many=list.length>1;
+    return '<div class="acc-item'+(n===0?' open':'')+'" data-area="'+a+'"><button class="acc-h" type="button" aria-expanded="'+(n===0)+'" aria-controls="baAcc-'+a+'"><span>'+l+'</span><small>'+list.length+(list.length===1?' result':' results')+'</small><em aria-hidden="true"></em></button>'
+      +'<div class="acc-p" id="baAcc-'+a+'"'+(n===0?'':' hidden')+'><div class="ba-viewer"><div class="reveal" style="--p:50%"><img class="acc-after" alt=""><div class="reveal__top"><img class="acc-before" alt=""></div><span class="reveal__lab b">Before</span><span class="reveal__lab a">After</span><button class="reveal__handle" aria-label="Drag to compare before and after. Use the arrow keys to move."><i></i><b>⇄</b></button></div>'
+      +(many?navBtn('prev','Previous '+l.toLowerCase()+' result','M15 18l-6-6 6-6')+navBtn('next','Next '+l.toLowerCase()+' result','M9 18l6-6-6-6'):'')
+      +'</div><div class="acc-meta"><div class="ba-cap"><b></b><span></span></div>'+(many?'<span class="acc-count" aria-live="polite"></span>':'')+'</div></div></div>';}).join('');
+  const viewers={};
+  acc.querySelectorAll('.acc-item').forEach(it=>{
+    const a=it.dataset.area, list=BA.filter(i=>i.a===a), r=it.querySelector('.reveal');
+    const v={i:0,loaded:false,render(){
+      const item=list[this.i];
+      r.classList.add('swap');
+      const done=()=>{
+        it.querySelector('.acc-after').src=P+item.k+'-after.webp'; it.querySelector('.acc-before').src=P+item.k+'-before.webp';
+        it.querySelector('.acc-after').alt=DEV[item.d]+' '+item.t.toLowerCase()+' after treatment';
+        it.querySelector('.acc-before').alt=DEV[item.d]+' '+item.t.toLowerCase()+' before treatment';
+        it.querySelector('.ba-cap b').textContent=DEV[item.d]+' · '+item.t;
+        it.querySelector('.ba-cap span').textContent=item.n.replace('; ',' · ');
+        const c=it.querySelector('.acc-count'); if(c) c.textContent=(this.i+1)+' / '+list.length;
+        r.style.setProperty('--p','50%');
+        requestAnimationFrame(()=>r.classList.remove('swap'));
+      };
+      const img=new Image(); img.onload=done; img.onerror=done; img.src=P+item.k+'-after.webp';
+      this.loaded=true;
+    }};
+    viewers[a]=v; bindReveal(r);
+    if(it.classList.contains('open')) v.render();
+  });
   acc.addEventListener('click',e=>{
     const h=e.target.closest('.acc-h');
     if(h){const it=h.parentElement, open=!it.classList.contains('open');
-      it.classList.toggle('open',open); h.setAttribute('aria-expanded',open); it.querySelector('.acc-p').hidden=!open; return;}
-    const b=e.target.closest('.ba-thumb');
-    if(b){show(BA.find(i=>i.k===b.dataset.k)); rev.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'center'});}
+      it.classList.toggle('open',open); h.setAttribute('aria-expanded',open); it.querySelector('.acc-p').hidden=!open;
+      const v=viewers[it.dataset.area]; if(open&&!v.loaded) v.render();
+      return;}
+    const nb=e.target.closest('.ba-nav');
+    if(nb){const it=nb.closest('.acc-item'), v=viewers[it.dataset.area], n=BA.filter(i=>i.a===it.dataset.area).length;
+      v.i=(v.i+(+nb.dataset.step)+n)%n; v.render();}
   });
 })();
 
