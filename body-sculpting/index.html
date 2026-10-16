@@ -525,7 +525,7 @@ h1,h2,h3{text-wrap:balance}
 /* ---------- Reviews strip (auto-scrolling marquee) ---------- */
 .rv-strip{padding-block:clamp(28px,4vw,48px); overflow:hidden}
 .rv-marquee{overflow:hidden; -webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.rv-track{display:flex; gap:22px; width:max-content; align-items:flex-start; padding-block:6px 18px; animation:rvScroll var(--rv-dur,60s) linear infinite}
+.rv-track{display:flex; gap:22px; width:max-content; align-items:stretch; padding-block:6px 18px; animation:rvScroll var(--rv-dur,60s) linear infinite}
 .rv-marquee:hover .rv-track,.rv-marquee:focus-within .rv-track{animation-play-state:paused}
 @keyframes rvScroll{to{transform:translateX(calc(-50% - 11px))}}
 .rv-strip .rev-card{position:relative; flex:0 0 clamp(270px,26vw,360px); padding:24px 24px 22px}
