@@ -563,10 +563,10 @@ a.stars:hover small{text-decoration:underline; text-underline-offset:3px}
 .count-card p{font-size:.86rem; color:var(--muted); margin-top:6px; line-height:1.45}
 .count-card small{display:block; font-size:.64rem; color:var(--muted); margin-top:8px; opacity:.8}
 @media(max-width:820px){
-  .statement{display:block; min-height:0; padding-bottom:0}
+  .statement{display:block; min-height:0; padding-bottom:clamp(40px,8vw,56px)}
   .statement::before{background:linear-gradient(180deg,rgba(30,58,87,.93) 0%,rgba(30,58,87,.82) 55%,rgba(30,58,87,.35) 100%)}
   .statement-bg{object-position:78% center}
-  .count-card{position:relative; right:auto; bottom:auto; margin:36px 0 -40px; max-width:none}
+  .count-card{position:relative; right:auto; bottom:auto; margin:36px var(--gutter) 0; max-width:none}
 }
 
 /* ---------- Before & after gallery ---------- */
