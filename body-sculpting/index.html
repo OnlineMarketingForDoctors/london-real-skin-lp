@@ -486,11 +486,22 @@ h1,h2,h3{text-wrap:balance}
 .hv{position:relative; aspect-ratio:16/9; border-radius:calc(var(--r) + 6px); overflow:hidden; background:var(--pine-deep); box-shadow:0 50px 90px -50px rgba(30,58,87,.85); isolation:isolate}
 .hv-poster{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:2; transition:opacity 1s ease}
 .hv.playing .hv-poster{opacity:0}
-.hv iframe{position:absolute; inset:0; width:100%; height:100%; border:0; pointer-events:none; z-index:1}
+.hv iframe{position:absolute; inset:0; width:100%; height:100%; border:0; pointer-events:none; z-index:1; transform:scale(1.3); transform-origin:50% 55%}
 .hv::after{content:""; position:absolute; inset:0; z-index:2; pointer-events:none; background:linear-gradient(180deg,rgba(30,58,87,0) 62%,rgba(30,58,87,.5))}
 .hv-sound{position:absolute; left:18px; bottom:16px; z-index:3; display:inline-flex; align-items:center; gap:9px; border:1px solid rgba(255,255,255,.4); background:rgba(30,58,87,.55); backdrop-filter:blur(6px); color:#fff; border-radius:100px; padding:9px 15px 9px 11px; font-weight:700; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; transition:background .25s}
 .hv-sound:hover{background:var(--clay)}
-.hv-sound .on{display:none} .hv-sound[aria-pressed="true"] .on{display:inline} .hv-sound[aria-pressed="true"] .off{display:none}
+/* Video lightbox */
+.lb{position:fixed; inset:0; z-index:200; display:grid; place-items:center; padding:clamp(12px,4vw,48px)}
+.lb[hidden]{display:none}
+.lb-backdrop{position:absolute; inset:0; background:rgba(14,28,43,.86); backdrop-filter:blur(6px); animation:lbFade .25s ease}
+.lb-box{position:relative; width:min(1100px,100%); animation:lbIn .3s cubic-bezier(.2,.7,.2,1)}
+.lb-frame{position:relative; aspect-ratio:16/9; border-radius:var(--r); overflow:hidden; background:#000; box-shadow:0 50px 100px -40px rgba(0,0,0,.9)}
+.lb-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.lb-close{position:absolute; right:0; top:-52px; width:42px; height:42px; border-radius:50%; border:1px solid rgba(255,255,255,.4); background:rgba(255,255,255,.08); color:#fff; display:grid; place-items:center; transition:background .2s}
+.lb-close:hover{background:var(--clay); border-color:var(--clay)}
+@keyframes lbFade{from{opacity:0}} @keyframes lbIn{from{opacity:0; transform:translateY(16px) scale(.98)}}
+body.lb-open{overflow:hidden}
+@media(prefers-reduced-motion:reduce){.lb-backdrop,.lb-box{animation:none}}
 .hv-tag{position:absolute; right:16px; top:16px; z-index:3; color:#fff; font-size:.58rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; background:rgba(30,58,87,.5); backdrop-filter:blur(4px); padding:6px 12px; border-radius:100px; white-space:nowrap}
 .sat-proc{position:absolute; left:0; top:0; z-index:4; width:clamp(110px,11vw,150px); aspect-ratio:1; border-radius:50%; overflow:hidden; border:6px solid var(--porcelain); box-shadow:0 26px 50px -24px rgba(30,58,87,.75); animation:floaty 7s ease-in-out infinite}
 .sat-proc img{width:100%; height:100%; object-fit:cover}
@@ -1002,10 +1013,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="hv" id="heroVideo">
         <img class="hv-poster" src="/assets/img/body/neo-abdomen.webp" alt="EMSCULPT NEO applicator on the abdomen during a body sculpting session" fetchpriority="high">
         <span class="hv-tag">How EMSCULPT NEO works</span>
-        <button class="hv-sound" type="button" aria-pressed="false" id="heroSound">
-          <svg class="off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M23 9l-6 6M17 9l6 6"/></svg>
-          <svg class="on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"/></svg>
-          <span class="off">Tap for sound</span><span class="on">Sound on</span>
+        <button class="hv-sound" type="button" id="heroSound" aria-haspopup="dialog" aria-controls="videoLb">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 010 7M19 5a10 10 0 010 14"/></svg>
+          <span>Tap for sound</span>
         </button>
       </div>
       <div class="sat-proc"><img src="/assets/img/body/session-relax.webp" alt="A patient relaxing during an EMSCULPT NEO session"></div>
@@ -1607,6 +1617,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </main>
 
+<div class="lb" id="videoLb" role="dialog" aria-modal="true" aria-label="How EMSCULPT NEO works" hidden>
+  <div class="lb-backdrop" data-close></div>
+  <div class="lb-box">
+    <button class="lb-close" type="button" data-close aria-label="Close video"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="lb-frame"></div>
+  </div>
+</div>
+
 <button class="to-top" id="toTop" aria-label="Back to top" title="Back to top">
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
@@ -1709,9 +1727,10 @@ document.addEventListener('click',e=>{
   f.title='How EMSCULPT NEO works';
   f.allow='autoplay; encrypted-media; picture-in-picture';
   f.setAttribute('tabindex','-1');
-  f.src=ytSrc(ID,'&autoplay=1&mute=1&loop=1&playlist='+ID+'&controls=0&disablekb=1&iv_load_policy=3&enablejsapi=1&origin='+encodeURIComponent(location.origin));
+  f.src=ytSrc(ID,'&autoplay=1&mute=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&cc_load_policy=0&enablejsapi=1&origin='+encodeURIComponent(location.origin));
   // Keep the poster visible until the player confirms it is actually playing,
   // so a blocked or slow embed never leaves an empty frame.
+  let dur=0, revealT=null;
   f.addEventListener('load',()=>{
     let n=0; const ping=setInterval(()=>{
       if(box.classList.contains('playing')||++n>20){clearInterval(ping);return;}
@@ -1722,16 +1741,40 @@ document.addEventListener('click',e=>{
     let host=''; try{host=new URL(e.origin).hostname;}catch(_){return;}
     if(!/youtube(-nocookie)?\.com$/.test(host)) return;
     let d; try{d=typeof e.data==='string'?JSON.parse(e.data):e.data;}catch(_){return;}
-    const st=d&&d.info&&d.info.playerState;
-    if(st===1) box.classList.add('playing');
+    if(!d||!d.info) return;
+    const info=d.info;
+    const st=d.event==='onStateChange'?info:info.playerState;
+    if(typeof info.duration==='number'&&info.duration>0) dur=info.duration;
+    // YouTube shows its title bar and play/pause overlay for a few seconds after
+    // playback starts, so keep the poster on top until that has faded.
+    if(st===1&&!revealT) revealT=setTimeout(()=>box.classList.add('playing'),3200);
+    // Loop by seeking back just before the end, instead of YouTube's own loop,
+    // which reloads the player and brings the overlay and end screen back.
+    if(dur&&typeof info.currentTime==='number'&&info.currentTime>dur-0.8) cmd('seekTo',[0,true]);
+    if(st===0){cmd('seekTo',[0,true]);cmd('playVideo');}
   });
   if(!reduceMotion) box.insertBefore(f,box.querySelector('.hv-tag'));
   const cmd=(func,args)=>f.contentWindow&&f.contentWindow.postMessage(JSON.stringify({event:'command',func:func,args:args||[]}),'*');
+  // "Tap for sound" opens the full video, with sound and controls, in a lightbox.
+  // The muted background loop pauses while it is open.
+  const lb=document.getElementById('videoLb'), frame=lb.querySelector('.lb-frame');
+  const close=()=>{
+    if(lb.hidden) return;
+    lb.hidden=true; frame.innerHTML=''; document.body.classList.remove('lb-open');
+    if(f.isConnected) cmd('playVideo');
+    btn.focus();
+  };
   btn.addEventListener('click',()=>{
-    if(reduceMotion&&!f.isConnected){box.insertBefore(f,box.querySelector('.hv-tag')); f.src=f.src.replace('mute=1','mute=0');}
-    const on=btn.getAttribute('aria-pressed')!=='true';
-    btn.setAttribute('aria-pressed',on);
-    if(on){cmd('unMute');cmd('setVolume',[70]);cmd('playVideo');}else{cmd('mute');}
+    frame.innerHTML='<iframe src="'+ytSrc(ID,'&autoplay=1')+'" title="How EMSCULPT NEO works" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+    lb.hidden=false; document.body.classList.add('lb-open');
+    if(f.isConnected) cmd('pauseVideo');
+    lb.querySelector('.lb-close').focus();
+  });
+  lb.addEventListener('click',e=>{if(e.target.closest('[data-close]')) close();});
+  document.addEventListener('keydown',e=>{
+    if(lb.hidden) return;
+    if(e.key==='Escape') close();
+    if(e.key==='Tab'){e.preventDefault(); lb.querySelector('.lb-close').focus();}
   });
 })();
 
