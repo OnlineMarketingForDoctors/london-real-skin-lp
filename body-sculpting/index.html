@@ -478,25 +478,25 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 h1,h2,h3{text-wrap:balance}
 
 /* ---------- Hero (video stage) ---------- */
-.hero-grid.b{grid-template-columns:1fr 1.02fr; grid-template-areas:"head stage" "rest stage"; row-gap:0; align-items:center}
+.hero-grid.b{grid-template-columns:.95fr 1.05fr; grid-template-areas:"head stage" "rest stage"; row-gap:0; align-items:center}
 .hero-head{grid-area:head; align-self:end; max-width:580px}
 .hero-rest{grid-area:rest; align-self:start; max-width:580px}
 .hero-head h1{font-size:clamp(2.5rem,5.6vw,4.7rem)}
-.hero-stage{grid-area:stage; position:relative; padding:24px 30px 64px clamp(40px,5vw,64px); max-width:600px; width:100%; justify-self:end}
-.hv{position:relative; aspect-ratio:4/5; border-radius:260px 260px var(--r) var(--r); overflow:hidden; background:var(--pine-deep); box-shadow:0 50px 90px -50px rgba(30,58,87,.85); isolation:isolate}
+.hero-stage{grid-area:stage; position:relative; padding:64px 24px 150px 44px; max-width:640px; width:100%; justify-self:end}
+.hv{position:relative; aspect-ratio:16/9; border-radius:calc(var(--r) + 6px); overflow:hidden; background:var(--pine-deep); box-shadow:0 50px 90px -50px rgba(30,58,87,.85); isolation:isolate}
 .hv-poster{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:2; transition:opacity 1s ease}
 .hv.playing .hv-poster{opacity:0}
-.hv iframe{position:absolute; top:0; left:50%; height:100%; width:222.3%; transform:translateX(-50%); border:0; pointer-events:none; z-index:1}
-.hv::after{content:""; position:absolute; inset:0; z-index:2; pointer-events:none; background:linear-gradient(180deg,rgba(30,58,87,0) 60%,rgba(30,58,87,.55))}
-.hv-sound{position:absolute; left:22px; bottom:22px; z-index:3; display:inline-flex; align-items:center; gap:9px; border:1px solid rgba(255,255,255,.4); background:rgba(30,58,87,.55); backdrop-filter:blur(6px); color:#fff; border-radius:100px; padding:10px 16px 10px 12px; font-weight:700; font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; transition:background .25s}
+.hv iframe{position:absolute; inset:0; width:100%; height:100%; border:0; pointer-events:none; z-index:1}
+.hv::after{content:""; position:absolute; inset:0; z-index:2; pointer-events:none; background:linear-gradient(180deg,rgba(30,58,87,0) 62%,rgba(30,58,87,.5))}
+.hv-sound{position:absolute; left:18px; bottom:16px; z-index:3; display:inline-flex; align-items:center; gap:9px; border:1px solid rgba(255,255,255,.4); background:rgba(30,58,87,.55); backdrop-filter:blur(6px); color:#fff; border-radius:100px; padding:9px 15px 9px 11px; font-weight:700; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; transition:background .25s}
 .hv-sound:hover{background:var(--clay)}
 .hv-sound .on{display:none} .hv-sound[aria-pressed="true"] .on{display:inline} .hv-sound[aria-pressed="true"] .off{display:none}
-.hv-tag{position:absolute; left:50%; top:26px; transform:translateX(-50%); z-index:3; color:#fff; font-size:.6rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; background:rgba(30,58,87,.45); backdrop-filter:blur(4px); padding:6px 12px; border-radius:100px; white-space:nowrap}
-.sat-proc{position:absolute; left:0; top:15%; z-index:4; width:clamp(120px,12.5vw,168px); aspect-ratio:1; border-radius:50%; overflow:hidden; border:6px solid var(--porcelain); box-shadow:0 26px 50px -24px rgba(30,58,87,.75); animation:floaty 7s ease-in-out infinite}
+.hv-tag{position:absolute; right:16px; top:16px; z-index:3; color:#fff; font-size:.58rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; background:rgba(30,58,87,.5); backdrop-filter:blur(4px); padding:6px 12px; border-radius:100px; white-space:nowrap}
+.sat-proc{position:absolute; left:0; top:0; z-index:4; width:clamp(110px,11vw,150px); aspect-ratio:1; border-radius:50%; overflow:hidden; border:6px solid var(--porcelain); box-shadow:0 26px 50px -24px rgba(30,58,87,.75); animation:floaty 7s ease-in-out infinite}
 .sat-proc img{width:100%; height:100%; object-fit:cover}
-.hero-stage .hero-reveal{left:auto; right:0; bottom:0; transform:none; width:min(260px,48%); aspect-ratio:4/3; z-index:4}
+.hero-stage .hero-reveal{left:auto; right:0; bottom:0; transform:none; width:min(270px,46%); aspect-ratio:4/3; z-index:4}
 .hero-stage .hero-reveal .cap{top:-28px}
-.pulse-chip{position:absolute; left:6px; bottom:42%; z-index:4; display:flex; align-items:center; gap:12px; background:var(--porcelain); border:1px solid var(--line); border-radius:100px; padding:9px 18px 9px 9px; box-shadow:0 20px 40px -22px rgba(30,58,87,.6)}
+.pulse-chip{position:absolute; left:44px; bottom:56px; z-index:4; display:flex; align-items:center; gap:12px; background:var(--porcelain); border:1px solid var(--line); border-radius:100px; padding:9px 18px 9px 9px; box-shadow:0 20px 40px -22px rgba(30,58,87,.6)}
 .pulse-dot{position:relative; width:38px; height:38px; border-radius:50%; background:var(--pine); display:grid; place-items:center; color:#fff; flex:0 0 auto}
 .pulse-dot::before,.pulse-dot::after{content:""; position:absolute; inset:0; border-radius:50%; border:2px solid var(--clay); animation:ring 2.4s ease-out infinite}
 .pulse-dot::after{animation-delay:1.2s}
@@ -506,16 +506,21 @@ h1,h2,h3{text-wrap:balance}
 @keyframes floaty{0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)}}
 @media(max-width:900px){
   .hero-grid.b{grid-template-columns:1fr; grid-template-areas:"head" "stage" "rest"}
-  .hero-stage{justify-self:center; max-width:460px; padding:18px 18px 80px 34px; margin-block:10px 8px}
-  .pulse-chip{bottom:42%; left:0}
+  .hero-stage{justify-self:center; max-width:560px; padding:52px 10px 130px 30px; margin-block:10px 0}
 }
 @media(max-width:560px){
-  .hero-stage{padding:14px 6px 96px 26px}
-  .sat-proc{width:104px; left:-4px; top:10%; border-width:4px}
-  .hero-stage .hero-reveal{width:190px; right:0; bottom:0}
+  .hero-stage{padding:46px 0 120px 14px}
+  .sat-proc{width:92px; border-width:4px}
+  .hero-stage .hero-reveal{width:min(200px,56%)}
+  .hero-stage .hero-reveal .cap{display:none}
   .pulse-chip{display:none}
-  .hv-sound{left:14px; bottom:12px; padding:8px 12px 8px 10px; font-size:.6rem}
+  .hv-sound{left:10px; bottom:10px; padding:7px 11px 7px 9px; font-size:.56rem}
+  .hv-tag{display:none}
 }
+
+/* Before/after reveal: clip the top layer instead of resizing it, so both
+   photos stay fixed and only the dividing line moves */
+.reveal__top{width:100%; border-right:none; clip-path:inset(0 calc(100% - var(--p,50%)) 0 0)}
 
 /* ---------- Statement (full bleed one-liner) ---------- */
 .statement{position:relative; isolation:isolate; overflow:hidden; color:var(--porcelain); min-height:clamp(540px,58vw,760px); display:flex; align-items:center; padding-block:clamp(80px,10vw,140px)}
