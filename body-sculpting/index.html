@@ -583,6 +583,25 @@ a.stars:hover small{text-decoration:underline; text-underline-offset:3px}
   .ba-thumbs{grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:42%; max-height:none; overflow-x:auto; overflow-y:hidden; padding-bottom:6px}
 }
 
+/* Before & after on mobile: accordion by area replaces the filter tabs */
+.ba-stage > *{min-width:0}
+.ba-acc{display:none}
+@media(max-width:900px){
+  .ba-side .lbl,.ba-side .chips,.ba-side .ba-thumbs{display:none}
+  .ba-acc{display:block; border-top:1px solid rgba(251,248,243,.16)}
+  .acc-item{border-bottom:1px solid rgba(251,248,243,.16)}
+  .acc-h{width:100%; display:flex; align-items:center; gap:12px; background:none; border:none; color:var(--porcelain); padding:18px 2px; text-align:left}
+  .acc-h span{font-family:var(--disp); font-size:1.3rem}
+  .acc-h small{font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--sage)}
+  .acc-h em{margin-left:auto; position:relative; width:30px; height:30px; border-radius:50%; border:1px solid rgba(251,248,243,.3); flex:0 0 auto; transition:transform .3s, background .3s}
+  .acc-h em::before,.acc-h em::after{content:""; position:absolute; left:50%; top:50%; width:11px; height:1.5px; background:currentColor; transform:translate(-50%,-50%)}
+  .acc-h em::after{transform:translate(-50%,-50%) rotate(90deg); transition:transform .3s}
+  .acc-item.open .acc-h em{background:var(--clay); border-color:var(--clay)}
+  .acc-item.open .acc-h em::after{transform:translate(-50%,-50%) rotate(0deg)}
+  .acc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:2px 0 18px}
+}
+@media(max-width:420px){.acc-grid{grid-template-columns:repeat(2,1fr)}}
+
 /* ---------- Patient stories (video) ---------- */
 .stories{position:relative; background:linear-gradient(180deg,var(--pine) 0,var(--pine) 62%,var(--porcelain) 62%)}
 .stories .eyebrow{color:var(--sand)} .stories .eyebrow::before{background:var(--sand-deep)}
@@ -1057,7 +1076,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Before &amp; after</span>
         <h2 style="margin-top:14px">Real bodies,<br>visible definition</h2>
       </div>
-      <p style="color:rgba(251,248,243,.75); max-width:40ch">Drag the slider to compare. Filter by treatment area, then tap a result to bring it centre stage.</p>
+      <p style="color:rgba(251,248,243,.75); max-width:40ch">Drag the slider to compare, then choose a treatment area and tap a result to bring it centre stage.</p>
     </div>
     <div class="ba-stage">
       <div class="ba-main">
@@ -1082,6 +1101,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <button class="chip" data-v="calves">Calves</button>
         </div>
         <div class="ba-thumbs" id="baThumbs"></div>
+        <div class="ba-acc" id="baAcc"></div>
       </div>
     </div>
     <div class="results-foot">
@@ -1768,7 +1788,7 @@ document.addEventListener('click',e=>{
       requestAnimationFrame(()=>rev.classList.remove('swap'));
     };
     img.onload=done; img.onerror=done;
-    wrap.querySelectorAll('.ba-thumb').forEach(b=>b.classList.toggle('on',b.dataset.k===item.k));
+    document.querySelectorAll('#results .ba-thumb').forEach(b=>b.classList.toggle('on',b.dataset.k===item.k));
   };
   const render=()=>{
     const list=BA.filter(i=>f.area==='all'||i.a===f.area);
@@ -1782,6 +1802,20 @@ document.addEventListener('click',e=>{
     f[g.dataset.group]=c.dataset.v; render();
   }));
   render(); show(cur);
+
+  // Mobile: results grouped by area in an accordion instead of filter tabs
+  const acc=document.getElementById('baAcc');
+  const AREAS=[['abdomen','Abdomen'],['flanks','Flanks'],['buttocks','Buttocks'],['arms','Arms'],['thighs','Thighs'],['calves','Calves']];
+  const thumb=i=>'<button class="ba-thumb'+(i===cur?' on':'')+'" type="button" data-k="'+i.k+'" aria-label="Show '+DEV[i.d]+' '+i.t+'"><img loading="lazy" src="'+P+i.k+'-after.webp" alt=""><i>'+TAG[i.d]+'</i></button>';
+  acc.innerHTML=AREAS.map(([a,l],n)=>{const list=BA.filter(i=>i.a===a); if(!list.length) return '';
+    return '<div class="acc-item'+(n===0?' open':'')+'"><button class="acc-h" type="button" aria-expanded="'+(n===0)+'" aria-controls="baAcc-'+a+'"><span>'+l+'</span><small>'+list.length+(list.length===1?' result':' results')+'</small><em aria-hidden="true"></em></button><div class="acc-p" id="baAcc-'+a+'"'+(n===0?'':' hidden')+'><div class="acc-grid">'+list.map(thumb).join('')+'</div></div></div>';}).join('');
+  acc.addEventListener('click',e=>{
+    const h=e.target.closest('.acc-h');
+    if(h){const it=h.parentElement, open=!it.classList.contains('open');
+      it.classList.toggle('open',open); h.setAttribute('aria-expanded',open); it.querySelector('.acc-p').hidden=!open; return;}
+    const b=e.target.closest('.ba-thumb');
+    if(b){show(BA.find(i=>i.k===b.dataset.k)); rev.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'center'});}
+  });
 })();
 
 // Concerns: auto-rotating list with crossfading image stage
