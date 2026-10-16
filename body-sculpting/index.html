@@ -741,7 +741,7 @@ a.stars:hover small{text-decoration:underline; text-underline-offset:3px}
 .ar-pills{display:flex; flex-wrap:wrap; gap:8px; margin-top:22px}
 .ar-pills button{border:1px solid var(--line); background:var(--paper); color:var(--ink); padding:8px 14px; border-radius:100px; font-weight:600; font-size:.82rem; transition:.2s}
 .ar-pills button.on{background:var(--pine); color:#fff; border-color:var(--pine)}
-@media(max-width:860px){.ar-grid{grid-template-columns:1fr} .ar-figure{max-width:340px}}
+@media(max-width:860px){.ar-grid{grid-template-columns:1fr} .ar-figure{max-width:340px} .ar-panel{scroll-margin-top:96px}}
 
 /* ---------- How it works (two technologies) ---------- */
 .how{background:var(--pine-deep); color:var(--porcelain); position:relative; isolation:isolate; overflow:hidden}
@@ -1892,7 +1892,12 @@ document.addEventListener('click',e=>{
     if(instant){upd();return;}
     panel.classList.add('swap'); setTimeout(upd,220);
   };
-  fig.addEventListener('click',e=>{const b=e.target.closest('.hs'); if(b) sel(b.dataset.k);});
+  fig.addEventListener('click',e=>{
+    const b=e.target.closest('.hs'); if(!b) return;
+    sel(b.dataset.k);
+    // stacked layout: the details panel sits below the figure, so bring it into view
+    if(window.matchMedia('(max-width:860px)').matches) panel.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});
+  });
   pills.addEventListener('click',e=>{const b=e.target.closest('button'); if(b) sel(b.dataset.k);});
   document.querySelectorAll('.ar-left .seg button').forEach(b=>b.addEventListener('click',()=>{
     sex=b.dataset.sex;
