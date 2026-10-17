@@ -2101,7 +2101,9 @@ document.addEventListener('click',e=>{
 (function(){
   const t=document.getElementById('rvTrack'); if(!t||reduceMotion) return;
   const cards=[...t.children];
-  cards.forEach(c=>{const k=c.cloneNode(true); k.setAttribute('aria-hidden','true'); k.setAttribute('inert',''); t.appendChild(k);});
+  // Clones stay clickable (half the visible cards are clones) but are hidden
+  // from assistive tech; each clone shares its original's index (data-rv).
+  cards.forEach((c,i)=>{c.dataset.rv=i; const k=c.cloneNode(true); k.dataset.clone=''; k.setAttribute('aria-hidden','true'); t.appendChild(k);});
   t.style.setProperty('--rv-dur',(cards.length*9)+'s');
 })();
 
@@ -2112,9 +2114,12 @@ document.querySelectorAll('.rev-card').forEach(card=>{
   if(p.scrollHeight - p.clientHeight > 4){
     const btn=document.createElement('button');
     btn.type='button'; btn.className='rev-more'; btn.textContent='Read more';
+    if(card.hasAttribute('data-clone')) btn.tabIndex=-1;
     btn.addEventListener('click',()=>{
-      const ex=card.classList.toggle('expanded');
-      btn.textContent=ex?'Read less':'Read more';
+      const ex=!card.classList.contains('expanded');
+      // toggle the card and its marquee twin together so the loop stays in sync
+      const twins=card.dataset.rv!==undefined?document.querySelectorAll('.rev-card[data-rv="'+card.dataset.rv+'"]'):[card];
+      twins.forEach(c=>{c.classList.toggle('expanded',ex); const b=c.querySelector('.rev-more'); if(b) b.textContent=ex?'Read less':'Read more';});
     });
     p.insertAdjacentElement('afterend', btn);
   }
