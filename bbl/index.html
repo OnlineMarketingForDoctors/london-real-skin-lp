@@ -394,6 +394,25 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .enquire-bg{position:absolute; inset:0; z-index:-2; width:100%; height:100%; object-fit:cover; object-position:right}
 .enquire::before{content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(100deg,var(--porcelain) 42%, rgba(251,248,243,.7) 58%, rgba(251,248,243,.1))}
 .form-card{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:clamp(28px,4vw,46px); max-width:600px; box-shadow:0 40px 80px -50px rgba(30,58,87,.6)}
+.enq-grid{display:grid; grid-template-columns:1.25fr .85fr; gap:clamp(20px,3vw,30px); align-items:stretch}
+.enq-grid .form-card{max-width:none}
+@media(max-width:900px){.enq-grid{grid-template-columns:1fr}}
+.talk-panel{background:var(--pine-deep); color:var(--porcelain); border:1px solid rgba(255,255,255,.08); border-radius:var(--r); padding:clamp(24px,3vw,34px); display:flex; flex-direction:column; box-shadow:0 40px 80px -50px rgba(30,58,87,.6)}
+.talk-panel .eyebrow{color:var(--sage)} .talk-panel .eyebrow::before{background:var(--sage)}
+.talk-panel h3{color:var(--porcelain); margin:12px 0 2px; font-size:clamp(1.3rem,2vw,1.6rem)}
+.talk-panel .sub{color:rgba(251,248,243,.72); font-size:.94rem}
+.talk-list{display:grid; gap:12px; margin-top:22px}
+.talk-item{display:flex; gap:14px; align-items:center; background:rgba(251,248,243,.06); border:1px solid rgba(251,248,243,.12); border-radius:12px; padding:13px 15px; transition:background .2s ease, transform .2s ease}
+a.talk-item:hover{background:rgba(251,248,243,.11); transform:translateY(-1px)}
+.talk-item .ti{flex:0 0 auto; width:44px; height:44px; border-radius:11px; display:grid; place-items:center; color:#fff}
+.talk-item .ti.call{background:var(--clay)}
+.talk-item .ti.mail{background:var(--sage)}
+.talk-item .ti.pin{background:var(--pine)}
+.talk-item .ti.hrs{background:rgba(251,248,243,.16)}
+.talk-item .tl{font-size:.64rem; text-transform:uppercase; letter-spacing:.12em; color:var(--sage); font-weight:700; display:block; margin-bottom:2px}
+.talk-item b{font-size:.98rem; color:var(--porcelain); font-weight:700; line-height:1.3; overflow-wrap:anywhere}
+.talk-foot{margin-top:auto; padding-top:20px; border-top:1px solid rgba(251,248,243,.14); font-size:.9rem; color:rgba(251,248,243,.8); line-height:1.55}
+.talk-foot b{color:var(--porcelain)}
 
 /* ---------- Footer ---------- */
 footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
@@ -574,6 +593,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- Before & After -->
+<section class="results section" id="results">
+  <div class="wrap">
+    <div class="reviews-head">
+      <div>
+        <span class="eyebrow">Before &amp; after</span>
+        <h2 style="margin-top:14px">Real skin,<br>real results</h2>
+      </div>
+      <div class="carousel-nav">
+        <button class="cbtn" data-prev aria-label="Previous result"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="cbtn" data-next aria-label="Next result"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <div class="carousel" data-carousel>
+      <div class="ba-track" data-track>
+        <figure class="ba-fig">
+          <div class="shot"><img loading="lazy" src="/assets/img/bbl-ba-pigment.webp" alt="Before and after Sciton BBL HERO at London Real Skin, sun damage and pigmentation"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
+          <figcaption><b>Sun damage &amp; pigmentation</b>Brown spots and uneven tone visibly reduced for a clearer, more even complexion.</figcaption>
+        </figure>
+        <figure class="ba-fig">
+          <div class="shot"><img loading="lazy" src="/assets/img/bbl-ba-freckles.webp" alt="Before and after Sciton BBL HERO at London Real Skin, freckling and sun spots"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
+          <figcaption><b>Freckling &amp; sun spots</b>Clearer, more even skin as heavy freckling and sun damage visibly fade.</figcaption>
+        </figure>
+        <figure class="ba-fig">
+          <div class="shot"><img loading="lazy" src="/assets/img/bbl-ba-patient.webp" alt="Before and after Sciton BBL HERO at London Real Skin, facial redness"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
+          <figcaption><b>Redness &amp; uneven tone</b>Calmer, clearer skin with noticeably reduced redness after a course of BBL HERO.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="results-foot">
+      <p class="disclaimer">All photos are of actual patients of London Real Skin and are displayed with their consent. The outcomes shown are relevant only for these patients and do not necessarily reflect the results other patients may experience. Your practitioner will discuss any factors that could influence your own results.</p>
+      <a href="#enquire" class="btn btn--clay results-cta">Book a free consultation</a>
+    </div>
+  </div>
+</section>
+
 <!-- 4. One-liner -->
 <section class="oneliner section">
   <div class="wrap grid-split">
@@ -603,38 +658,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- Before & After -->
-<section class="results section" id="results">
-  <div class="wrap">
-    <div class="reviews-head">
-      <div>
-        <span class="eyebrow">Before &amp; after</span>
-        <h2 style="margin-top:14px">Real skin,<br>real results</h2>
-      </div>
-      <div class="carousel-nav">
-        <button class="cbtn" data-prev aria-label="Previous result"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button class="cbtn" data-next aria-label="Next result"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
-      </div>
-    </div>
-    <div class="carousel" data-carousel>
-      <div class="ba-track" data-track>
-        <figure class="ba-fig">
-          <div class="shot"><img loading="lazy" src="/assets/img/bbl-ba.webp" alt="Before and after Sciton BBL HERO at London Real Skin, sun damage and pigmentation"></div>
-          <figcaption><b>Sun damage &amp; pigmentation</b>Brown spots and uneven tone visibly reduced for a clearer, more even complexion.</figcaption>
-        </figure>
-        <figure class="ba-fig">
-          <div class="shot"><img loading="lazy" src="/assets/img/bbl-ba-patient.webp" alt="Before and after Sciton BBL HERO at London Real Skin, facial redness"><span class="ba-lab b">Before</span><span class="ba-lab a">After</span></div>
-          <figcaption><b>Redness &amp; uneven tone</b>Calmer, clearer skin with noticeably reduced redness after a course of BBL HERO.</figcaption>
-        </figure>
-      </div>
-    </div>
-    <div class="results-foot">
-      <p class="disclaimer">All photos are of actual patients of London Real Skin and are displayed with their consent. The outcomes shown are relevant only for these patients and do not necessarily reflect the results other patients may experience. Your practitioner will discuss any factors that could influence your own results.</p>
-      <a href="#enquire" class="btn btn--clay results-cta">Book a free consultation</a>
-    </div>
-  </div>
-</section>
-
 <!-- 5. How it works -->
 <section class="how section" id="how">
   <div class="wrap grid-split">
@@ -650,7 +673,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#enquire" class="btn btn--pine" style="margin-top:30px">Book a free consultation</a>
     </div>
     <div class="how-img ro">
-      <img loading="lazy" src="/assets/img/bbl-treatment.webp" alt="A practitioner performing a BBL HERO BroadBand Light treatment">
+      <img loading="lazy" src="/assets/img/bbl-how.webp" alt="A practitioner performing a Sciton BBL HERO treatment at London Real Skin">
     </div>
   </div>
 </section>
@@ -895,6 +918,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="enquire section" id="enquire">
   <img loading="lazy" decoding="async" class="enquire-bg" src="/assets/img/bbl-enquiry-bg.webp" onerror="this.onerror=null;this.src='/assets/img/mn-enquiry-bg.webp'" alt="">
   <div class="wrap">
+    <div class="enq-grid">
     <div class="form-card">
       <span class="eyebrow">Book a free consultation</span>
       <h2 style="margin-top:14px; font-size:clamp(1.8rem,3vw,2.6rem)">Let's take a proper look at your skin</h2>
@@ -925,6 +949,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         })();
       </script>
       <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+    </div>
+    <aside class="talk-panel">
+      <span class="eyebrow">Prefer to talk?</span>
+      <h3>We're here to help</h3>
+      <p class="sub">Speak to our friendly reception team directly.</p>
+      <div class="talk-list">
+        <a class="talk-item" href="tel:+442071835892">
+          <span class="ti call"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></span>
+          <span><span class="tl">Call the clinic</span><b>020 7183 5892</b></span>
+        </a>
+        <a class="talk-item" href="mailto:info@londonrealskin.com">
+          <span class="ti mail"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
+          <span><span class="tl">Email us</span><b>info@londonrealskin.com</b></span>
+        </a>
+        <a class="talk-item" href="https://www.google.com/maps/search/?api=1&amp;query=233+High+Holborn+London+WC1V+7DN" target="_blank" rel="noopener">
+          <span class="ti pin"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-11a7 7 0 0114 0c0 6.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <span><span class="tl">Visit us in Holborn</span><b>233 High Holborn, WC1V 7DN</b></span>
+        </a>
+        <div class="talk-item" style="cursor:default">
+          <span class="ti hrs"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <span><span class="tl">Opening hours</span><b>Mon to Sat, by appointment</b></span>
+        </div>
+      </div>
+      <div class="talk-foot">Every consultation is <b>free and no obligation</b>. We'll look at your skin and advise whether BBL HERO is right for you.</div>
+    </aside>
     </div>
   </div>
 </section>
