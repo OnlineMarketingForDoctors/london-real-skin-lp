@@ -150,15 +150,20 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 }
 .hero-chip b{display:block; font-family:var(--disp); font-size:1.5rem; font-weight:500; line-height:1}
 .hero-chip span{display:block; font-size:.72rem; color:var(--sand); margin-top:6px; line-height:1.3}
+.hero-ba{position:absolute; right:-22px; bottom:-26px; width:min(238px,46%); z-index:4; border:6px solid var(--porcelain); border-radius:16px; overflow:hidden; box-shadow:0 30px 60px -28px rgba(30,58,87,.75)}
+.hero-ba img{display:block; width:100%; height:auto}
+.hero-ba .cap{position:absolute; top:-26px; left:4px; font-size:.6rem; text-transform:uppercase; letter-spacing:.16em; font-weight:700; color:var(--pine)}
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr}
   .hero-grid > .hero-media{display:none}
-  .hero-media-m{display:block; margin-top:26px}
+  .hero-media-m{display:block; margin-top:26px; margin-bottom:38px}
   .hero-media{max-width:440px; margin-inline:auto; width:100%}
+  .hero-ba{width:160px; right:-8px; bottom:-20px}
 }
 @media(max-width:640px){
   .hero-badge{left:8px; bottom:14px}
   .hero-chip{right:8px; top:14px}
+  .hero-ba{width:148px; right:6px; bottom:-22px}
 }
 
 /* ---------- As seen in ---------- */
@@ -458,7 +463,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="eyebrow">Sciton BBL HERO · BroadBand Light</span>
       <h1>Brighter, clearer, <em>more even skin</em></h1>
       <div class="hero-media hero-media-m">
-        <div class="hero-photo"><img src="/assets/img/bbl-hero.webp" alt="Sciton BBL HERO BroadBand Light treatment at London Real Skin"></div>
+        <div class="hero-photo"><img src="/assets/img/bbl-hero.webp" alt="A patient receiving Sciton BBL HERO treatment at London Real Skin"></div>
+        <div class="hero-ba">
+          <span class="cap">Real patient result</span>
+          <img src="/assets/img/bbl-ba.webp" alt="Before and after Sciton BBL HERO at London Real Skin, showing reduced pigmentation">
+        </div>
       </div>
       <p class="lede">Dermatology-led Sciton BBL HERO at our Holborn clinic. The most advanced BroadBand Light platform uses precisely targeted light to fade sun damage, pigmentation and redness, for a clearer, more even and visibly healthier complexion.</p>
       <ul class="selling">
@@ -480,7 +489,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="hero-media">
       <div class="hero-photo">
-        <img src="/assets/img/bbl-hero.webp" alt="Sciton BBL HERO BroadBand Light treatment at London Real Skin, Holborn">
+        <img src="/assets/img/bbl-hero.webp" alt="A patient receiving Sciton BBL HERO treatment at London Real Skin, Holborn">
       </div>
       <div class="hero-chip">
         <b>FDA-cleared</b>
@@ -489,6 +498,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="hero-badge">
         <span class="cqc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3z"/></svg></span>
         <div class="hero-badge-txt"><b>Dermatology-led</b><span>Dr Martin Wade, Medical Director</span></div>
+      </div>
+      <div class="hero-ba">
+        <span class="cap">Real patient result</span>
+        <img src="/assets/img/bbl-ba.webp" alt="Before and after Sciton BBL HERO at London Real Skin, showing reduced pigmentation">
       </div>
     </div>
   </div>
