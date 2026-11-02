@@ -225,7 +225,8 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .results{background:var(--pine-deep); color:var(--porcelain)}
 .results .eyebrow{color:var(--sage)} .results .eyebrow::before{background:var(--sage)}
 .results h2{color:var(--porcelain)}
-.ba-track{display:flex; align-items:flex-start; gap:26px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding-bottom:12px; scrollbar-width:none}
+.ba-track{display:flex; align-items:stretch; gap:26px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding-bottom:12px; scrollbar-width:none}
+.ba-track .ba-fig{display:flex; flex-direction:column}
 .ba-track::-webkit-scrollbar{display:none}
 .ba-fig{scroll-snap-align:start; flex:0 0 clamp(280px,46%,520px); margin:0; background:rgba(251,248,243,.06); border:1px solid rgba(251,248,243,.14); border-radius:var(--r); padding:16px}
 @media(max-width:720px){.ba-fig{flex:0 0 86%}}
