@@ -156,14 +156,20 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr}
   .hero-grid > .hero-media{display:none}
-  .hero-media-m{display:block; margin-top:26px; margin-bottom:38px}
+  .hero-media-m{display:block; margin-top:26px; margin-bottom:40px}
   .hero-media{max-width:440px; margin-inline:auto; width:100%}
-  .hero-ba{width:160px; right:-8px; bottom:-20px}
+  .hero-copy{text-align:center; margin-inline:auto}
+  .hero-copy .eyebrow{justify-content:center}
+  .hero .lede{margin-inline:auto}
+  .selling{text-align:left; max-width:420px; margin-inline:auto}
+  .hero-cta{justify-content:center}
+  .stars{justify-content:center}
+  .hero-ba{width:160px; left:50%; right:auto; transform:translateX(-50%); bottom:-20px}
 }
 @media(max-width:640px){
   .hero-badge{left:8px; bottom:14px}
   .hero-chip{right:8px; top:14px}
-  .hero-ba{width:148px; right:6px; bottom:-22px}
+  .hero-ba{width:150px; bottom:-24px}
 }
 
 /* ---------- As seen in ---------- */
