@@ -238,6 +238,7 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .lightbox img{max-width:100%; max-height:100%; width:auto; height:auto; border-radius:10px; box-shadow:0 30px 80px -20px rgba(0,0,0,.85)}
 .lb-close{position:absolute; top:clamp(12px,3vw,28px); right:clamp(12px,3vw,28px); width:46px; height:46px; border-radius:50%; border:none; background:rgba(255,255,255,.14); color:#fff; display:grid; place-items:center; cursor:pointer; transition:background .2s}
 .lb-close:hover{background:rgba(255,255,255,.3)}
+.hero-photo img, .hero-ba img, .combo-media img{cursor:zoom-in}
 .ba-lab{position:absolute; bottom:12px; z-index:2; font-size:.64rem; font-weight:800; text-transform:uppercase; letter-spacing:.1em; color:#fff; padding:6px 13px; border-radius:8px; box-shadow:0 8px 18px -8px rgba(0,0,0,.6)}
 .ba-lab.b{left:12px; background:var(--pine)}
 .ba-lab.a{left:calc(50% + 12px); background:var(--clay)}
@@ -1179,7 +1180,7 @@ toTop.addEventListener('click', ()=>{
   if(!lb||!lbImg) return;
   const open=(src,alt)=>{lbImg.src=src; lbImg.alt=alt||''; lb.classList.add('open'); document.body.style.overflow='hidden';};
   const close=()=>{lb.classList.remove('open'); document.body.style.overflow=''; lbImg.src='';};
-  document.querySelectorAll('.ba-fig .shot img').forEach(img=>{
+  document.querySelectorAll('.ba-fig .shot img, .hero-photo img, .hero-ba img, .combo-media img').forEach(img=>{
     img.addEventListener('click',()=>open(img.currentSrc||img.src, img.alt));
   });
   lbClose.addEventListener('click',close);
