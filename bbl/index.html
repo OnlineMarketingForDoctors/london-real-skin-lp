@@ -287,6 +287,8 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .modes-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px,3vw,32px); margin-top:44px}
 .mode-card{background:rgba(251,248,243,.06); border:1px solid rgba(251,248,243,.14); border-radius:var(--r); padding:clamp(26px,3vw,38px); display:flex; flex-direction:column}
 .mode-card .mic{width:52px; height:52px; border-radius:14px; background:rgba(251,248,243,.12); display:grid; place-items:center; color:var(--sand); margin-bottom:18px}
+.mode-media{background:#fff; border-radius:14px; height:168px; display:grid; place-items:center; padding:20px; margin-bottom:22px; overflow:hidden}
+.mode-media img{max-width:100%; max-height:128px; width:auto; height:auto; object-fit:contain; display:block}
 .mode-card .st{font-size:.64rem; text-transform:uppercase; letter-spacing:.16em; font-weight:700; color:var(--sage)}
 .mode-card h3{color:var(--porcelain); margin:8px 0 12px}
 .mode-card p{color:rgba(251,248,243,.8); font-size:.98rem; line-height:1.6}
@@ -737,7 +739,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="modes-grid">
       <div class="mode-card ro">
-        <span class="mic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></span>
+        <div class="mode-media"><img loading="lazy" src="/assets/img/bbl-hero-unit.webp" alt="Sciton BBL HERO handpiece"></div>
         <span class="st">BroadBand Light</span>
         <h3>BBL HERO</h3>
         <p>The most powerful BroadBand Light platform. Precisely targeted light clears pigment, sun damage, redness and vascular marks for a clearer, more even tone.</p>
@@ -748,7 +750,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </ul>
       </div>
       <div class="mode-card ro">
-        <span class="mic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h16"/><circle cx="8" cy="7" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="10" cy="17" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+        <div class="mode-media"><img loading="lazy" src="/assets/img/bbl-moxi-unit.webp" alt="Sciton MOXI laser handpiece"></div>
         <span class="st">1927nm fractional laser</span>
         <h3>MOXI Laser</h3>
         <p>A gentle, non-ablative fractional laser that resurfaces and renews the skin, improving texture, fine lines and dullness while boosting collagen, with minimal downtime.</p>
