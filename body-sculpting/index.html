@@ -467,7 +467,7 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 .side-enquire{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:55; writing-mode:vertical-rl; background:var(--clay); color:#fff; padding:18px 11px; border-radius:12px 0 0 12px; font-family:var(--body); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; text-decoration:none; box-shadow:0 10px 30px -10px rgba(30,58,87,.6); transition:background .2s ease, padding-right .2s ease}
 .side-enquire:hover{background:var(--clay-deep); padding-right:15px}
 @media(max-width:991px){.side-enquire{display:none}}
-.book-calendar{width:100%; max-width:none; margin-top:56px}
+.book-calendar{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:clamp(28px,4vw,46px); width:100%; max-width:none; box-shadow:0 40px 80px -50px rgba(30,58,87,.6)}
 .book-calendar [data-pabau-booking],
 .book-calendar .pabau-bw-slot,
 .book-calendar iframe.pabau-bw-inline{width:100% !important; max-width:none !important}
@@ -1670,7 +1670,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </script>
       </div>
     </div>
-    <div class="book-calendar" id="book">
+  </div>
+</section>
+
+<section class="section" id="book">
+  <div class="wrap">
+    <div class="book-calendar">
       <span class="eyebrow">Book your free treatment consultation</span>
       <h2 style="margin-top:14px; font-size:clamp(1.8rem,3vw,2.6rem)">Let&rsquo;s plan your body sculpting</h2>
       <p class="lede" style="margin-top:10px; margin-bottom:22px; font-size:1rem">A free consultation for anyone considering EMSCULPT NEO or EMBODY. Choose your areas and a time that suits you, and we&rsquo;ll build your treatment plan.</p>
