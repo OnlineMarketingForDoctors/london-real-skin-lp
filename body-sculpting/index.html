@@ -1650,7 +1650,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         s.setAttribute('data-pabau-slug', 'lsah');
         s.setAttribute('data-pabau-mode', 'inline');
         s.setAttribute('data-pabau-color', '#0084d5');
+        s.setAttribute('data-pabau-height', '720');
         document.body.appendChild(s);
+
+        var tries = 0;
+        var timer = setInterval(function () {
+          var frame = document.querySelector('iframe.pabau-bw-inline');
+          tries += 1;
+          if (frame) {
+            frame.style.setProperty('opacity', '1', 'important');
+            frame.style.setProperty('visibility', 'visible', 'important');
+            frame.style.setProperty('pointer-events', 'auto', 'important');
+            frame.style.setProperty('left', '0', 'important');
+            frame.style.setProperty('position', 'relative', 'important');
+            var host = document.querySelector('[data-pabau-booking]');
+            if (host) host.style.minHeight = '720px';
+          }
+          if (tries > 40) clearInterval(timer);
+        }, 250);
       });
       </script>
       </div>
