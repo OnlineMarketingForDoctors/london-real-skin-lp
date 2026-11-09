@@ -463,6 +463,10 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 .to-top{position:fixed; right:clamp(16px,3vw,28px); bottom:clamp(16px,3vw,28px); z-index:70; width:50px; height:50px; border-radius:50%; border:none; background:var(--pine); color:var(--porcelain); display:grid; place-items:center; cursor:pointer; box-shadow:0 12px 30px -10px rgba(30,58,87,.7); opacity:0; visibility:hidden; transform:translateY(12px); transition:opacity .3s ease, transform .3s ease, background .25s ease, visibility .3s}
 .to-top.show{opacity:1; visibility:visible; transform:none}
 .to-top:hover{background:var(--clay)}
+/* Side enquiry tab (desktop only) */
+.side-enquire{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:55; writing-mode:vertical-rl; background:var(--clay); color:#fff; padding:18px 11px; border-radius:12px 0 0 12px; font-family:var(--body); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; text-decoration:none; box-shadow:0 10px 30px -10px rgba(30,58,87,.6); transition:background .2s ease, padding-right .2s ease}
+.side-enquire:hover{background:var(--clay-deep); padding-right:15px}
+@media(max-width:991px){.side-enquire{display:none}}
 
 @media(prefers-reduced-motion:reduce){
   *{scroll-behavior:auto !important}
@@ -999,7 +1003,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <small>Call the clinic</small>
         <a href="tel:+442071835892">020 7183 5892</a>
       </div>
-      <a href="#enquire" class="btn btn--clay">Free consultation</a>
+      <a href="#book" class="btn btn--clay">Free body sculpting consultation</a>
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" id="menuBtn"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -1053,9 +1057,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> 0% monthly payment options available</li>
       </ul>
       <div class="hero-cta">
-        <a href="#enquire" class="btn btn--clay">Book a free consultation</a>
+        <a href="#book" class="btn btn--clay">Book your free treatment consultation</a>
         <a href="#results" class="btn btn--ghost">Before &amp; after</a>
+        <a href="#enquire" class="btn btn--ghost">Send us an enquiry</a>
       </div>
+      <p style="margin-top:12px; font-size:.88rem; color:var(--muted)">For anyone considering EMSCULPT NEO or EMBODY</p>
       <a class="stars" href="https://www.google.com/maps/place/London+Real+Skin+%7C+Dermatology-Led+Skin+Clinic+London/@51.5174521,-0.1194293,17z/data=!4m8!3m7!1s0x48761ad496940457:0xa245fffe8c9e6f1!8m2!3d51.5174521!4d-0.1194293!9m1!1b1!16s%2Fg%2F11cn2zpbrt" target="_blank" rel="noopener" aria-label="4.9 out of 5 from 338+ Google reviews. Read our reviews on Google (opens in a new tab)">
         <svg class="glogo" viewBox="0 0 48 48" aria-label="Google" width="22" height="22"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
         <span class="s">★★★★★</span>
@@ -1096,7 +1102,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="ro">
       <span class="eyebrow">Sculpted, not surgical</span>
       <p class="statement-quote">Training builds the body. EMSCULPT NEO and EMBODY go <em>past the point training reaches</em>, firming and defining the abdomen, arms, thighs and buttocks in 30-minute sessions, with no surgery and no downtime.</p>
-      <a href="#enquire" class="btn btn--clay" style="margin-top:34px">Book a free consultation</a>
+      <a href="#book" class="btn btn--clay" style="margin-top:34px">Plan my body sculpting treatment</a>
     </div>
   </div>
   <div class="count-card ro">
@@ -1148,7 +1154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="results-foot">
       <p class="disclaimer">Results courtesy of BTL Aesthetics and the clinicians credited on each image; individual results vary. The outcomes shown are relevant only to these patients and do not necessarily reflect the results other patients may experience. Your practitioner will discuss what is realistic for you at your consultation.</p>
-      <a href="#enquire" class="btn btn--clay results-cta">Book a free consultation</a>
+      <a href="#book" class="btn btn--clay results-cta">Plan my body sculpting treatment</a>
     </div>
   </div>
 </section>
@@ -1195,7 +1201,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 style="margin:16px 0 16px">Muscle you can see, fat you can lose</h2>
         <p class="lede">A non-surgical body treatment that works with your training, not instead of it. Here is what patients come to us for.</p>
       </div>
-      <a href="#enquire" class="btn btn--pine">Book a free consultation</a>
+      <a href="#book" class="btn btn--pine">Plan my body sculpting treatment</a>
     </div>
     <div class="bento">
       <div class="b-img ro">
@@ -1358,7 +1364,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><span>Course</span>At least four sessions, 2&ndash;3 days apart</li>
           <li><span>Feels like</span>A deep, intense workout, with no heat</li>
         </ul>
-        <p class="how-note">*Per manufacturer data (BTL Aesthetics). Your practitioner will recommend the right technology for your goals at your free consultation.</p>
+        <p class="how-note">*Per manufacturer data (BTL Aesthetics). Your practitioner will recommend the right technology for your goals at your free treatment consultation.</p>
       </div>
     </div>
   </div>
@@ -1368,9 +1374,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="ctaband section--tight">
   <div class="wrap">
     <span class="eyebrow center" style="color:#fff">Not sure which is right for you?</span>
-    <h2 style="margin-top:16px">Let us build your plan, free</h2>
-    <p>Every treatment starts with a complimentary consultation where we assess your goals, review your medical history and recommend EMSCULPT NEO, EMBODY or a combination.</p>
-    <a href="#enquire" class="btn btn--light">Book a free consultation</a>
+    <h2 style="margin-top:16px">Let&rsquo;s plan your treatment</h2>
+    <p>Every course starts with a free treatment consultation. We&rsquo;ll talk through the areas you want to sculpt, check the treatment is safe for you, and give you a clear plan with sessions and pricing for EMSCULPT NEO, EMBODY or a combination.</p>
+    <a href="#book" class="btn btn--light">Plan my body sculpting treatment</a>
   </div>
 </section>
 
@@ -1390,7 +1396,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="why-stack">
       <div class="why-card ro"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3z"/></svg></span><div><b>Dermatology-led</b><span>Overseen by Consultant Dermatologist Dr Martin Wade, Medical Director.</span></div></div>
-      <div class="why-card ro"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><div><b>A medically supervised plan</b><span>Clear session dates and pricing, agreed at your free consultation.</span></div></div>
+      <div class="why-card ro"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><div><b>A medically supervised plan</b><span>Clear session dates and pricing, agreed at your free treatment consultation.</span></div></div>
       <div class="why-card ro"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg></span><div><b>Genuine BTL technology</b><span>Authentic EMSCULPT NEO and EMBODY platforms, operated by trained practitioners.</span></div></div>
       <div class="why-card ro"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-11a7 7 0 0114 0c0 6.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><b>Next to Holborn station</b><span>Evening and Saturday appointments that fit around a working day.</span></div></div>
       <div class="why-card ro"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><div><b>0% monthly payments</b><span>Spread the cost of your course interest-free by direct debit.</span></div></div>
@@ -1432,7 +1438,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="eyebrow">Cost &amp; payment</span>
         <h2 style="margin-top:16px">Clear pricing, flexible ways to pay</h2>
       </div>
-      <p style="color:var(--muted); max-width:42ch">Your exact plan depends on the areas you treat and how many sessions you need. Everything is confirmed at your free consultation, with no obligation.</p>
+      <p style="color:var(--muted); max-width:42ch">Your exact plan depends on the areas you treat and how many sessions you need. We&rsquo;ll confirm your plan, sessions and price at your free treatment consultation.</p>
     </div>
     <div class="cost-top">
       <div class="ticket ro">
@@ -1441,7 +1447,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="amt">£199<small> one area</small></div>
           <p class="was">Usually <s>£400</s> per session</p>
         </div>
-        <div class="tk-foot">Try EMSCULPT NEO on one area at our introductory price, after your free consultation.
+        <div class="tk-foot">Try EMSCULPT NEO on one area at our introductory price, after your free treatment consultation.
           <br><a href="#enquire" class="btn btn--light">Claim this offer</a>
         </div>
       </div>
@@ -1542,7 +1548,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="cand-not ro">
         <h3>When it isn&rsquo;t suitable</h3>
-        <p>We won&rsquo;t treat you if you are pregnant or breastfeeding, have a pacemaker or metal or electronic implants near the treatment area, or have certain medical conditions. We check your full medical history at your free consultation to keep treatment safe.</p>
+        <p>We won&rsquo;t treat you if you are pregnant or breastfeeding, have a pacemaker or metal or electronic implants near the treatment area, or have certain medical conditions. We check your full medical history at your treatment consultation to keep treatment safe.</p>
       </div>
     </div>
   </div>
@@ -1570,6 +1576,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="faq-item"><button class="faq-q">Will it help me lose weight?</button><div class="faq-a"><p>Body sculpting is not a weight-loss treatment. It is designed to reduce stubborn fat and build muscle in specific areas, so it works best for people who are close to their goal weight and want better tone and definition.</p></div></div>
       <div class="faq-item"><button class="faq-q">Is it safe?</button><div class="faq-a"><p>EMSCULPT NEO and EMBODY are non-invasive and FDA-cleared, and treatment at London Real Skin is carried out in a dermatology-led, CQC-regulated clinic. We review your medical history first; treatment is not suitable during pregnancy or breastfeeding, or with a pacemaker or metal implants near the area.</p></div></div>
       <div class="faq-item"><button class="faq-q">How much does it cost, and can I pay monthly?</button><div class="faq-a"><p>EMSCULPT NEO is currently on offer at £199 for one area, with standard prices of £400 for one area, £700 for two and £900 for three per session. You can pay upfront for a course with a saving, spread the cost with 0% direct debit over 3 to 12 months (minimum spend £500), or pay as you go.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What happens at the free consultation?</button><div class="faq-a"><p>Your consultation is a dedicated session to plan your body sculpting treatment. We&rsquo;ll look at the areas you&rsquo;d like to improve, check EMSCULPT NEO or EMBODY is safe and suitable for you, and agree a clear course and price. Please note it&rsquo;s a treatment consultation, not a general medical or skin assessment.</p></div></div>
     </div>
   </div>
 </section>
@@ -1586,7 +1593,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="loc-row"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-11a7 7 0 0114 0c0 6.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><b>Address</b><p>233 High Holborn, London WC1V 7DN</p></div></div>
         <div class="loc-row"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></span><div><b>Call the clinic</b><a class="big" href="tel:+442071835892">020 7183 5892</a></div></div>
         <div class="loc-row"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span><div><b>Opening hours</b><div class="loc-hours">Mon &amp; Tue&nbsp; 09:00 to 17:30<br>Wed to Fri&nbsp; 10:00 to 19:30<br>Saturday&nbsp; 09:30 to 17:30<br>Sunday&nbsp; Closed</div></div></div>
-        <a href="#enquire" class="btn btn--pine" style="margin-top:24px">Book a free consultation</a>
+        <a href="#book" class="btn btn--pine" style="margin-top:24px">Plan my body sculpting treatment</a>
       </div>
       <div class="loc-visual">
         <img loading="lazy" decoding="async" src="/assets/img/location.jpg" alt="The clinic location on High Holborn in central London">
@@ -1596,13 +1603,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- 17. Enquiry -->
-<section class="enquire section" id="enquire">
+<section class="enquire section" id="book">
   <img loading="lazy" decoding="async" class="enquire-bg" src="/assets/img/body/enquire-bg.webp" alt="">
   <div class="wrap">
     <div class="form-card">
-      <span class="eyebrow">Book a free consultation</span>
+      <span class="eyebrow">Book your free treatment consultation</span>
       <h2 style="margin-top:14px; font-size:clamp(1.8rem,3vw,2.6rem)">Let&rsquo;s plan your body sculpting</h2>
-      <p class="lede" style="margin-top:10px; margin-bottom:22px; font-size:1rem">Tell us which areas you would like to work on and our reception team will be in touch, usually within one working day.</p>
+      <p class="lede" style="margin-top:10px; margin-bottom:22px; font-size:1rem">A free consultation for anyone considering EMSCULPT NEO or EMBODY. Choose your areas and a time that suits you, and we&rsquo;ll build your treatment plan.</p>
+
+      <div data-pabau-booking></div>
+      <script src="https://booking.pabau.com/embed.js"
+              data-pabau-slug="lsah"
+              data-pabau-mode="inline"
+              data-pabau-color="#0084d5"
+              async></script>
+
+      <div id="enquire" style="margin-top:36px; padding-top:30px; border-top:1px solid var(--line)">
+      <h2 style="margin-top:0; font-size:clamp(1.4rem,2.4vw,1.9rem)">Prefer to ask a question first?</h2>
+      <p class="lede" style="margin-top:8px; margin-bottom:22px; font-size:1rem">Send us an enquiry and our team will be in touch, usually within one working day.</p>
       <iframe
         scrolling="no"
         style="width:100%;border:none;border-radius:12px;display:block"
@@ -1629,6 +1647,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         })();
       </script>
       <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+      </div>
     </div>
   </div>
 </section>
@@ -1642,6 +1661,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="lb-frame"></div>
   </div>
 </div>
+
+<a class="side-enquire" href="#enquire">Send us an enquiry</a>
 
 <button class="to-top" id="toTop" aria-label="Back to top" title="Back to top">
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
