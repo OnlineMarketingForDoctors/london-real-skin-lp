@@ -136,6 +136,11 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
   .hero-cta > .btn--clay{width:100%}
   .hero-cta-sub{grid-template-columns:1fr; width:100%; min-width:0}
 }
+@media (min-width: 901px) {
+  .hero-cta { min-width: 520px; }
+  .hero-cta > .btn--clay { width: 100%; }
+  .hero-cta-sub .btn { white-space: nowrap; }
+}
 .stars{display:flex; align-items:center; gap:10px; margin-top:22px; flex-wrap:wrap}
 .stars .glogo{flex:0 0 auto; width:22px; height:22px}
 .stars .s{color:#E8A93B; letter-spacing:2px; font-size:1.05rem}
