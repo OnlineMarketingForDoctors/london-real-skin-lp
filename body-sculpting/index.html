@@ -108,7 +108,7 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 @media(max-width:560px){
   .phone{display:none}
   .navactions{gap:10px}
-  .navactions .btn--clay{padding:.62em .85em; font-size:.6rem; letter-spacing:.04em; line-height:1.2}
+  .navactions .btn--clay{padding:.7em .9em; font-size:.72rem; letter-spacing:.06em; white-space:nowrap}
   .logo-img{height:34px}
 }
 .mobile-nav{display:none; border-top:1px solid var(--line-soft); background:var(--porcelain)}
@@ -126,7 +126,16 @@ header{position:sticky; top:0; z-index:60; background:rgba(30,58,87,.94); backdr
 .selling{list-style:none; display:grid; gap:12px; margin:0 0 30px}
 .selling li{display:flex; gap:12px; align-items:flex-start; font-weight:500; font-size:1rem}
 .selling svg{flex:0 0 auto; margin-top:3px; color:var(--pine)}
-.hero-cta{display:flex; flex-wrap:wrap; gap:14px; align-items:center}
+.hero-cta{display:flex; flex-direction:column; align-items:stretch; width:fit-content; max-width:100%; gap:12px}
+.hero-cta > .btn--clay{width:max-content; max-width:100%; text-align:center; justify-content:center}
+.hero-cta-sub{display:grid; grid-template-columns:1fr 1fr; gap:12px; width:0; min-width:100%}
+.hero-cta-sub .btn{width:100%; text-align:center; justify-content:center}
+@media(max-width:900px){.hero-cta{margin-inline:auto}}
+@media(max-width:640px){
+  .hero-cta{width:100%}
+  .hero-cta > .btn--clay{width:100%}
+  .hero-cta-sub{grid-template-columns:1fr; width:100%; min-width:0}
+}
 .stars{display:flex; align-items:center; gap:10px; margin-top:22px; flex-wrap:wrap}
 .stars .glogo{flex:0 0 auto; width:22px; height:22px}
 .stars .s{color:#E8A93B; letter-spacing:2px; font-size:1.05rem}
@@ -471,6 +480,7 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 .book-calendar [data-pabau-booking],
 .book-calendar .pabau-bw-slot,
 .book-calendar iframe.pabau-bw-inline{width:100% !important; max-width:none !important}
+@media(max-width:640px){.book-calendar{padding:18px 14px}}
 
 @media(prefers-reduced-motion:reduce){
   *{scroll-behavior:auto !important}
@@ -1007,7 +1017,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <small>Call the clinic</small>
         <a href="tel:+442071835892">020 7183 5892</a>
       </div>
-      <a href="#book" class="btn btn--clay">Free body sculpting consultation</a>
+      <a href="#book" class="btn btn--clay">Free consultation</a>
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" id="menuBtn"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -1062,8 +1072,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </ul>
       <div class="hero-cta">
         <a href="#book" class="btn btn--clay">Book your free treatment consultation</a>
-        <a href="#results" class="btn btn--ghost">Before &amp; after</a>
-        <a href="#enquire" class="btn btn--ghost">Send us an enquiry</a>
+        <div class="hero-cta-sub">
+          <a href="#results" class="btn btn--ghost">Before &amp; after</a>
+          <a href="#enquire" class="btn btn--ghost">Send us an enquiry</a>
+        </div>
       </div>
       <p style="margin-top:12px; font-size:.88rem; color:var(--muted)">For anyone considering EMSCULPT NEO or EMBODY</p>
       <a class="stars" href="https://www.google.com/maps/place/London+Real+Skin+%7C+Dermatology-Led+Skin+Clinic+London/@51.5174521,-0.1194293,17z/data=!4m8!3m7!1s0x48761ad496940457:0xa245fffe8c9e6f1!8m2!3d51.5174521!4d-0.1194293!9m1!1b1!16s%2Fg%2F11cn2zpbrt" target="_blank" rel="noopener" aria-label="4.9 out of 5 from 338+ Google reviews. Read our reviews on Google (opens in a new tab)">
@@ -1659,7 +1671,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         s.setAttribute('data-pabau-slug', 'lsah');
         s.setAttribute('data-pabau-mode', 'inline');
         s.setAttribute('data-pabau-color', '#0084d5');
-        s.setAttribute('data-pabau-height', '720');
+        s.setAttribute('data-pabau-location', '7094');
+        s.setAttribute('data-pabau-service', 'Consultation (in clinic),Consultation (Remote Video)');
         document.body.appendChild(s);
 
         var tries = 0;
@@ -1672,8 +1685,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             frame.style.setProperty('pointer-events', 'auto', 'important');
             frame.style.setProperty('left', '0', 'important');
             frame.style.setProperty('position', 'relative', 'important');
-            var host = document.querySelector('[data-pabau-booking]');
-            if (host) host.style.minHeight = '720px';
           }
           if (tries > 40) clearInterval(timer);
         }, 250);
