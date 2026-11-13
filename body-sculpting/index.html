@@ -1622,17 +1622,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="section" id="book">
-  <div class="wrap">
-    <div class="book-calendar">
-      <span class="eyebrow">Book your treatment consultation</span>
-      <h2 style="margin-top:14px; font-size:clamp(1.8rem,3vw,2.6rem)">Let&rsquo;s plan your body sculpting</h2>
-      <p class="lede" style="margin-top:10px; margin-bottom:22px; font-size:1rem">A £25 deposit secures your appointment. It comes off your treatment if you go ahead, and is fully refunded if you cancel.</p>
-      <div class="book-cta"><button type="button" class="btn btn--clay" id="book-open">Book your treatment consultation</button></div>
-    </div>
-  </div>
-</section>
-
 <!-- 17. Enquiry -->
 <section class="enquire section">
   <img loading="lazy" decoding="async" class="enquire-bg" src="/assets/img/body/enquire-bg.webp" alt="">
@@ -1694,21 +1683,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           });
         }
 
-        var btn = document.getElementById('book-open');
-        if (btn) {
-          btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            if (window.Pabau && window.Pabau.booking && typeof window.Pabau.booking.open === 'function') {
-              window.Pabau.booking.open();
-            }
-            var tries = 0;
-            var timer = setInterval(function () {
-              revealBookingFrames();
-              tries += 1;
-              if (tries > 40) clearInterval(timer);
-            }, 250);
-          });
-        }
+        document.addEventListener('click', function (e) {
+          var trigger = e.target && e.target.closest ? e.target.closest('a[href="#book"]') : null;
+          if (!trigger) return;
+          e.preventDefault();
+          if (window.Pabau && window.Pabau.booking && typeof window.Pabau.booking.open === 'function') {
+            window.Pabau.booking.open();
+          }
+          var tries = 0;
+          var timer = setInterval(function () {
+            revealBookingFrames();
+            tries += 1;
+            if (tries > 40) clearInterval(timer);
+          }, 250);
+        });
       });
       </script>
       </div>
