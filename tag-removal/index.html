@@ -466,9 +466,7 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 .to-top.show{opacity:1; visibility:visible; transform:none}
 .to-top:hover{background:var(--clay)}
 .book-calendar{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:clamp(28px,4vw,46px); width:100%; max-width:none; box-shadow:0 40px 80px -50px rgba(30,58,87,.6)}
-.book-calendar [data-pabau-booking],
-.book-calendar .pabau-bw-slot,
-.book-calendar iframe.pabau-bw-inline{width:100% !important; max-width:none !important}
+.book-calendar .book-cta{text-align:center; margin-top:4px}
 @media(max-width:640px){.book-calendar{padding:18px 14px}}
 .side-enquire{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:55; writing-mode:vertical-rl; background:var(--clay); color:#fff; padding:18px 11px; border-radius:12px 0 0 12px; font-family:var(--body); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; text-decoration:none; box-shadow:0 10px 30px -10px rgba(30,58,87,.6)}
 @media(max-width:991px){.side-enquire{display:none}}
@@ -877,7 +875,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="eyebrow">Book your removal consultation</span>
       <h2 style="margin-top:14px; font-size:clamp(1.8rem,3vw,2.6rem)">Let's plan your removal</h2>
       <p class="lede" style="margin-top:10px; margin-bottom:22px; font-size:1rem">A £25 deposit secures your appointment. It comes off your treatment if you go ahead, and is fully refunded if you cancel.</p>
-      <div data-pabau-booking></div>
+      <div class="book-cta"><button type="button" class="btn btn--clay" id="book-open">Book your removal consultation</button></div>
     </div>
   </div>
 </section>
@@ -924,25 +922,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         s.src = 'https://booking.pabau.com/embed.js';
         s.async = true;
         s.setAttribute('data-pabau-slug', 'lsah');
-        s.setAttribute('data-pabau-mode', 'inline');
+        s.setAttribute('data-pabau-mode', 'popup');
         s.setAttribute('data-pabau-color', '#0084d5');
         s.setAttribute('data-pabau-location', '7094');
-        s.setAttribute('data-pabau-service', 'Consultation (in clinic),Consultation (Remote Video)');
+        s.setAttribute('data-pabau-category', 'Cosmetic Consultations - London Real Skin');
+        s.setAttribute('data-pabau-start', 'service');
         document.body.appendChild(s);
 
-        var tries = 0;
-        var timer = setInterval(function () {
-          var frame = document.querySelector('iframe.pabau-bw-inline');
-          tries += 1;
-          if (frame) {
-            frame.style.setProperty('opacity', '1', 'important');
-            frame.style.setProperty('visibility', 'visible', 'important');
-            frame.style.setProperty('pointer-events', 'auto', 'important');
-            frame.style.setProperty('left', '0', 'important');
-            frame.style.setProperty('position', 'relative', 'important');
-          }
-          if (tries > 40) clearInterval(timer);
-        }, 250);
+        // Pabau's enquiry-form script hides iframes whose address contains /booking.
+        // The popup frame is created on click inside Pabau's dialog; force it visible.
+        function revealBookingFrames() {
+          document.querySelectorAll('iframe').forEach(function (frame) {
+            if ((frame.getAttribute('src') || '').indexOf('/booking') !== -1) {
+              frame.style.setProperty('opacity', '1', 'important');
+              frame.style.setProperty('visibility', 'visible', 'important');
+              frame.style.setProperty('pointer-events', 'auto', 'important');
+              frame.style.setProperty('left', '0', 'important');
+              frame.style.setProperty('position', 'relative', 'important');
+            }
+          });
+        }
+
+        var btn = document.getElementById('book-open');
+        if (btn) {
+          btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (window.Pabau && window.Pabau.booking && typeof window.Pabau.booking.open === 'function') {
+              window.Pabau.booking.open();
+            }
+            var tries = 0;
+            var timer = setInterval(function () {
+              revealBookingFrames();
+              tries += 1;
+              if (tries > 40) clearInterval(timer);
+            }, 250);
+          });
+        }
       });
       </script>
     </div>
