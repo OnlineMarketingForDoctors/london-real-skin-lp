@@ -477,10 +477,9 @@ footer{background:var(--pine-deep); color:rgba(251,248,243,.78)}
 .to-top{position:fixed; right:clamp(16px,3vw,28px); bottom:clamp(16px,3vw,28px); z-index:70; width:50px; height:50px; border-radius:50%; border:none; background:var(--pine); color:var(--porcelain); display:grid; place-items:center; cursor:pointer; box-shadow:0 12px 30px -10px rgba(30,58,87,.7); opacity:0; visibility:hidden; transform:translateY(12px); transition:opacity .3s ease, transform .3s ease, background .25s ease, visibility .3s}
 .to-top.show{opacity:1; visibility:visible; transform:none}
 .to-top:hover{background:var(--clay)}
-/* Side enquiry tab (desktop only) */
-.side-enquire{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:55; writing-mode:vertical-rl; background:var(--clay); color:#fff; padding:18px 11px; border-radius:12px 0 0 12px; font-family:var(--body); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; text-decoration:none; box-shadow:0 10px 30px -10px rgba(30,58,87,.6); transition:background .2s ease, padding-right .2s ease}
+/* Side enquiry tab */
+.side-enquire{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:1000; writing-mode:vertical-rl; background:var(--clay); color:#fff; padding:18px 11px; border-radius:12px 0 0 12px; font-family:var(--body); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; text-decoration:none; box-shadow:0 10px 30px -10px rgba(30,58,87,.6); transition:background .2s ease, padding-right .2s ease}
 .side-enquire:hover{background:var(--clay-deep); padding-right:15px}
-@media(max-width:991px){.side-enquire{display:none}}
 .book-calendar{background:var(--paper); border:1px solid var(--line); border-radius:var(--r); padding:clamp(28px,4vw,46px); width:100%; max-width:none; box-shadow:0 40px 80px -50px rgba(30,58,87,.6)}
 .book-calendar .book-cta{text-align:center; margin-top:4px}
 @media(max-width:640px){.book-calendar{padding:18px 14px}}
@@ -1677,19 +1676,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           });
         }
 
+        // Browser Back dismisses the booking window. One pushed history entry per
+        // opening marks "booking open" (URL and existing state fields untouched);
+        // pressing Back navigates off it and closes the popup, while closing via
+        // X / Escape / overlay pops the marker so no stray entry is left behind.
+        var bookingActive = false;
+        var bookingToken = null;
+
+        function pushBookingMarker() {
+          bookingToken = 'pabau-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+          var base = (history.state && typeof history.state === 'object') ? history.state : {};
+          var merged = {};
+          for (var k in base) { if (Object.prototype.hasOwnProperty.call(base, k)) merged[k] = base[k]; }
+          merged.pabauBooking = bookingToken;
+          try { history.pushState(merged, ''); } catch (err) {}
+        }
+
+        function currentMarker() {
+          return (history.state && typeof history.state === 'object') ? history.state.pabauBooking : undefined;
+        }
+
         document.addEventListener('click', function (e) {
           var trigger = e.target && e.target.closest ? e.target.closest('a[href="#book"]') : null;
           if (!trigger) return;
           e.preventDefault();
-          if (window.Pabau && window.Pabau.booking && typeof window.Pabau.booking.open === 'function') {
-            window.Pabau.booking.open();
+          if (!(window.Pabau && window.Pabau.booking && typeof window.Pabau.booking.open === 'function')) return;
+          if (!bookingActive) {
+            pushBookingMarker();
+            bookingActive = true;
           }
+          window.Pabau.booking.open();
           var tries = 0;
           var timer = setInterval(function () {
             revealBookingFrames();
             tries += 1;
             if (tries > 40) clearInterval(timer);
           }, 250);
+        });
+
+        // event.state describes the destination entry. Do not call history.back() here.
+        window.addEventListener('popstate', function (e) {
+          var dest = (e.state && typeof e.state === 'object') ? e.state.pabauBooking : undefined;
+          if (bookingActive) {
+            if (dest === bookingToken) return; // still on our marked entry (e.g. a funnel step)
+            // Back: navigation moved off the marker -> close the window.
+            bookingActive = false;
+            bookingToken = null;
+            if (window.Pabau && window.Pabau.booking && typeof window.Pabau.booking.close === 'function') {
+              window.Pabau.booking.close();
+            }
+          } else if (dest) {
+            // Forward back onto a booking marker while closed -> reopen, so Forward
+            // never lands on a closed-window history entry.
+            bookingToken = dest;
+            bookingActive = true;
+            if (window.Pabau && window.Pabau.booking && typeof window.Pabau.booking.open === 'function') {
+              window.Pabau.booking.open();
+              var tries = 0;
+              var timer = setInterval(function () {
+                revealBookingFrames();
+                tries += 1;
+                if (tries > 40) clearInterval(timer);
+              }, 250);
+            }
+          }
+        });
+
+        // Closing via X / Escape / overlay: if still on the marker entry, pop it
+        // once. The resulting popstate sees bookingActive false, so it does not
+        // close the window a second time.
+        window.addEventListener('pabau:booking:close', function () {
+          if (!bookingActive) return;
+          if (currentMarker() !== bookingToken) { bookingActive = false; bookingToken = null; return; }
+          bookingActive = false;
+          bookingToken = null;
+          history.back();
         });
       });
       </script>
